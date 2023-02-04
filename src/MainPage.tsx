@@ -18,9 +18,9 @@ import { Footer } from "./components/Footer";
 
 // TODO imagens no layout
 // TODO grid -> with dani
-// TODO zoom
-// TODO blur effect
-// TODO ui library framework -> @mantine
+// TODO zoom -> done
+// TODO blur effect -> done
+// TODO ui library framework -> @mantine -> done
 
 export type Language = "en" | "pt";
 export interface LanguageProp {

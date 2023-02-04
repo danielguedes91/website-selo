@@ -2,14 +2,16 @@ import React from "react";
 
 import { LanguageProp } from "../MainPage";
 
-import SeloBranding from '../assets/services/selo-branding-min.png';
-import SeloBrandingBlur from '../assets/services/selo-branding-blur-min.png';
+import { ImageMagnifier } from "../features/ImageMagnifier";
+
+import SeloBranding from "../assets/services/selo-branding-min.png";
+import SeloBrandingBlur from "../assets/services/selo-branding-blur-min.png";
 
 type ServicesProps = LanguageProp;
 
 export const Services: React.FC<ServicesProps> = () => {
-
-  const [isSeloBrandingBlur, setIsSeloBrandingBlur] = React.useState<boolean>(false);
+  const [isSeloBrandingBlur, setIsSeloBrandingBlur] =
+    React.useState<boolean>(false);
 
   // const GRID_MAX_WIDTH = 600;
   // const PADDING = 25;
@@ -27,13 +29,19 @@ export const Services: React.FC<ServicesProps> = () => {
     },
   };
 
-
   return (
     <div id="services" style={styles.main}>
       <text>Services section</text>
-      <div onMouseEnter={() => setIsSeloBrandingBlur(true)} onMouseLeave={() => setIsSeloBrandingBlur(false)}>
-        <img src={isSeloBrandingBlur ? SeloBrandingBlur : SeloBranding} alt="" width={UNIT * seloBradingFactor} />
+      <div
+        onMouseEnter={() => setIsSeloBrandingBlur(true)}
+        onMouseLeave={() => setIsSeloBrandingBlur(false)}
+      >
+        {/* <img src={isSeloBrandingBlur ? SeloBrandingBlur : SeloBranding} alt="" width={UNIT * seloBradingFactor} /> */}
+        <ImageMagnifier
+          src={isSeloBrandingBlur ? SeloBrandingBlur : SeloBranding}
+          width="300px"
+        />
       </div>
     </div>
   );
-}
+};

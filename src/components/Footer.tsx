@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Footer(): JSX.Element {
+export const Footer: React.FC = () => {
   const styles: Record<string, React.CSSProperties> = {
     main: {
       position: "fixed",

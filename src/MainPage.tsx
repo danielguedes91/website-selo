@@ -2,15 +2,15 @@ import React from "react";
 import "./css/App.css";
 
 // Section components
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Services from "./pages/Services";
-import Steps from "./pages/Steps";
-import Connect from "./pages/Connect";
+import { Home } from "./pages/Home";
+import { About } from "./pages/About";
+import { Services } from "./pages/Services";
+import { Steps } from "./pages/Steps";
+import { Connect } from "./pages/Connect";
 
 // Components
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import { Navbar } from "./components/Navbar";
+import { Footer } from "./components/Footer";
 
 // adicionar font -> done
 // adicionar imagens -> done
@@ -19,15 +19,18 @@ import Footer from "./components/Footer";
 // TODO imagens no layout
 // TODO grid -> with dani
 // TODO zoom
-// TODO ui library framework -> with dani
+// TODO blur effect
+// TODO ui library framework -> @mantine
 
-export type Language = 'en' | 'pt';
+export type Language = "en" | "pt";
+export interface LanguageProp {
+  language: Language;
+}
 
 const App: React.FC = () => {
+  const [language, setLanguage] = React.useState<Language>("en"); // estado central
 
-  const [language, setLanguage] = React.useState<Language>('en'); // estado central
-
-  const toggleLanguage = () => setLanguage(language === 'en' ? 'pt' : 'en');
+  const toggleLanguage = () => setLanguage(language === "en" ? "pt" : "en");
 
   const styles: Record<string, React.CSSProperties> = {
     main: {
@@ -38,13 +41,13 @@ const App: React.FC = () => {
 
   return (
     <div style={styles.main}>
-      <Navbar language={language} onClick={toggleLanguage} />
+      <Navbar language={language} handleClick={toggleLanguage} />
 
-      <Home />
+      <Home language={language} />
       <About language={language} />
-      <Services />
-      <Steps />
-      <Connect />
+      <Services language={language} />
+      <Steps language={language} />
+      <Connect language={language} />
 
       <Footer />
     </div>

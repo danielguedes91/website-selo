@@ -1,6 +1,9 @@
 import React from "react";
+import { LanguageProp } from "../MainPage";
 
-export default function Home(): JSX.Element {
+type HomeProps = LanguageProp;
+
+export const Home: React.FC<HomeProps> = () => {
   const styles: Record<string, React.CSSProperties> = {
     main: {
       display: "flex",

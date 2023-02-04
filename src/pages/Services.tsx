@@ -1,8 +1,12 @@
 import React from "react";
 
+import { LanguageProp } from "../MainPage";
+
 import SeloBranding from '../assets/services/selo-branding-min.png';
 
-export default function Services() {
+type ServicesProps = LanguageProp;
+
+export const Services: React.FC<ServicesProps> = () => {
 
   // const GRID_MAX_WIDTH = 600;
   // const PADDING = 25;

@@ -1,6 +1,10 @@
 import React from "react";
 
-export default function Connect() {
+import { LanguageProp } from "../MainPage";
+
+type ConnectProps = LanguageProp;
+
+export const Connect: React.FC<ConnectProps> = () => {
   const styles: Record<string, React.CSSProperties> = {
     main: {
       display: "flex",

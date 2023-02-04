@@ -1,15 +1,14 @@
 import React from "react";
-import { Language } from "../MainPage";
+import { Language, LanguageProp } from "../MainPage";
 
 interface NavbarProps {
-  language: Language;
-  onClick: () => void;
+  handleClick: () => void;
 }
 
-export default function Navbar({
+export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
   language,
-  onClick: toggleLanguage,
-}: NavbarProps): JSX.Element {
+  handleClick,
+}) => {
   const links: Array<{ href: string; content: Record<Language, string> }> = [
     {
       href: "#about",
@@ -70,10 +69,10 @@ export default function Navbar({
         {links.map((item) => (
           <a href={item.href}>{item.content[language]}</a>
         ))}
-        <button onClick={toggleLanguage} style={styles.languageButton}>
+        <button onClick={handleClick} style={styles.languageButton}>
           {language}
         </button>
       </div>
     </div>
   );
-}
+};

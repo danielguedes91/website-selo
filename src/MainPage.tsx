@@ -10,6 +10,12 @@ import Services from './pages/Services';
 // Typescript -> .ts
 // Typescript JSX -> .tsx
 
+// adicionar font
+// adicionar imagens
+// grid -> with dani
+// zoom
+// ui library framework -> with dani
+
 const App: React.FC = () => {
   /**
    * # As primeiras notas para o Dani

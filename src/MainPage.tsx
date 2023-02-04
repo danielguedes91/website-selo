@@ -4,6 +4,8 @@ import './css/App.css';
 // Section components
 import About from './pages/About';
 import Services from './pages/Services';
+import Steps from './pages/Steps';
+import Connect from './pages/Connect';
 
 // Javascript -> .js
 // JSX (React) -> .jsx
@@ -39,6 +41,8 @@ const App: React.FC = () => {
     <div style={styles.main}>
       <About />
       <Services />
+      <Steps />
+      <Connect />
     </div>
   );
 }

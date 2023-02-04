@@ -1,5 +1,7 @@
 import React from 'react';
 
+// Ref:
+// https://codesandbox.io/s/image-magnifier-3jsqs?from-embed=&file=/src/App.tsx:77-2558
 export const ImageMagnifier = ({
      src,
      width,

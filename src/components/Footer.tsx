@@ -19,11 +19,11 @@ export const Footer: React.FC = () => {
 
   // TODO DANI: substitute links
   return <div style={styles.main}>
-     <a href="#nothing">SELO VISUAL STUDIO</a>
-     <a href="#nothing">BY GRAFEMA DESIGN</a>
-     <a href="#nothing">FACEBOOK</a>
-     <a href="#nothing">VIMEO</a>
-     <a href="#nothing">BEHANCE</a>
-     <a href="#nothing">INSTAGRAM</a>
+     <a href="https://grafemadesign.com/" target="_blank" rel="noreferrer">SELO VISUAL STUDIO</a>
+     <a href="https://grafemadesign.com/" target="_blank" rel="noreferrer">BY GRAFEMA DESIGN</a>
+     <a href="https://grafemadesign.com/" target="_blank" rel="noreferrer">FACEBOOK</a>
+     <a href="https://grafemadesign.com/" target="_blank" rel="noreferrer">VIMEO</a>
+     <a href="https://grafemadesign.com/" target="_blank" rel="noreferrer">BEHANCE</a>
+     <a href="https://grafemadesign.com/" target="_blank" rel="noreferrer">INSTAGRAM</a>
   </div>;
 }

@@ -13,7 +13,7 @@ export default function About() {
   };
 
   return (
-    <div style={styles.main}>
+    <div style={styles.main} id="about">
       <text>About section</text>
     </div>
   );

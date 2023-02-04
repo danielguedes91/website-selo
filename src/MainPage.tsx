@@ -2,22 +2,28 @@ import React from 'react';
 import './css/App.css';
 
 // Section components
+import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
 import Steps from './pages/Steps';
 import Connect from './pages/Connect';
+
+// Components
+import Navbar from './components/Navbar';
 
 // Javascript -> .js
 // JSX (React) -> .jsx
 // Typescript -> .ts
 // Typescript JSX -> .tsx
 
-// adicionar font
+// adicionar font -> done
 // adicionar imagens -> done
 // comprimir imagens -> done
+
 // grid -> with dani
 // zoom
 // ui library framework -> with dani
+// imagens no layout
 
 const App: React.FC = () => {
   /**
@@ -40,6 +46,9 @@ const App: React.FC = () => {
 
   return (
     <div style={styles.main}>
+      <Navbar />
+      
+      <Home />
       <About />
       <Services />
       <Steps />

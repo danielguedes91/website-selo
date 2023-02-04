@@ -12,7 +12,7 @@ export default function Services() {
     },
   };
   return (
-    <div style={styles.main}>
+    <div id="services" style={styles.main}>
       <text>Services section</text>
     </div>
   );

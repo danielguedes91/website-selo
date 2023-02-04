@@ -12,7 +12,7 @@ export default function Connect() {
     },
   };
   return (
-    <div style={styles.main}>
+    <div id="connect" style={styles.main}>
       <text>Connect section</text>
     </div>
   );

@@ -12,7 +12,7 @@ export default function Steps() {
     },
   };
   return (
-    <div style={styles.main}>
+    <div id="steps" style={styles.main}>
       <text>Steps section</text>
     </div>
   );

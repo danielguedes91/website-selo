@@ -1,6 +1,15 @@
 import React from 'react';
 import './css/App.css';
 
+// Section components
+import About from './pages/About';
+import Services from './pages/Services';
+
+// Javascript -> .js
+// JSX (React) -> .jsx
+// Typescript -> .ts
+// Typescript JSX -> .tsx
+
 const App: React.FC = () => {
   /**
    * # As primeiras notas para o Dani
@@ -15,19 +24,15 @@ const App: React.FC = () => {
    */
   const styles: Record<string, React.CSSProperties> = {
     main: {
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
       width: '100%',
       height: '100vh',
-      backgroundColor: 'pink',
     }
   }
 
-  // About, services projects connect
   return (
     <div style={styles.main}>
-      <text>Texto</text>
+      <About />
+      <Services />
     </div>
   );
 }

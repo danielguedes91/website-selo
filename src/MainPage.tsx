@@ -49,8 +49,6 @@ const App: React.FC = () => {
       <Steps language={language} />
       <Connect language={language} />
 
-      {/* <Form language={language} /> */}
-
       <Footer />
     </div>
   );

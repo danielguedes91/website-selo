@@ -1,10 +1,12 @@
 import React from "react";
 
+import { Form } from "../components/Form";
+
 import { LanguageProp } from "../MainPage";
 
 type ConnectProps = LanguageProp;
 
-export const Connect: React.FC<ConnectProps> = () => {
+export const Connect: React.FC<ConnectProps> = ({ language }) => {
   const styles: Record<string, React.CSSProperties> = {
     main: {
       display: "flex",
@@ -17,7 +19,7 @@ export const Connect: React.FC<ConnectProps> = () => {
   };
   return (
     <div id="connect" style={styles.main}>
-      <text>Connect section</text>
+      <Form language={language} />
     </div>
   );
 }

@@ -13,7 +13,8 @@ import Connect from './pages/Connect';
 // Typescript JSX -> .tsx
 
 // adicionar font
-// adicionar imagens
+// adicionar imagens -> done
+// comprimir imagens -> done
 // grid -> with dani
 // zoom
 // ui library framework -> with dani

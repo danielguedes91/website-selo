@@ -23,6 +23,8 @@ const App: React.FC = () => {
       backgroundColor: 'pink',
     }
   }
+
+  // About, services projects connect
   return (
     <div style={styles.main}>
       <text>Texto</text>

@@ -1,19 +1,62 @@
 import React from "react";
+import { Language } from "../MainPage";
 
-export default function Navbar(): JSX.Element {
+interface NavbarProps {
+  language: Language;
+  onClick: () => void;
+}
+
+export default function Navbar({
+  language,
+  onClick: toggleLanguage,
+}: NavbarProps): JSX.Element {
+  const links: Array<{ href: string; content: Record<Language, string> }> = [
+    {
+      href: "#about",
+      content: {
+        en: "About",
+        pt: "Sobre",
+      },
+    },
+    {
+      href: "#services",
+      content: {
+        en: "Services",
+        pt: "Serviços",
+      },
+    },
+    {
+      href: "#steps",
+      content: {
+        en: "Steps",
+        pt: "Passos",
+      },
+    },
+    {
+      href: "#connect",
+      content: {
+        en: "Connect",
+        pt: "Conectar",
+      },
+    },
+  ];
+
   const styles: Record<string, React.CSSProperties> = {
     main: {
       position: "fixed",
       width: "100%",
       display: "flex",
       justifyContent: "space-between",
-      alignItems: 'center',
+      alignItems: "center",
       backgroundColor: "white",
-      border: '1px solid blue',
-      height: '60px',
+      border: "1px solid blue",
+      height: "60px",
     },
     logo: {},
     links: {},
+    languageButton: {
+      width: "50px",
+    },
   };
 
   return (
@@ -24,10 +67,12 @@ export default function Navbar(): JSX.Element {
         </div>
       </div>
       <div style={styles.links}>
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#steps">Steps</a>
-        <a href="#connect">Connect</a>
+        {links.map((item) => (
+          <a href={item.href}>{item.content[language]}</a>
+        ))}
+        <button onClick={toggleLanguage} style={styles.languageButton}>
+          {language}
+        </button>
       </div>
     </div>
   );

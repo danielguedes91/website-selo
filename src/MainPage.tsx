@@ -1,60 +1,54 @@
-import React from 'react';
-import './css/App.css';
+import React from "react";
+import "./css/App.css";
 
 // Section components
-import Home from './pages/Home';
-import About from './pages/About';
-import Services from './pages/Services';
-import Steps from './pages/Steps';
-import Connect from './pages/Connect';
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Services from "./pages/Services";
+import Steps from "./pages/Steps";
+import Connect from "./pages/Connect";
 
 // Components
-import Navbar from './components/Navbar';
-
-// Javascript -> .js
-// JSX (React) -> .jsx
-// Typescript -> .ts
-// Typescript JSX -> .tsx
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 // adicionar font -> done
 // adicionar imagens -> done
 // comprimir imagens -> done
 
-// grid -> with dani
-// zoom
-// ui library framework -> with dani
-// imagens no layout
+// TODO imagens no layout
+// TODO grid -> with dani
+// TODO zoom
+// TODO ui library framework -> with dani
+
+export type Language = 'en' | 'pt';
 
 const App: React.FC = () => {
-  /**
-   * # As primeiras notas para o Dani
-   * Aqui é onde vais começar a fazer o código para a tua app. O que tens que fazer:
-   * 1. run `yarn` no teu terminal -> se tiveres alguma problema, diz-me.
-   * 2. Se tudo correr bem, executa `yarn dev` para iniciar o teu dev environment. Isto abre-te uma janela do teu browser automaticamente.
-   * 3. Começa a estourar tudo no código!
-   */
 
-  /**
-   * Podes passar styles de várias maneiras. A mais simples e directa é fazendo dentro dos componentes, assim:
-   */
+  const [language, setLanguage] = React.useState<Language>('en'); // estado central
+
+  const toggleLanguage = () => setLanguage(language === 'en' ? 'pt' : 'en');
+
   const styles: Record<string, React.CSSProperties> = {
     main: {
-      width: '100%',
-      height: '100vh',
-    }
-  }
+      width: "100%",
+      height: "100vh",
+    },
+  };
 
   return (
     <div style={styles.main}>
-      <Navbar />
-      
+      <Navbar language={language} onClick={toggleLanguage} />
+
       <Home />
-      <About />
+      <About language={language} />
       <Services />
       <Steps />
       <Connect />
+
+      <Footer />
     </div>
   );
-}
+};
 
 export default App;

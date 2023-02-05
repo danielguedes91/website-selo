@@ -12,15 +12,8 @@ import { Connect } from "./pages/Connect";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
 
-// adicionar font -> done
-// adicionar imagens -> done
-// comprimir imagens -> done
-
-// TODO imagens no layout
-// TODO grid -> with dani
-// TODO zoom -> done
-// TODO blur effect -> done
-// TODO ui library framework -> @mantine -> done
+// Netlify deployment
+// Customize and send form info
 
 export type Language = "en" | "pt";
 export interface LanguageProp {

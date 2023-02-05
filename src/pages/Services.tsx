@@ -15,8 +15,8 @@ export const Services: React.FC<ServicesProps> = () => {
 
   // const GRID_MAX_WIDTH = 600;
   // const PADDING = 25;
-  const UNIT = 100;
-  const seloBradingFactor = 3.5;
+  // const UNIT = 100;
+  // const seloBradingFactor = 3.5;
 
   const styles: Record<string, React.CSSProperties> = {
     main: {

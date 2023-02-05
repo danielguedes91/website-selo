@@ -14,6 +14,8 @@ import { Footer } from "./components/Footer";
 
 // Netlify deployment
 // Customize and send form info
+// Responsive
+// Think about effects in the background
 
 export type Language = "en" | "pt";
 export interface LanguageProp {

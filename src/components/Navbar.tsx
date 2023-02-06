@@ -66,8 +66,8 @@ export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
         </div>
       </div>
       <div style={styles.links}>
-        {links.map((item) => (
-          <a href={item.href}>{item.content[language]}</a>
+        {links.map((item, index) => (
+          <a key={`content-${language}-${index}`} href={item.href}>{item.content[language]}</a>
         ))}
         <button onClick={handleClick} style={styles.languageButton}>
           {language}

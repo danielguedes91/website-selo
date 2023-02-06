@@ -40,7 +40,7 @@ export const Services: React.FC<ServicesProps> = () => {
       pt: ``,
       en: ``,
       img: {
-        src: "",
+        src: SeloBranding,
         orientation: "left",
       },
     },
@@ -48,7 +48,7 @@ export const Services: React.FC<ServicesProps> = () => {
       pt: ``,
       en: ``,
       img: {
-        src: "",
+        src: SeloBranding,
         orientation: "left",
       },
     },
@@ -56,7 +56,7 @@ export const Services: React.FC<ServicesProps> = () => {
       pt: ``,
       en: ``,
       img: {
-        src: "",
+        src: SeloBranding,
         orientation: "left",
       },
     },
@@ -64,7 +64,7 @@ export const Services: React.FC<ServicesProps> = () => {
       pt: ``,
       en: ``,
       img: {
-        src: "",
+        src: SeloBranding,
         orientation: "left",
       },
     },
@@ -72,7 +72,7 @@ export const Services: React.FC<ServicesProps> = () => {
       pt: ``,
       en: ``,
       img: {
-        src: "",
+        src: SeloBranding,
         orientation: "left",
       },
     },
@@ -80,7 +80,7 @@ export const Services: React.FC<ServicesProps> = () => {
       pt: ``,
       en: ``,
       img: {
-        src: "",
+        src: SeloBranding,
         orientation: "left",
       },
     },
@@ -88,7 +88,7 @@ export const Services: React.FC<ServicesProps> = () => {
       pt: ``,
       en: ``,
       img: {
-        src: "",
+        src: SeloBranding,
         orientation: "left",
       },
     },
@@ -96,7 +96,7 @@ export const Services: React.FC<ServicesProps> = () => {
       pt: ``,
       en: ``,
       img: {
-        src: "",
+        src: SeloBranding,
         orientation: "left",
       },
     },

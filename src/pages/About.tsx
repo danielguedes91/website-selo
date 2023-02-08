@@ -24,7 +24,7 @@ export const About: React.FC<AboutProps> = ({ language }) => {
 
   return (
     <div style={styles.main} id="about">
-      <text>{text[language]}</text>
+      <span>{text[language]}</span>
     </div>
   );
 }

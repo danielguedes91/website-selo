@@ -17,7 +17,7 @@ export const Steps: React.FC<StepsProps> = () => {
   };
   return (
     <div id="steps" style={styles.main}>
-      <text>Steps section</text>
+      <span>Steps section</span>
     </div>
   );
 }

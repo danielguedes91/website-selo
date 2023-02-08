@@ -12,10 +12,12 @@ import { Connect } from "./pages/Connect";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
 
+// TODO Dani e Goncalo
 // Netlify deployment
 // Customize and send form info
 // Responsive
 // Think about effects in the background
+// Change index.html favicon and content
 
 export type Language = "en" | "pt";
 export interface LanguageProp {

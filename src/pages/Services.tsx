@@ -2,29 +2,27 @@ import React from "react";
 
 import { LanguageProp } from "../MainPage";
 
+import { GRID_MAX_WIDTH } from "../features/gridUtils";
+
 import SeloBranding from "../assets/services/selo-branding-min.png";
 import SeloBrandingBlur from "../assets/services/selo-branding-blur-min.png";
 import { ImageComponent } from "../components/ImageComponent";
+import { Grid } from "@mantine/core";
 
 type ServicesProps = LanguageProp;
 
-export const Services: React.FC<ServicesProps> = () => {
-  // const GRID_MAX_WIDTH = 600;
-  // const PADDING = 25;
-  // const UNIT = 100;
-  // const seloBradingFactor = 3.5;
-
+export const Services: React.FC<ServicesProps> = ({ language }) => {
   const content: Record<
     string,
     {
-      pt: string,
-      en: string,
+      pt: string;
+      en: string;
       img: {
         src: string;
         blurSrc?: string;
         orientation: "left" | "right";
         style?: React.CSSProperties;
-      },
+      };
     }
   > = {
     branding: {
@@ -37,11 +35,12 @@ export const Services: React.FC<ServicesProps> = () => {
       },
     },
     visualProduction: {
+      // TODO Dani => you have to change the content dynamically here, same logic
       pt: ``,
       en: ``,
       img: {
         src: SeloBranding,
-        orientation: "left",
+        orientation: "right",
       },
     },
     stereoProduction: {
@@ -105,23 +104,71 @@ export const Services: React.FC<ServicesProps> = () => {
   const styles: Record<string, React.CSSProperties> = {
     main: {
       display: "flex",
+      flexDirection: "column",
       justifyContent: "center",
       alignItems: "center",
       width: "100%",
-      height: "100vh",
+      minHeight: "100vh",
       border: "3px solid blue",
     },
+    gridContainer: {
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      width: "100%",
+      maxWidth: GRID_MAX_WIDTH,
+    },
+  };
+
+  const TextContent = ({
+    content,
+    width,
+  }: {
+    content: string;
+    width?: string;
+  }) => {
+    return <span style={{ width: width }}>{content}</span>;
   };
 
   return (
     <div id="services" style={styles.main}>
-      <text>Services section</text>
-      {Object.keys(content).map((key) => {
-        const { src, blurSrc } = content[key].img;
-        return (
-          <ImageComponent imgSrc={src} imgBlurSrc={blurSrc} />
-        )
-      })}
+      <span>Services section</span>
+      <Grid style={styles.gridContainer}>
+        {Object.keys(content).map((key, index) => {
+          const { en, pt } = content[key];
+          const textContent = language === "en" ? en : pt;
+          const { src, blurSrc, orientation } = content[key].img;
+          return (
+            <Grid.Col
+              key={`image-text-container-${index}`}
+              // TODO Dani: lê sobre como as unidades deste component são dadas.
+              // Em UI frameworks utiliza-se estes múltiplos de 12, como te tinha explicado.
+              // Diz-me se tiveres dúvidas
+              span={8}
+              style={{
+                display: "flex",
+                justifyContent:
+                  orientation === "right" ? "flex-end" : "flex-start",
+                border: "3px solid orange",
+              }}
+            >
+              {orientation === "right" ? (
+                <Grid.Col span={6}>
+                  <TextContent content={textContent} width="460px" />
+                </Grid.Col>
+              ) : null}
+              <Grid.Col span={6}>
+                <ImageComponent imgSrc={src} imgBlurSrc={blurSrc} />
+              </Grid.Col>
+              {orientation === "left" ? (
+                <Grid.Col span={6}>
+                  <TextContent content={textContent} width="460px" />
+                </Grid.Col>
+              ) : null}
+            </Grid.Col>
+          );
+        })}
+      </Grid>
     </div>
   );
 };

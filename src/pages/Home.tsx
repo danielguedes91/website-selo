@@ -17,7 +17,7 @@ export const Home: React.FC<HomeProps> = () => {
 
   return (
     <div style={styles.main} id="home">
-      <text>Home section</text>
+      <span>Home section</span>
     </div>
   );
 }

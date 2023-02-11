@@ -36,11 +36,12 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
     },
     visualProduction: {
       // TODO Dani => you have to change the content dynamically here, same logic
-      pt: ``,
-      en: ``,
+      pt: ``, // Text in portuguese
+      en: ``, // Text in english
       img: {
-        src: SeloBranding,
-        orientation: "right",
+        src: SeloBranding, // "normal" image
+        blurSrc: undefined, // blurred image
+        orientation: "right", // Orientation of the image
       },
     },
     stereoProduction: {

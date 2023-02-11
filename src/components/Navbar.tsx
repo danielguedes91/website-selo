@@ -50,6 +50,7 @@ export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
       backgroundColor: "white",
       border: "1px solid blue",
       height: "60px",
+      zIndex: 10,
     },
     logo: {},
     links: {},

@@ -1,5 +1,9 @@
 import React from "react";
 
+// TODO DANI: 
+// - Substitute links
+// - Style navbar
+
 export const Footer: React.FC = () => {
   const styles: Record<string, React.CSSProperties> = {
     main: {
@@ -17,7 +21,6 @@ export const Footer: React.FC = () => {
     links: {},
   };
 
-  // TODO DANI: substitute links
   return <div style={styles.main}>
      <a href="https://grafemadesign.com/" target="_blank" rel="noreferrer">SELO VISUAL STUDIO</a>
      <a href="https://grafemadesign.com/" target="_blank" rel="noreferrer">BY GRAFEMA DESIGN</a>

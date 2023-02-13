@@ -1,8 +1,9 @@
 import React from "react";
 import { LanguageProp } from "../MainPage";
 
-import LandingPageImage03 from "../assets/landing/selo-landing-page-3-min.png";
 import SeloLogoGrey from "../assets/home/selo-logo-grey.svg";
+
+import LandingPageImage03 from "../assets/landing/selo-landing-page-3-min.png";
 
 type HomeProps = LanguageProp;
 

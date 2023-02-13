@@ -6,6 +6,7 @@ import { GRID_MAX_WIDTH } from "../features/gridUtils";
 
 import SeloBranding from "../assets/services/selo-branding-min.png";
 import SeloBrandingBlur from "../assets/services/selo-branding-blur-min.png";
+
 import { ImageComponent } from "../components/ImageComponent";
 import { Grid } from "@mantine/core";
 
@@ -20,7 +21,7 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
       img: {
         src: string;
         blurSrc?: string;
-        orientation: "left" | "right";
+        alignment: "left" | "right";
         style?: React.CSSProperties;
       };
     }
@@ -31,17 +32,17 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
       img: {
         src: SeloBranding,
         blurSrc: SeloBrandingBlur,
-        orientation: "left",
+        alignment: "left",
       },
     },
     visualProduction: {
       // TODO Dani => you have to change the content dynamically here, same logic
-      pt: ``, // Text in portuguese
-      en: ``, // Text in english
+      pt: `Test portugues`, // Text in portuguese
+      en: `Test ingles`, // Text in english
       img: {
         src: SeloBranding, // "normal" image
         blurSrc: undefined, // blurred image
-        orientation: "right", // Orientation of the image
+        alignment: "right", // Orientation of the image
       },
     },
     stereoProduction: {
@@ -49,7 +50,7 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
       en: ``,
       img: {
         src: SeloBranding,
-        orientation: "left",
+        alignment: "left",
       },
     },
     productPhotography: {
@@ -57,7 +58,7 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
       en: ``,
       img: {
         src: SeloBranding,
-        orientation: "left",
+        alignment: "left",
       },
     },
     editorialDesign: {
@@ -65,7 +66,7 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
       en: ``,
       img: {
         src: SeloBranding,
-        orientation: "left",
+        alignment: "left",
       },
     },
     creativeConsultancy: {
@@ -73,7 +74,7 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
       en: ``,
       img: {
         src: SeloBranding,
-        orientation: "left",
+        alignment: "left",
       },
     },
     etiquette: {
@@ -81,7 +82,7 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
       en: ``,
       img: {
         src: SeloBranding,
-        orientation: "left",
+        alignment: "left",
       },
     },
     signature: {
@@ -89,7 +90,7 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
       en: ``,
       img: {
         src: SeloBranding,
-        orientation: "left",
+        alignment: "left",
       },
     },
     authentication: {
@@ -97,7 +98,7 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
       en: ``,
       img: {
         src: SeloBranding,
-        orientation: "left",
+        alignment: "left",
       },
     },
   };
@@ -138,7 +139,7 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
         {Object.keys(content).map((key, index) => {
           const { en, pt } = content[key];
           const textContent = language === "en" ? en : pt;
-          const { src, blurSrc, orientation } = content[key].img;
+          const { src, blurSrc, alignment: orientation } = content[key].img;
           return (
             <Grid.Col
               key={`image-text-container-${index}`}

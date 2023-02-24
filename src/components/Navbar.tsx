@@ -60,14 +60,13 @@ export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
       backgroundColor: "white",
       height: "60px",
       zIndex: 10,
-      margin: "0 auto",
       padding: "0px 50px",
     },
     logoContainer: {},
     links: {
       display: "flex",
       flexDirection: "row",
-      fontSize: "12px",
+      fontSize: "15px",
       fontWeight: "bold", // TODO: check import font files
       gap: "30px",
     },

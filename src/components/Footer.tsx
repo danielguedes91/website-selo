@@ -1,6 +1,7 @@
 import React from "react";
+import { BLACK_COLOR } from "./Navbar";
 
-// TODO DANI: 
+// TODO DANI:
 // - Substitute links
 // - Style navbar
 
@@ -9,24 +10,60 @@ export const Footer: React.FC = () => {
     main: {
       position: "fixed",
       bottom: 0,
+      left: 0,
+      right: 0,
+      backgroundColor: "white",
+      height: "60px",
+      padding: "0px 50px",
+    },
+    mainContainer: {
       width: "100%",
+      height: "100%",
       display: "flex",
       justifyContent: "space-between",
       alignItems: "center",
-      backgroundColor: "white",
-      border: "1px solid blue",
-      height: "60px",
+      fontSize: '15px',
+      
     },
+    // subContainer: {
+    //   width: "100%",
+    //   display: 'flex',
+    //   justifyContent: 'space-between',
+    // },
     logo: {},
-    links: {},
+    links: {
+    },
+    anchor: {
+      textDecoration: 'none',
+      color: BLACK_COLOR,
+    },
   };
 
-  return <div style={styles.main}>
-     <a href="https://grafemadesign.com/" target="_blank" rel="noreferrer">SELO VISUAL STUDIO</a>
-     <a href="https://grafemadesign.com/" target="_blank" rel="noreferrer">BY GRAFEMA DESIGN</a>
-     <a href="https://grafemadesign.com/" target="_blank" rel="noreferrer">FACEBOOK</a>
-     <a href="https://grafemadesign.com/" target="_blank" rel="noreferrer">VIMEO</a>
-     <a href="https://grafemadesign.com/" target="_blank" rel="noreferrer">BEHANCE</a>
-     <a href="https://grafemadesign.com/" target="_blank" rel="noreferrer">INSTAGRAM</a>
-  </div>;
-}
+  return (
+    <div style={styles.main}>
+      <div style={styles.mainContainer}>
+        <a href="https://grafemadesign.com/" target="_blank" rel="noreferrer" style={styles.anchor}>
+          SELO VISUAL STUDIO
+        </a>
+
+        <a href="https://grafemadesign.com/" target="_blank" rel="noreferrer" style={styles.anchor}>
+          BY GRAFEMA DESIGN
+        </a>
+
+        <a href="https://grafemadesign.com/" target="_blank" rel="noreferrer" style={styles.anchor}>
+          FACEBOOK
+        </a>
+        <a href="https://grafemadesign.com/" target="_blank" rel="noreferrer" style={styles.anchor}>
+          VIMEO
+        </a>
+
+        <a href="https://grafemadesign.com/" target="_blank" rel="noreferrer" style={styles.anchor}>
+          BEHANCE
+        </a>
+        <a href="https://grafemadesign.com/" target="_blank" rel="noreferrer" style={styles.anchor}>
+          INSTAGRAM
+        </a>
+      </div>
+    </div>
+  );
+};

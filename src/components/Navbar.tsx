@@ -11,6 +11,8 @@ interface NavbarProps {
 // - Aplicar estilo no botão da língua
 // - Inserir logo
 
+export const BLACK_COLOR: string = '#3a3a3a';
+
 export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
   language,
   handleClick,
@@ -48,7 +50,7 @@ export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
 
   const styles: Record<string, React.CSSProperties> = {
     main: {
-      position: 'fixed',
+      position: "fixed",
       top: 0,
       left: 0,
       right: 0,
@@ -56,21 +58,24 @@ export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
       justifyContent: "space-between",
       alignItems: "center",
       backgroundColor: "white",
-      border: "1px solid blue",
       height: "60px",
       zIndex: 10,
-      margin: '0 auto',
-      padding: '0px 50px',
+      margin: "0 auto",
+      padding: "0px 50px",
     },
     logoContainer: {},
     links: {
       display: "flex",
       flexDirection: "row",
-      border: '1px solid green',
-
+      fontSize: "12px",
+      fontWeight: "bold", // TODO: check import font files
+      gap: "30px",
     },
     languageButton: {
-      width: "50px",
+      all: "unset",
+      color: BLACK_COLOR,
+      opacity: 0.5,
+      cursor: 'pointer',
     },
   };
 
@@ -90,19 +95,21 @@ export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
 
       <div style={styles.links}>
         {links.map((item, index) => (
-          <div style={{ margin: "0px 5px" }}>
+          <div>
             <a
               key={`content-${language}-${index}`}
               href={item.href}
-              style={{ textDecoration: "none" }}
+              style={{ textDecoration: "none", color: BLACK_COLOR }}
             >
-              {item.content[language]}
+              {item.content[language].toUpperCase()}
             </a>
           </div>
         ))}
-        <button onClick={handleClick} style={styles.languageButton}>
-          {language}
-        </button>
+        <div>
+          <button onClick={handleClick} style={styles.languageButton}>
+            {language.toUpperCase()}
+          </button>
+        </div>
       </div>
     </div>
   );

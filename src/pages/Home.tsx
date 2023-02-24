@@ -16,7 +16,7 @@ export const Home: React.FC<HomeProps> = () => {
       alignItems: "center",
       width: "100%",
       height: "100vh",
-      border: "3px solid orange",
+      // border: "3px solid orange",
     },
   };
 

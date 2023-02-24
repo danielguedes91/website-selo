@@ -1,5 +1,6 @@
 import React from "react";
 import { Language, LanguageProp } from "../MainPage";
+import SeloLogoGrey from "../assets/home/selo-logo-grey.svg";
 
 interface NavbarProps {
   handleClick: () => void;
@@ -8,7 +9,7 @@ interface NavbarProps {
 // TODO Dani
 // - Aplicar estilos nos links na direita
 // - Aplicar estilo no botão da língua
-// - Inserir logo 
+// - Inserir logo
 
 export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
   language,
@@ -47,8 +48,10 @@ export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
 
   const styles: Record<string, React.CSSProperties> = {
     main: {
-      position: "fixed",
-      width: "100%",
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      right: 0,
       display: "flex",
       justifyContent: "space-between",
       alignItems: "center",
@@ -56,11 +59,15 @@ export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
       border: "1px solid blue",
       height: "60px",
       zIndex: 10,
+      margin: '0 auto',
+      padding: '0px 50px',
     },
-    logo: {},
+    logoContainer: {},
     links: {
-      display: 'flex',
-      flexDirection: 'row',
+      display: "flex",
+      flexDirection: "row",
+      border: '1px solid green',
+
     },
     languageButton: {
       width: "50px",
@@ -69,17 +76,28 @@ export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
 
   return (
     <div style={styles.main}>
-
-      <div style={styles.logo}>
+      <div style={styles.logoContainer}>
         <div>
-          <a href="#home">Home</a>
+          <a href="#home">
+            <img
+              src={SeloLogoGrey}
+              alt="selo-logo-topbar"
+              style={{ height: 60 - 24 }}
+            />
+          </a>
         </div>
       </div>
 
       <div style={styles.links}>
         {links.map((item, index) => (
-          <div style={{ margin: '0px 5px' }}>
-            <a key={`content-${language}-${index}`} href={item.href} style={{ textDecoration: 'none' }}>{item.content[language]}</a>
+          <div style={{ margin: "0px 5px" }}>
+            <a
+              key={`content-${language}-${index}`}
+              href={item.href}
+              style={{ textDecoration: "none" }}
+            >
+              {item.content[language]}
+            </a>
           </div>
         ))}
         <button onClick={handleClick} style={styles.languageButton}>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Language, LanguageProp } from "../MainPage";
+import { Language, LanguageProp, PAPER_BG } from "../MainPage";
 import SeloLogoGrey from "../assets/home/selo-logo-grey.svg";
 
 interface NavbarProps {
@@ -7,6 +7,7 @@ interface NavbarProps {
 }
 
 export const BLACK_COLOR: string = '#3a3a3a';
+export const OUTTER_GUTTER: number = 100;
 
 export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
   language,
@@ -52,10 +53,10 @@ export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
       display: "flex",
       justifyContent: "space-between",
       alignItems: "center",
-      backgroundColor: "white",
+      backgroundColor: PAPER_BG,
       height: "60px",
       zIndex: 10,
-      padding: "0px 50px",
+      padding: `0px ${OUTTER_GUTTER}px`,
     },
     logoContainer: {},
     links: {

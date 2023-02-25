@@ -20,6 +20,7 @@ import { Footer } from "./components/Footer";
 // Change index.html favicon and content
 // Ask the girls about the favicon
 
+export const PAPER_BG: string = '#f5f3f2';
 export type Language = "en" | "pt";
 export interface LanguageProp {
   language: Language;

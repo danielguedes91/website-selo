@@ -1,4 +1,5 @@
 import React from "react";
+import { PAPER_BG } from "../MainPage";
 import { BLACK_COLOR } from "./Navbar";
 
 export const Footer: React.FC = () => {
@@ -8,7 +9,7 @@ export const Footer: React.FC = () => {
       bottom: 0,
       left: 0,
       right: 0,
-      backgroundColor: "white",
+      backgroundColor: PAPER_BG,
       height: "60px",
       padding: "0px 50px",
     },

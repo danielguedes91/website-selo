@@ -1,10 +1,6 @@
 import React from "react";
 import { BLACK_COLOR } from "./Navbar";
 
-// TODO DANI:
-// - Substitute links
-// - Style navbar
-
 export const Footer: React.FC = () => {
   const styles: Record<string, React.CSSProperties> = {
     main: {
@@ -25,11 +21,6 @@ export const Footer: React.FC = () => {
       fontSize: '15px',
       
     },
-    // subContainer: {
-    //   width: "100%",
-    //   display: 'flex',
-    //   justifyContent: 'space-between',
-    // },
     logo: {},
     links: {
     },
@@ -42,7 +33,8 @@ export const Footer: React.FC = () => {
   return (
     <div style={styles.main}>
       <div style={styles.mainContainer}>
-        <a href="https://grafemadesign.com/" target="_blank" rel="noreferrer" style={styles.anchor}>
+        {/* TODO: replace with domain from website */}
+        <a href="https://facebook.com/selovisualstudio/" target="_blank" rel="noreferrer" style={styles.anchor}>
           SELO VISUAL STUDIO
         </a>
 
@@ -50,17 +42,17 @@ export const Footer: React.FC = () => {
           BY GRAFEMA DESIGN
         </a>
 
-        <a href="https://grafemadesign.com/" target="_blank" rel="noreferrer" style={styles.anchor}>
+        <a href="https://www.facebook.com/selovisualstudio" target="_blank" rel="noreferrer" style={styles.anchor}>
           FACEBOOK
         </a>
-        <a href="https://grafemadesign.com/" target="_blank" rel="noreferrer" style={styles.anchor}>
+        <a href="https://vimeo.com/selovisuals" target="_blank" rel="noreferrer" style={styles.anchor}>
           VIMEO
         </a>
 
-        <a href="https://grafemadesign.com/" target="_blank" rel="noreferrer" style={styles.anchor}>
+        <a href="https:www.behance.net/selovisuals" target="_blank" rel="noreferrer" style={styles.anchor}>
           BEHANCE
         </a>
-        <a href="https://grafemadesign.com/" target="_blank" rel="noreferrer" style={styles.anchor}>
+        <a href="https://www.instagram.com/selovisuals/" target="_blank" rel="noreferrer" style={styles.anchor}>
           INSTAGRAM
         </a>
       </div>

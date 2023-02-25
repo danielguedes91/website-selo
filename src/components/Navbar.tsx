@@ -6,11 +6,6 @@ interface NavbarProps {
   handleClick: () => void;
 }
 
-// TODO Dani
-// - Aplicar estilos nos links na direita
-// - Aplicar estilo no botão da língua
-// - Inserir logo
-
 export const BLACK_COLOR: string = '#3a3a3a';
 
 export const Navbar: React.FC<NavbarProps & LanguageProp> = ({

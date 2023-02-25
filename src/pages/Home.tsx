@@ -5,6 +5,7 @@ import SeloLogoGrey from "../assets/home/selo-logo-grey.svg";
 
 import LandingPageImage03 from "../assets/landing/selo-landing-page-3-min.png";
 
+const FACTOR_WIDTH = 270;
 type HomeProps = LanguageProp;
 
 export const Home: React.FC<HomeProps> = () => {
@@ -16,12 +17,8 @@ export const Home: React.FC<HomeProps> = () => {
       alignItems: "center",
       width: "100%",
       height: "100vh",
-      // border: "3px solid orange",
     },
   };
-
-  // TODO Dani: vais ter que tirar a largura desta imagem com grid units, como no Services.tsx
-  const FACTOR_WIDTH = 270;
 
   return (
     <div style={styles.main} id="home">

@@ -18,6 +18,7 @@ import { Footer } from "./components/Footer";
 // Responsive
 // Think about effects in the background
 // Change index.html favicon and content
+// Ask the girls about the favicon
 
 export type Language = "en" | "pt";
 export interface LanguageProp {

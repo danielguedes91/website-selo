@@ -1,6 +1,6 @@
 import React from "react";
 
-import { LanguageProp } from "../MainPage";
+import { Language, LanguageProp } from "../MainPage";
 
 import { Grid } from "@mantine/core";
 
@@ -12,7 +12,7 @@ import { GRID_MAX_WIDTH } from "../features/gridUtils";
 
 type StepsProps = LanguageProp;
 
-export const Steps: React.FC<StepsProps> = () => {
+export const Steps: React.FC<StepsProps> = ({ language }) => {
   const styles: Record<string, React.CSSProperties> = {
     main: {
       display: "flex",
@@ -27,14 +27,33 @@ export const Steps: React.FC<StepsProps> = () => {
       alignItems: "center",
       width: "100%",
       maxWidth: GRID_MAX_WIDTH,
-      margin: '0px 80px',
-    }
+      margin: "0px 80px",
+    },
   };
+
+  const content: Record<Language, string> = {
+    en: `We ask questions, listen and learn. We go to the core of the issue to build the most accurate and effective strategy.`,
+    pt: `Fazemos perguntas, ouvimos e aprendemos. Vamos ao fundo da questão para construir a estratégia mais precisa e eficaz.`,
+  };
+
   return (
     <div id="steps" style={styles.main}>
       <Grid style={styles.gridContainer}>
         <Grid.Col span={12} sx={{ display: "flex", flexDirection: "row" }}>
-          <Grid.Col span={3} sx={{ height: '100px', width: '100px', backgroundColor: 'pink' }}></Grid.Col>
+          <Grid.Col
+            span={3}
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+            }}
+          >
+            <h3 style={{ fontSize: '35px', fontWeight: 'bold' }}>
+              STEPS <br />
+              FOR OFFICIAL GUARANTEE CERTIFICATION
+            </h3>
+            <text>{content[language]}</text>
+          </Grid.Col>
           <Grid.Col span={3}>
             <img src={ApplicationActivation} alt="" style={{ width: "100%" }} />
           </Grid.Col>

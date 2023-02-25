@@ -2,6 +2,11 @@ import React from "react";
 import { OUTTER_GUTTER } from "../components/Navbar";
 import { Language, LanguageProp } from "../MainPage";
 
+// 10 columns
+// gutter 40
+// margin 80
+// 1728 -> max-width
+
 type AboutProps = LanguageProp;
 
 export const About: React.FC<AboutProps> = ({ language }) => {

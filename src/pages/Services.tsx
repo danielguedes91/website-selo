@@ -4,12 +4,16 @@ import { LanguageProp } from "../MainPage";
 
 import { GRID_MAX_WIDTH } from "../features/gridUtils";
 
+// Services images
 import SeloBranding from "../assets/services/selo-branding-min.png";
 import SeloBrandingBlur from "../assets/services/selo-branding-blur-min.png";
 
 import { ImageComponent } from "../components/ImageComponent";
 import { Grid } from "@mantine/core";
+import { BLACK_COLOR } from "../components/Navbar";
 
+const TEXT_COL_SPAN: number = 3;
+const IMAGE_COL_SPAN: number = 7;
 type ServicesProps = LanguageProp;
 
 export const Services: React.FC<ServicesProps> = ({ language }) => {
@@ -24,6 +28,7 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
         alignment: "left" | "right";
         style?: React.CSSProperties;
       };
+      subtitle: string;
     }
   > = {
     branding: {
@@ -32,34 +37,41 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
       img: {
         src: SeloBranding,
         blurSrc: SeloBrandingBlur,
-        alignment: "left",
+        alignment: "right",
       },
+      subtitle: "BRANDING",
     },
     visualProduction: {
-      // TODO Dani => you have to change the content dynamically here, same logic
-      pt: `Test portugues`, // Text in portuguese
-      en: `Test ingles`, // Text in english
+      pt: `Captar a atenção do consumidor é um desafio que endurece todos os dias, o que leva marcas a fazer escolhas repentinas, pois muitos dos métodos atualmente utilizados são descartáveis.
+      Com as nossas produções procuramos deixar um impacto mais duradouro nas mentes e corações dos nossos clientes e telespectadores, através de filmes, documentários de longa e curta duração, minisséries, conteúdo para social mídia baseados em script, motion graphics, animação e muito mais.
+      Para além dos aspectos mais técnicos do nosso campo de atividade, acreditamos na emoção e storytelling como ferramentas proeficientes de expressão sobre a cultura e sociedade(ou quaisquer outras humanidades em conversa).`, // Text in portuguese
+      en: `Seizing consumer's attention is a challenge that grows tougher every day, which often leads brands to make immediate choices, as many of the methods currently used are disposable.
+      With our productions we aim to make a long-lasting impact on the minds and hearts of our customers and audience, through film, long and short documentaries, miniseries, script-based social media content, motion graphics, animation and more.
+      Beyond the more technical aspects of our field, we believe in emotion and storytelling as proficient tools of expression about culture and society(or any other humanities in conversation).`, // Text in english
       img: {
         src: SeloBranding, // "normal" image
         blurSrc: undefined, // blurred image
-        alignment: "right", // Orientation of the image
+        alignment: "left", // Orientation of the image
       },
+      subtitle: "BRANDING",
     },
     stereoProduction: {
       pt: ``,
       en: ``,
       img: {
         src: SeloBranding,
-        alignment: "left",
+        alignment: "right",
       },
+      subtitle: "Branding",
     },
     productPhotography: {
       pt: ``,
       en: ``,
       img: {
         src: SeloBranding,
-        alignment: "left",
+        alignment: "right",
       },
+      subtitle: "Branding",
     },
     editorialDesign: {
       pt: ``,
@@ -68,6 +80,7 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
         src: SeloBranding,
         alignment: "left",
       },
+      subtitle: "Branding",
     },
     creativeConsultancy: {
       pt: ``,
@@ -76,6 +89,7 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
         src: SeloBranding,
         alignment: "left",
       },
+      subtitle: "Branding",
     },
     etiquette: {
       pt: ``,
@@ -84,6 +98,7 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
         src: SeloBranding,
         alignment: "left",
       },
+      subtitle: "Branding",
     },
     signature: {
       pt: ``,
@@ -92,6 +107,7 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
         src: SeloBranding,
         alignment: "left",
       },
+      subtitle: "Branding",
     },
     authentication: {
       pt: ``,
@@ -100,6 +116,7 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
         src: SeloBranding,
         alignment: "left",
       },
+      subtitle: "Branding",
     },
   };
 
@@ -111,7 +128,6 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
       alignItems: "center",
       width: "100%",
       minHeight: "100vh",
-      border: "3px solid blue",
     },
     gridContainer: {
       display: "flex",
@@ -119,6 +135,10 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
       alignItems: "center",
       width: "100%",
       maxWidth: GRID_MAX_WIDTH,
+    },
+    textContainer: {
+      display: "flex",
+      alignItems: "flex-end",
     },
   };
 
@@ -129,44 +149,91 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
     content: string;
     width?: string;
   }) => {
-    return <span style={{ width: width }}>{content}</span>;
+    return <text style={{ width: width }}>{content}</text>;
   };
+
+  const [showingList, setShowingList] = React.useState<Array<string>>([]);
+
+  function onClickEvent(listKey: string) {
+    const newList = [...showingList]; // copia sem ref da lista
+    const eleAlreadyExists = Boolean(newList.find((key) => key === listKey)); // verificar se o elemento ja existe na lista
+    newList.push(listKey); // adicionar o elemento
+    !eleAlreadyExists && setShowingList(newList);
+  }
+
+  console.log(showingList);
 
   return (
     <div id="services" style={styles.main}>
-      <span>Services section</span>
+      <h2 style={{ fontWeight: "bold", fontSize: "35px" }}>SERVICES</h2>
       <Grid style={styles.gridContainer}>
         {Object.keys(content).map((key, index) => {
-          const { en, pt } = content[key];
+          let isTextShowing = showingList.find(
+            (listElement) => listElement === key
+          )
+            ? true
+            : false;
+          const { en, pt, subtitle } = content[key];
           const textContent = language === "en" ? en : pt;
-          const { src, blurSrc, alignment: orientation } = content[key].img;
+          const { src, alignment: orientation } = content[key].img;
           return (
             <Grid.Col
-              key={`image-text-container-${index}`}
-              // TODO Dani: lê sobre como as unidades deste component são dadas.
-              // Em UI frameworks utiliza-se estes múltiplos de 12, como te tinha explicado.
-              // Diz-me se tiveres dúvidas
-              span={8}
-              style={{
-                display: "flex",
-                justifyContent:
-                  orientation === "right" ? "flex-end" : "flex-start",
-                border: "3px solid orange",
-              }}
+              key={`image-text-container-${index}-${key}`}
+              span={12}
+              style={{ display: "flex", flexDirection: "column" }}
             >
-              {orientation === "right" ? (
-                <Grid.Col span={6}>
-                  <TextContent content={textContent} width="460px" />
+              <Grid.Col
+                span={12}
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                }}
+              >
+                {orientation === "right" ? (
+                  <Grid.Col span={TEXT_COL_SPAN} style={styles.textContainer}>
+                    {isTextShowing && (
+                      <TextContent content={textContent} width="460px" />
+                    )}
+                  </Grid.Col>
+                ) : null}
+                <Grid.Col
+                  span={IMAGE_COL_SPAN}
+                  // sx={{ display: "flex", flexDirection: "column" }}
+                >
+                  <ImageComponent
+                    imgSrc={src}
+                    onClickHandler={() => onClickEvent(key)}
+                  />
                 </Grid.Col>
-              ) : null}
-              <Grid.Col span={6}>
-                <ImageComponent imgSrc={src} imgBlurSrc={blurSrc} />
+                {orientation === "left" ? (
+                  <Grid.Col span={TEXT_COL_SPAN} style={styles.textContainer}>
+                    {isTextShowing && (
+                      <TextContent content={textContent} width="460px" />
+                    )}
+                  </Grid.Col>
+                ) : null}
               </Grid.Col>
-              {orientation === "left" ? (
-                <Grid.Col span={6}>
-                  <TextContent content={textContent} width="460px" />
+              <Grid.Col
+                span={12}
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent:
+                    orientation === "right" ? "flex-end" : "flex-start",
+                }}
+              >
+                <Grid.Col span={IMAGE_COL_SPAN}>
+                  <h3
+                    style={{
+                      color: BLACK_COLOR,
+                      opacity: 0.5,
+                      fontStyle: "italic",
+                    }}
+                  >
+                    {subtitle}
+                  </h3>
                 </Grid.Col>
-              ) : null}
+              </Grid.Col>
             </Grid.Col>
           );
         })}

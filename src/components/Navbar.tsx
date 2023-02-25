@@ -90,7 +90,7 @@ export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
 
       <div style={styles.links}>
         {links.map((item, index) => (
-          <div>
+          <div key={`nav-link-${index}`}>
             <a
               key={`content-${language}-${index}`}
               href={item.href}

@@ -19,7 +19,6 @@ export const Home: React.FC<HomeProps> = () => {
       alignItems: "center",
       width: "100%",
       minHeight: "100vh",
-      border: '1px solid red',
     },
     logoTextContainer: {
       display: "flex",

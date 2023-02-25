@@ -3,7 +3,8 @@ import React from "react";
 import { LanguageProp } from "../MainPage";
 
 import { useForm } from "@mantine/form";
-import { TextInput, Button, Group } from "@mantine/core";
+import { TextInput, Button, Group, Sx } from "@mantine/core";
+import { BLACK_COLOR } from "./Navbar";
 
 type FormProps = LanguageProp;
 
@@ -21,8 +22,15 @@ export const Form: React.FC<FormProps> = () => {
     },
   });
 
+  const defaultSxUnstyle: Sx = {
+    background: "none",
+    borderRadius: 0,
+    border: "none",
+    borderBottom: "1px solid black",
+  };
+
   return (
-    <div style={{ maxWidth: 320, margin: "auto" }}>
+    <div style={{ display: "flex", justifyContent: "center", width: "100vw" }}>
       <form
         onSubmit={form.onSubmit((values) =>
           window.alert(`
@@ -31,32 +39,48 @@ export const Form: React.FC<FormProps> = () => {
             message: ${values.description}
           `)
         )}
+        style={{ width: "100%" }}
       >
-        <div style={{ display: "flex", flexDirection: "row" }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
           <div style={{ padding: 6 }}>
             <TextInput
               label="Message"
-              // placeholder="Write your text here..."
-              variant="unstyled"
-              sx={{ borderBottom: "1px solid grey", height: 100, width: 200 }}
+              sx={{
+                "& .mantine-Input-input": {
+                  width: "300px",
+                  height: "100px",
+                  ...defaultSxUnstyle,
+                },
+              }}
               {...form.getInputProps("description")}
             />
           </div>
           <div style={{ padding: 6 }}>
             <TextInput
               label="Name"
-              // placeholder="Name"
-              variant="unstyled"
-              sx={{ borderBottom: "1px solid grey" }}
+              sx={{
+                "& .mantine-Input-input": {
+                  width: "200px",
+                  ...defaultSxUnstyle,
+                },
+              }}
               {...form.getInputProps("name")}
             />
           </div>
           <div style={{ padding: 6 }}>
             <TextInput
               label="Email"
-              // placeholder="Email"
-              variant="unstyled"
-              sx={{ borderBottom: "1px solid grey" }}
+              sx={{
+                "& .mantine-Input-input": {
+                  width: "200px",
+                  ...defaultSxUnstyle,
+                },
+              }}
               {...form.getInputProps("email")}
             />
           </div>
@@ -66,9 +90,13 @@ export const Form: React.FC<FormProps> = () => {
           <Button
             variant="outline"
             type="submit"
-            sx={{ borderColor: "pink", color: "pink" }}
+            sx={{
+              borderColor: BLACK_COLOR,
+              color: BLACK_COLOR,
+              borderRadius: "18px",
+            }}
           >
-            Submit
+            GET IN TOUCH
           </Button>
         </Group>
       </form>

@@ -1,3 +1,4 @@
+import { Grid } from "@mantine/core";
 import React from "react";
 
 import { Form } from "../components/Form";
@@ -13,13 +14,20 @@ export const Connect: React.FC<ConnectProps> = ({ language }) => {
       justifyContent: "center",
       alignItems: "center",
       width: "100%",
-      height: '100vh',
-      border: "3px solid blue",
+      height: "100vh",
     },
   };
   return (
     <div id="connect" style={styles.main}>
-      <Form language={language} />
+      <Grid
+        sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+      >
+        <Grid.Col span={12}>
+          <h3>Fill out the form or email us at</h3>
+          <h3>selovisualstudio.com</h3>
+        </Grid.Col>
+        <Form language={language} />
+      </Grid>
     </div>
   );
-}
+};

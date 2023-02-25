@@ -48,7 +48,7 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
               justifyContent: "space-between",
             }}
           >
-            <h3 style={{ fontSize: '35px', fontWeight: 'bold' }}>
+            <h3 style={{ fontSize: "35px", fontWeight: "bold" }}>
               STEPS <br />
               FOR OFFICIAL GUARANTEE CERTIFICATION
             </h3>
@@ -63,6 +63,14 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
           <Grid.Col span={3}>
             <img src={IdentityProposal} alt="" style={{ width: "100%" }} />
           </Grid.Col>
+        </Grid.Col>
+        <Grid.Col span={12}>
+          <h2>ROADS?</h2>
+          <h2>
+            Where we're going, <br />
+            we don't need roads!
+          </h2>
+          <h5>Dr. Emmett Brown, Back to the future</h5>
         </Grid.Col>
       </Grid>
     </div>

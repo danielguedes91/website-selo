@@ -8,6 +8,22 @@ import { GRID_MAX_WIDTH } from "../features/gridUtils";
 import SeloBranding from "../assets/services/selo-branding-min.png";
 import SeloBrandingBlur from "../assets/services/selo-branding-blur-min.png";
 
+import SeloConsultancy from "../assets/services/selo-creative-consultancy-min.png";
+import SeloConsultancyBlur from "../assets/services/selo-creative-consultancy-blur-min.png";
+
+import SeloStereo from "../assets/services/selo-stereo-production-min.png";
+import SeloStereoBlur from "../assets/services/selo-stereo-production-blur-min.png";
+
+import SeloVisual from "../assets/services/selo-visual-production-min.png";
+import SeloVisualBlur from "../assets/services/selo-visual-production-blur-min.png";
+
+import SeloPhotography from "../assets/services/selo-product-photography-min.png";
+import SeloPhotographyBlur from "../assets/services/selo-product-photography-blur-min.png";
+
+import SeloEditorial from "../assets/services/selo-editorial-design-min.png";
+import SeloEditorialBlur from "../assets/services/selo-editorial-design-blur-min.png";
+
+
 import { ImageComponent } from "../components/ImageComponent";
 import { Grid } from "@mantine/core";
 import { BLACK_COLOR } from "../components/Navbar";
@@ -41,83 +57,82 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
       },
       subtitle: "BRANDING",
     },
+
+    creativeConsultancy: {
+      pt: `‘BANG!’, ‘WOW!’, ‘BOOM!’, ‘OMG!’, ‘YES!’, seja qual for o que precise ou alguma combinação especial, nós trazemos isso à mesa do seu projeto.`,
+      en: `'BANG!', 'WOW!', 'BOOM!', 'OMG!', 'YES!', whatever you need or any particular combination, we bring it to your project table.`,
+      img: {
+        src: SeloConsultancy,
+        blurSrc: SeloConsultancyBlur,
+        alignment: "left",
+      },
+      subtitle: "CREATIVE CONSULTANCY",
+    },
+
+
+    stereoProduction: {
+      pt: `Entendendo a comunicação como um todo, estudamos a sua visão em produção e pós-produção de audio. Em produtos de rádio, instalações de arte e cinema desenhamos o som, assistimos e consultamos sobre audio e sonoplastia.`,
+      en: `Understanding communication as a whole, we study and execute your vision in audio production and post-production. In radio products, art installations and cinema, we assist and consult on audio and sound design.`,
+      img: {
+        src: SeloStereo,
+        blurSrc: SeloStereoBlur,
+        alignment: "right",
+      },
+      subtitle: "STEREO PRODUCTION",
+    },
+
     visualProduction: {
       pt: `Captar a atenção do consumidor é um desafio que endurece todos os dias, o que leva marcas a fazer escolhas repentinas, pois muitos dos métodos atualmente utilizados são descartáveis.
       Com as nossas produções procuramos deixar um impacto mais duradouro nas mentes e corações dos nossos clientes e telespectadores, através de filmes, documentários de longa e curta duração, minisséries, conteúdo para social mídia baseados em script, motion graphics, animação e muito mais.
-      Para além dos aspectos mais técnicos do nosso campo de atividade, acreditamos na emoção e storytelling como ferramentas proeficientes de expressão sobre a cultura e sociedade(ou quaisquer outras humanidades em conversa).`, // Text in portuguese
+      Para além dos aspectos mais técnicos do nosso campo de atividade, acreditamos na emoção e storytelling como ferramentas proeficientes de expressão sobre a cultura e sociedade(ou quaisquer outras humanidades em conversa).`,
       en: `Seizing consumer's attention is a challenge that grows tougher every day, which often leads brands to make immediate choices, as many of the methods currently used are disposable.
       With our productions we aim to make a long-lasting impact on the minds and hearts of our customers and audience, through film, long and short documentaries, miniseries, script-based social media content, motion graphics, animation and more.
-      Beyond the more technical aspects of our field, we believe in emotion and storytelling as proficient tools of expression about culture and society(or any other humanities in conversation).`, // Text in english
+      Beyond the more technical aspects of our field, we believe in emotion and storytelling as proficient tools of expression about culture and society(or any other humanities in conversation).`,
       img: {
-        src: SeloBranding, // "normal" image
-        blurSrc: undefined, // blurred image
-        alignment: "left", // Orientation of the image
+        src: SeloVisual,
+        blurSrc: SeloVisualBlur,
+        alignment: "left",
       },
-      subtitle: "BRANDING",
+      subtitle: "VISUAL PRODUCTION",
     },
-    stereoProduction: {
-      pt: ``,
-      en: ``,
-      img: {
-        src: SeloBranding,
-        alignment: "right",
-      },
-      subtitle: "Branding",
-    },
+
     productPhotography: {
-      pt: ``,
-      en: ``,
+      pt: `Executámos a sua visão para ajudá-lo a enfrentar o desafio da consistência no mundo visualmente rico em que vivemos.`,
+      en: `We put you vision into practice and help you tackle the challenge of consistency in the visually rich world we live in.`,
       img: {
-        src: SeloBranding,
+        src: SeloPhotography,
+        blurSrc: SeloPhotographyBlur,
         alignment: "right",
       },
-      subtitle: "Branding",
+      subtitle: "PRODUCT PHOTOGRAPHY",
     },
+
+
+
+
     editorialDesign: {
-      pt: ``,
-      en: ``,
+      pt: `Elaboramos designs, composições e layouts que objetivam prender os olhos(e alma) do leitor à tua publicação considerando sempre os benchmarks, estudamos o seu caso cruzando a sua visão com as referências de melhor relevância, planejamos e implementamos no seu projeto para que a sua mensagem voe(não literalmentente), e seja transmitida com clareza e propósito.`,
+      en: `We create designs, compositions and layouts that aim to catch the eye (and soul) of the reader. Always considering the benchmarks, we study your case crossing your vision with the most relevant references, we plan and implement on your project so that your message flies (not literally), and it's delivered with clarity and purpose.`,
       img: {
-        src: SeloBranding,
+        src: SeloEditorial,
+        blurSrc: SeloEditorialBlur,
         alignment: "left",
       },
-      subtitle: "Branding",
+      subtitle: "EDITORIAL DESIGN",
     },
-    creativeConsultancy: {
-      pt: ``,
-      en: ``,
-      img: {
-        src: SeloBranding,
-        alignment: "left",
-      },
-      subtitle: "Branding",
-    },
-    etiquette: {
-      pt: ``,
-      en: ``,
-      img: {
-        src: SeloBranding,
-        alignment: "left",
-      },
-      subtitle: "Branding",
-    },
-    signature: {
-      pt: ``,
-      en: ``,
-      img: {
-        src: SeloBranding,
-        alignment: "left",
-      },
-      subtitle: "Branding",
-    },
-    authentication: {
-      pt: ``,
-      en: ``,
-      img: {
-        src: SeloBranding,
-        alignment: "left",
-      },
-      subtitle: "Branding",
-    },
+
+
+
+
+
+
+
+
+
+
+
+
+
   };
 
   const styles: Record<string, React.CSSProperties> = {
@@ -127,7 +142,8 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
       justifyContent: "center",
       alignItems: "center",
       width: "100%",
-      minHeight: "100vh",
+      marginTop: '200px',
+      
     },
     gridContainer: {
       display: "flex",

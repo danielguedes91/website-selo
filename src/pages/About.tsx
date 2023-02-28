@@ -22,9 +22,10 @@ export const About: React.FC<AboutProps> = ({ language }) => {
     main: {
       display: "flex",
       justifyContent: "center",
-      alignItems: "center",
+      alignItems: "flexStart",
+      marginTop: '80px',
       width: "100%",
-      height: "100vh",
+      
     },
     textContainer: {
       margin: `0px ${OUTTER_GUTTER}px`,

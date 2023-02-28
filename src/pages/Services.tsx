@@ -1,5 +1,7 @@
 import React from "react";
 
+import { MantineProvider } from '@mantine/core';
+
 import { LanguageProp } from "../MainPage";
 
 import { GRID_MAX_WIDTH } from "../features/gridUtils";
@@ -125,13 +127,12 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
 
 
 // SERVICES
-// space between img and title = 80px
-// space between title and img in the next service = 200px
+// space between img and title = 80px DONE
+// space between title and img in the next service = 200px DONE
+// margin-x 
 // vertical align of imgs, navbar etc...
 // CONNECT
 // check form width
-
-
 
   const styles: Record<string, React.CSSProperties> = {
     main: {
@@ -139,7 +140,8 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
       flexDirection: "column",
       justifyContent: "center",
       alignItems: "center",
-      width: "100%",
+      maxWidth: '100vw',
+      margin: '0px 100px',
       marginTop: '200px',
       
     },
@@ -180,7 +182,7 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
   return (
     <div id="services" style={styles.main}>
       <h2 style={{ fontWeight: "bold", fontSize: "35px" }}>SERVICES</h2>
-      <Grid style={styles.gridContainer}>
+      <Grid style={{ ...styles.gridContainer, padding: 0 }}>
         {Object.keys(content).map((key, index) => {
           let isTextShowing = showingList.find(
             (listElement) => listElement === key
@@ -194,17 +196,18 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
             <Grid.Col
               key={`image-text-container-${index}-${key}`}
               span={12}
-              style={{ display: "flex", flexDirection: "column" }}
+              style={{ display: "flex", flexDirection: "column", padding: 0, marginBottom: 200 }}
             >
               <Grid.Col
                 span={12}
                 style={{
                   display: "flex",
                   justifyContent: "space-between",
+                  padding: 0,
                 }}
               >
                 {orientation === "right" ? (
-                  <Grid.Col span={TEXT_COL_SPAN} style={styles.textContainer}>
+                  <Grid.Col span={TEXT_COL_SPAN} style={{ ...styles.textContainer, padding: 0 }}>
                     {isTextShowing && (
                       <TextContent content={textContent} width="460px" />
                     )}
@@ -212,7 +215,7 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
                 ) : null}
                 <Grid.Col
                   span={IMAGE_COL_SPAN}
-                  // sx={{ display: "flex", flexDirection: "column" }}
+                  style={{ padding: 0 }}
                 >
                   <ImageComponent
                     imgSrc={src}
@@ -220,7 +223,7 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
                   />
                 </Grid.Col>
                 {orientation === "left" ? (
-                  <Grid.Col span={TEXT_COL_SPAN} style={styles.textContainer}>
+                  <Grid.Col span={TEXT_COL_SPAN} style={{ ...styles.textContainer, padding: 0 }}>
                     {isTextShowing && (
                       <TextContent content={textContent} width="460px" />
                     )}
@@ -234,14 +237,17 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
                   flexDirection: "row",
                   justifyContent:
                     orientation === "right" ? "flex-end" : "flex-start",
+                  padding: 0,
                 }}
               >
-                <Grid.Col span={IMAGE_COL_SPAN}>
+                <Grid.Col span={IMAGE_COL_SPAN} style={{ padding: 0, marginTop: '80px', }}>
                   <h3
                     style={{
                       color: BLACK_COLOR,
                       opacity: 0.5,
                       fontStyle: "italic",
+                      padding: 0,
+                      display: 'inline',
                     }}
                   >
                     {subtitle}

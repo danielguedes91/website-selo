@@ -1,5 +1,6 @@
 import React from "react";
 import { OUTTER_GUTTER } from "../components/Navbar";
+import { GRID_MAX_WIDTH } from "../features/gridUtils";
 import { Language, LanguageProp } from "../MainPage";
 
 // 10 columns
@@ -30,7 +31,7 @@ export const About: React.FC<AboutProps> = ({ language }) => {
     textContainer: {
       margin: `0px ${OUTTER_GUTTER}px`,
       width: "100%",
-      maxWidth: "1500px",
+      maxWidth: GRID_MAX_WIDTH,
     },
   };
 

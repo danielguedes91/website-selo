@@ -4,7 +4,7 @@ import { LanguageProp } from "../MainPage";
 
 import { useForm } from "@mantine/form";
 import { TextInput, Button, Group, Sx } from "@mantine/core";
-import { BLACK_COLOR } from "./Navbar";
+import { BLACK_COLOR, OUTTER_GUTTER } from "./Navbar";
 
 type FormProps = LanguageProp;
 
@@ -39,12 +39,12 @@ export const Form: React.FC<FormProps> = () => {
             message: ${values.description}
           `)
         )}
-        style={{ width: "100%" }}
+        style={{ width: "100%", margin: `0px ${OUTTER_GUTTER}` }}
       >
         <div
           style={{
             display: "flex",
-            justifyContent: "center",
+            justifyContent: "space-between",
           }}
         >
           <div style={{ padding: 6 }}>

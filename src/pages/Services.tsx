@@ -28,7 +28,7 @@ import SeloEditorialBlur from "../assets/services/selo-editorial-design-blur-min
 
 import { ImageComponent } from "../components/ImageComponent";
 import { Grid } from "@mantine/core";
-import { BLACK_COLOR } from "../components/Navbar";
+import { BLACK_COLOR, OUTTER_GUTTER } from "../components/Navbar";
 
 const TEXT_COL_SPAN: number = 3;
 const IMAGE_COL_SPAN: number = 7;
@@ -129,8 +129,8 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
 // SERVICES
 // space between img and title = 80px DONE
 // space between title and img in the next service = 200px DONE
-// margin-x 
-// vertical align of imgs, navbar etc...
+// margin-x DONE
+// vertical align of imgs, navbar etc... DONE
 // CONNECT
 // check form width
 
@@ -141,7 +141,7 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
       justifyContent: "center",
       alignItems: "center",
       maxWidth: '100vw',
-      margin: '0px 100px',
+      margin: `0px ${OUTTER_GUTTER}px`,
       marginTop: '200px',
       
     },

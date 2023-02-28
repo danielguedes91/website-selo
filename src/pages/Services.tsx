@@ -127,7 +127,11 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
 // SERVICES
 // space between img and title = 80px
 // space between title and img in the next service = 200px
+// vertical align of imgs, navbar etc...
+// CONNECT
 // check form width
+
+
 
   const styles: Record<string, React.CSSProperties> = {
     main: {

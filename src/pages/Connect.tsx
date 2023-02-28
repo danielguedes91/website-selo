@@ -14,7 +14,6 @@ export const Connect: React.FC<ConnectProps> = ({ language }) => {
       justifyContent: "center",
       alignItems: "center",
       width: "100%",
-      height: "100vh",
     },
   };
   return (

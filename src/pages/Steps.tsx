@@ -19,7 +19,6 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
       justifyContent: "center",
       alignItems: "center",
       width: "100%",
-      height: "100vh",
     },
     gridContainer: {
       display: "flex",
@@ -65,7 +64,7 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
           </Grid.Col>
         </Grid.Col>
         <Grid.Col span={12}>
-          <h2>ROADS?</h2>
+          <h2 style={{ fontSize: "40px", fontWeight: "bold", textAlign: 'center' }}>ROADS?</h2>
           <h2>
             Where we're going, <br />
             we don't need roads!

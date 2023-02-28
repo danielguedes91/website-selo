@@ -177,8 +177,6 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
     !eleAlreadyExists && setShowingList(newList);
   }
 
-  console.log(showingList);
-
   return (
     <div id="services" style={styles.main}>
       <h2 style={{ fontWeight: "bold", fontSize: "35px" }}>SERVICES</h2>

@@ -46,7 +46,7 @@ export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
 
   const styles: Record<string, React.CSSProperties> = {
     main: {
-      position: "fixed",
+      // position: "fixed",
       top: 0,
       left: 0,
       right: 0,

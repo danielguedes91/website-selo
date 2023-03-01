@@ -5,7 +5,7 @@ import { BLACK_COLOR } from "./Navbar";
 export const Footer: React.FC = () => {
   const styles: Record<string, React.CSSProperties> = {
     main: {
-      position: "fixed",
+      // position: "fixed",
       bottom: 0,
       left: 0,
       right: 0,

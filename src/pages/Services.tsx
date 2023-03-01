@@ -163,7 +163,7 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
     content: string;
     width?: string;
   }) => {
-    return <text style={{ width: width }}>{content}</text>;
+    return <span style={{ width: width }}>{content}</span>;
   };
 
   const [showingList, setShowingList] = React.useState<Array<string>>([]);

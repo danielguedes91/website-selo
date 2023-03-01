@@ -12,6 +12,19 @@ import { BLACK_COLOR } from "../components/Navbar";
 type HomeProps = LanguageProp;
 
 export const Home: React.FC<HomeProps> = () => {
+
+  const [isLogoShow, setIsLogoShow] = React.useState<boolean>(false);
+  const [isHomeReached, setIsHomeReached] = React.useState<boolean>(false);
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY >= 30) {
+      setIsLogoShow(true);
+    } else setIsLogoShow(false);
+    if (window.scrollY >= 1020) {
+      setIsHomeReached(true);
+    } else setIsHomeReached(false);
+  });
+
   const styles: Record<string, React.CSSProperties> = {
     main: {
       display: "flex",
@@ -21,10 +34,13 @@ export const Home: React.FC<HomeProps> = () => {
       minHeight: "100vh",
     },
     logoTextContainer: {
+      opacity: isLogoShow ? 1 : 0,
+      transition: 'all 300ms',
+      position: isHomeReached ? undefined :  "fixed",
       display: "flex",
       flexDirection: "column",
       justifyContent: "center",
-      marginTop: 145,
+      marginTop: isHomeReached ? 1170 : 145,
     },
   };
 
@@ -82,7 +98,8 @@ export const Home: React.FC<HomeProps> = () => {
       </div>
       <div
         style={{
-          marginTop: 735,
+          // position: "absolute",
+          marginTop: isHomeReached ? 90 : 1650,
           textAlign: "center",
           fontSize: "80px",
           color: BLACK_COLOR,

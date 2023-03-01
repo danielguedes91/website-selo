@@ -1,7 +1,5 @@
 import React from "react";
 
-import { MantineProvider } from '@mantine/core';
-
 import { LanguageProp } from "../MainPage";
 
 import { GRID_MAX_WIDTH } from "../features/gridUtils";

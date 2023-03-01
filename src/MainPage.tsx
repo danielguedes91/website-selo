@@ -6,7 +6,7 @@ import { Home } from "./pages/Home";
 import { About } from "./pages/About";
 import { Services } from "./pages/Services";
 import { Steps } from "./pages/Steps";
-import { Connect } from "./pages/Connect";
+// import { Connect } from "./pages/Connect";
 
 // Components
 import { Navbar } from "./components/Navbar";
@@ -46,7 +46,7 @@ const App: React.FC = () => {
       <About language={language} />
       <Services language={language} />
       <Steps language={language} />
-      <Connect language={language} />
+      {/* <Connect language={language} /> */}
 
       <Footer />
     </div>

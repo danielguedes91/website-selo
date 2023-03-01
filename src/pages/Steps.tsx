@@ -10,6 +10,10 @@ import StrategyStudy from "../assets/steps/selo-etiquette-strategy-study-min.png
 import IdentityProposal from "../assets/steps/selo-signature-identity-proposal-min.png";
 import { GRID_MAX_WIDTH } from "../features/gridUtils";
 
+// alinhar home
+// navbar no fixed
+
+
 type StepsProps = LanguageProp;
 
 export const Steps: React.FC<StepsProps> = ({ language }) => {
@@ -19,6 +23,7 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
       justifyContent: "center",
       alignItems: "center",
       width: "100%",
+      paddingBottom: "100px",
     },
     gridContainer: {
       display: "flex",
@@ -64,7 +69,15 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
           </Grid.Col>
         </Grid.Col>
         <Grid.Col span={12}>
-          <h2 style={{ fontSize: "40px", fontWeight: "bold", textAlign: 'center' }}>ROADS?</h2>
+          <h2
+            style={{
+              fontSize: "40px",
+              fontWeight: "bold",
+              textAlign: "center",
+            }}
+          >
+            ROADS?
+          </h2>
           <h2>
             Where we're going, <br />
             we don't need roads!

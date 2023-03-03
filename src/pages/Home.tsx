@@ -14,12 +14,18 @@ type HomeProps = LanguageProp;
 export const Home: React.FC<HomeProps> = () => {
 
   const [isLogoShow, setIsLogoShow] = React.useState<boolean>(false);
+  const [isTransition, setIsTransition] = React.useState<boolean>(false);
   const [isHomeReached, setIsHomeReached] = React.useState<boolean>(false);
 
   window.addEventListener('scroll', () => {
     if (window.scrollY >= 30) {
       setIsLogoShow(true);
     } else setIsLogoShow(false);
+
+    if (window.scrollY >= 500) {
+      setIsTransition(false);
+    } else setIsTransition(true);
+
     if (window.scrollY >= 1020) {
       setIsHomeReached(true);
     } else setIsHomeReached(false);
@@ -35,7 +41,7 @@ export const Home: React.FC<HomeProps> = () => {
     },
     logoTextContainer: {
       opacity: isLogoShow ? 1 : 0,
-      transition: 'all 300ms',
+      transition: isTransition ? 'all 300ms' : 'none',
       position: isHomeReached ? undefined :  "fixed",
       display: "flex",
       flexDirection: "column",

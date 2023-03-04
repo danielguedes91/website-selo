@@ -6,7 +6,7 @@ interface NavbarProps {
   handleClick: () => void;
 }
 
-export const BLACK_COLOR: string = '#3a3a3a';
+export const BLACK_COLOR: string = "#3a3a3a";
 export const OUTTER_GUTTER: number = 100;
 
 export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
@@ -54,7 +54,7 @@ export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
       justifyContent: "space-between",
       alignItems: "center",
       backgroundColor: PAPER_BG,
-      height: "60px",
+      height: "80px",
       zIndex: 10,
       padding: `0px ${OUTTER_GUTTER}px`,
     },
@@ -70,7 +70,7 @@ export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
       all: "unset",
       color: BLACK_COLOR,
       opacity: 0.5,
-      cursor: 'pointer',
+      cursor: "pointer",
     },
   };
 

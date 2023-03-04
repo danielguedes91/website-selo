@@ -48,7 +48,7 @@ export const Home: React.FC<HomeProps> = () => {
       display: "flex",
       flexDirection: "column",
       justifyContent: "center",
-      marginTop: isHomeReached ? 1170 : 145,
+      marginTop: isHomeReached ? -175 : 145,
     },
   };
 
@@ -112,20 +112,6 @@ export const Home: React.FC<HomeProps> = () => {
           </Grid.Col>
         </Grid.Col>
       </Grid>
-
-      {/* 
-        
-        <img
-          alt=""
-          src={LandingPageImage05}
-          style={{
-            margin: "0 auto",
-            position: "absolute",
-            zIndex: -1,
-            top: 700,
-            width: 352,
-          }}
-        /> */}
       <div style={styles.logoTextContainer}>
         <div style={{ marginBottom: 80 }}>
           <img src={SeloLogoGrey} alt="" width={540} />
@@ -145,7 +131,6 @@ export const Home: React.FC<HomeProps> = () => {
       </div>
       <div
         style={{
-          // position: "absolute",
           marginTop: isHomeReached ? 90 : 1650,
           textAlign: "center",
           fontSize: "80px",

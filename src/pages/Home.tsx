@@ -51,7 +51,8 @@ export const Home: React.FC<HomeProps> = () => {
       // marginTop: isHomeReached ? -175 : 145,
       position: "sticky",
       bottom: "25vh",
-      marginTop: "50px",
+      marginTop: "100px",
+      marginBottom: "100px",
     },
   };
 

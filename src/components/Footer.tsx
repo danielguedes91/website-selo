@@ -1,6 +1,6 @@
 import React from "react";
 import { PAPER_BG } from "../MainPage";
-import { BLACK_COLOR } from "./Navbar";
+import { GRAY_COLOR } from "./Navbar";
 
 export const Footer: React.FC = () => {
   const styles: Record<string, React.CSSProperties> = {
@@ -27,7 +27,7 @@ export const Footer: React.FC = () => {
     },
     anchor: {
       textDecoration: 'none',
-      color: BLACK_COLOR,
+      color: GRAY_COLOR,
     },
   };
 

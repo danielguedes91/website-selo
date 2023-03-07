@@ -1,18 +1,25 @@
 import React from "react";
 import { Language, LanguageProp, PAPER_BG } from "../MainPage";
 import SeloLogoGrey from "../assets/home/selo-logo-grey.svg";
+import { useMediaQuery } from "@mantine/hooks";
+
+// Hamburger menu icon
+import { ActionIcon, Drawer } from "@mantine/core";
+import { Burger } from "@mantine/core";
 
 interface NavbarProps {
   handleClick: () => void;
 }
 
-export const BLACK_COLOR: string = "#3a3a3a";
+export const SMALL_SCREEN_BREAKPOINT = 700;
+export const GRAY_COLOR: string = "#3a3a3a";
 export const OUTTER_GUTTER: number = 100;
 
 export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
   language,
   handleClick,
 }) => {
+  const isSmallScreen = useMediaQuery(`(max-width: ${SMALL_SCREEN_BREAKPOINT}px)`);
   const links: Array<{ href: string; content: Record<Language, string> }> = [
     {
       href: "#about",
@@ -68,11 +75,51 @@ export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
     },
     languageButton: {
       all: "unset",
-      color: BLACK_COLOR,
+      color: GRAY_COLOR,
       opacity: 0.5,
       cursor: "pointer",
     },
   };
+
+  const handleMenuClick = (href: string) => {
+    window.location.assign(href);
+    setOpen(false);
+  };
+
+  const [open, setOpen] = React.useState<boolean>(false);
+  const toggleOpen = () => setOpen((prevValue) => !prevValue);
+  
+  // const [menuShow, setMenuShow] = React.useState<boolean>(false);
+  // const toggleMenuShow = () => setMenuShow((prevValue) => !prevValue);
+
+  const MenuComponents = () => {
+    return (
+      <>
+        {links.map((item, index) => (
+          <div key={`nav-link-${index}`}>
+            <a
+              key={`content-${language}-${index}`}
+              href={item.href}
+              style={{
+                textDecoration: "none",
+                color: isSmallScreen ? "white" : GRAY_COLOR,
+                fontSize: isSmallScreen ? "3rem" : "1rem",
+              }}
+              onClick={() => handleMenuClick(item.href)}
+            >
+              {item.content[language].toUpperCase()}
+            </a>
+          </div>
+        ))}
+      </>
+    );
+  };
+
+  <div>
+    <button onClick={handleClick} style={styles.languageButton}>
+      {language.toUpperCase()}
+    </button>
+  </div>;
 
   return (
     <div style={styles.main}>
@@ -89,22 +136,51 @@ export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
       </div>
 
       <div style={styles.links}>
-        {links.map((item, index) => (
-          <div key={`nav-link-${index}`}>
-            <a
-              key={`content-${language}-${index}`}
-              href={item.href}
-              style={{ textDecoration: "none", color: BLACK_COLOR }}
-            >
-              {item.content[language].toUpperCase()}
-            </a>
+        {isSmallScreen ? (
+          <div style={{ zIndex: 100 }}>
+            <ActionIcon size="xl" radius="xl" variant="transparent">
+              <Burger
+                opened={open}
+                onClick={toggleOpen}
+                aria-label=""
+                color={open ? "white" : "black"}
+              />
+            </ActionIcon>
           </div>
-        ))}
-        <div>
-          <button onClick={handleClick} style={styles.languageButton}>
-            {language.toUpperCase()}
-          </button>
-        </div>
+        ) : (
+          <MenuComponents />
+        )}
+
+        <Drawer
+          opened={open}
+          position="top"
+          onClose={() => {}}
+          transitionTimingFunction="ease-in-out"
+          transitionDuration={600}
+          sx={{
+            height: "100vh",
+            zIndex: 99,
+            "& .mantine-Paper-root": { height: "100%" },
+          }}
+
+        >
+          <div
+            style={{
+              position: "absolute",
+              top: 0,
+              backgroundColor: GRAY_COLOR,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <MenuComponents />
+          </div>
+        </Drawer>
       </div>
     </div>
   );

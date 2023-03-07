@@ -26,7 +26,7 @@ import SeloEditorialBlur from "../assets/services/selo-editorial-design-blur-min
 
 import { ImageComponent } from "../components/ImageComponent";
 import { Grid } from "@mantine/core";
-import { BLACK_COLOR, OUTTER_GUTTER } from "../components/Navbar";
+import { GRAY_COLOR, OUTTER_GUTTER } from "../components/Navbar";
 
 const TEXT_COL_SPAN: number = 3;
 const IMAGE_COL_SPAN: number = 7;
@@ -239,7 +239,7 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
                 <Grid.Col span={IMAGE_COL_SPAN} style={{ padding: 0, marginTop: '80px', }}>
                   <h3
                     style={{
-                      color: BLACK_COLOR,
+                      color: GRAY_COLOR,
                       opacity: 0.5,
                       fontStyle: "italic",
                       padding: 0,

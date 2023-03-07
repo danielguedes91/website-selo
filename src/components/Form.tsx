@@ -4,7 +4,7 @@ import { LanguageProp } from "../MainPage";
 
 import { useForm } from "@mantine/form";
 import { TextInput, Button, Group, Sx } from "@mantine/core";
-import { BLACK_COLOR, OUTTER_GUTTER } from "./Navbar";
+import { GRAY_COLOR, OUTTER_GUTTER } from "./Navbar";
 
 type FormProps = LanguageProp;
 
@@ -91,8 +91,8 @@ export const Form: React.FC<FormProps> = () => {
             variant="outline"
             type="submit"
             sx={{
-              borderColor: BLACK_COLOR,
-              color: BLACK_COLOR,
+              borderColor: GRAY_COLOR,
+              color: GRAY_COLOR,
               borderRadius: "18px",
             }}
           >

@@ -8,7 +8,7 @@ import LandingPageImage02 from "../assets/landing/selo-landing-page-2-min.png";
 import LandingPageImage03 from "../assets/landing/selo-landing-page-3-min.png";
 import LandingPageImage04 from "../assets/landing/selo-landing-page-4-min.png";
 import LandingPageImage05 from "../assets/landing/selo-landing-page-5-min.png";
-import { BLACK_COLOR, OUTTER_GUTTER } from "../components/Navbar";
+import { GRAY_COLOR, OUTTER_GUTTER } from "../components/Navbar";
 import { Grid } from "@mantine/core";
 
 // const FACTOR_WIDTH = 270;
@@ -44,11 +44,11 @@ export const Home: React.FC<HomeProps> = () => {
     logoTextContainer: {
       opacity: isLogoShow ? 1 : 0,
       transition: isTransition ? "all 300ms" : "none",
-      position: isHomeReached ? undefined : "fixed",
+      // position: isHomeReached ? undefined : "fixed",
       display: "flex",
       flexDirection: "column",
       justifyContent: "center",
-      marginTop: isHomeReached ? -175 : 145,
+      // marginTop: isHomeReached ? -175 : 145,
     },
   };
 
@@ -120,7 +120,7 @@ export const Home: React.FC<HomeProps> = () => {
           style={{
             textAlign: "center",
             fontSize: "25px",
-            color: BLACK_COLOR,
+            color: GRAY_COLOR,
             fontWeight: "bold",
           }}
         >
@@ -131,10 +131,10 @@ export const Home: React.FC<HomeProps> = () => {
       </div>
       <div
         style={{
-          marginTop: isHomeReached ? 90 : 1650,
+          // marginTop: isHomeReached ? 90 : 1650,
           textAlign: "center",
           fontSize: "80px",
-          color: BLACK_COLOR,
+          color: GRAY_COLOR,
           fontWeight: "bold",
         }}
       >

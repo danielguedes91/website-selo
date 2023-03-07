@@ -19,7 +19,9 @@ export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
   language,
   handleClick,
 }) => {
-  const isSmallScreen = useMediaQuery(`(max-width: ${SMALL_SCREEN_BREAKPOINT}px)`);
+  const isSmallScreen = useMediaQuery(
+    `(max-width: ${SMALL_SCREEN_BREAKPOINT}px)`
+  );
   const links: Array<{ href: string; content: Record<Language, string> }> = [
     {
       href: "#about",
@@ -88,7 +90,7 @@ export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
 
   const [open, setOpen] = React.useState<boolean>(false);
   const toggleOpen = () => setOpen((prevValue) => !prevValue);
-  
+
   // const [menuShow, setMenuShow] = React.useState<boolean>(false);
   // const toggleMenuShow = () => setMenuShow((prevValue) => !prevValue);
 
@@ -111,15 +113,17 @@ export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
             </a>
           </div>
         ))}
+
+        {!isSmallScreen ? (
+          <div>
+            <button onClick={handleClick} style={styles.languageButton}>
+              {language.toUpperCase()}
+            </button>
+          </div>
+        ) : null}
       </>
     );
   };
-
-  <div>
-    <button onClick={handleClick} style={styles.languageButton}>
-      {language.toUpperCase()}
-    </button>
-  </div>;
 
   return (
     <div style={styles.main}>
@@ -162,7 +166,6 @@ export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
             zIndex: 99,
             "& .mantine-Paper-root": { height: "100%" },
           }}
-
         >
           <div
             style={{

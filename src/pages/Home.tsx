@@ -49,6 +49,9 @@ export const Home: React.FC<HomeProps> = () => {
       flexDirection: "column",
       justifyContent: "center",
       // marginTop: isHomeReached ? -175 : 145,
+      position: "sticky",
+      bottom: "25vh",
+      marginTop: "50px",
     },
   };
 

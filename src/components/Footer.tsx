@@ -11,6 +11,7 @@ export const Footer: React.FC = () => {
       right: 0,
       backgroundColor: PAPER_BG,
       height: "60px",
+      marginTop: "10px",
       padding: "0px 50px",
     },
     mainContainer: {

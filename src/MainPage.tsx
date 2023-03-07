@@ -11,6 +11,7 @@ import { Steps } from "./pages/Steps";
 // Components
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
+import { Button, Grid, Sx } from "@mantine/core";
 
 // TODO Dani e Goncalo
 // Netlify deployment
@@ -20,7 +21,7 @@ import { Footer } from "./components/Footer";
 // Change index.html favicon and content
 // Ask the girls about the favicon
 
-export const PAPER_BG: string = '#f5f3f2';
+export const PAPER_BG: string = "#f5f3f2";
 export type Language = "en" | "pt";
 export interface LanguageProp {
   language: Language;
@@ -38,6 +39,40 @@ const App: React.FC = () => {
     },
   };
 
+  const ContactSection = () => {
+    const buttonStyles: Sx = {
+      transition: "all 400ms",
+      "&:hover": {
+        color: "white",
+        // borderWidth: "100px",
+        boxShadow: 'inset 0 0 0 40px black',
+      },
+    };
+
+    return (
+      <Grid
+        sx={{
+          height: "15vh",
+          minHeight: "150px",
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Button
+          variant="outline"
+          color="dark"
+          radius="xl"
+          size="lg"
+          sx={buttonStyles}
+        >
+          {language === "en" ? "Get in touch" : "Entrar em contato"}
+        </Button>
+      </Grid>
+    );
+  };
+
   return (
     <div style={styles.main}>
       <Navbar language={language} handleClick={toggleLanguage} />
@@ -46,6 +81,7 @@ const App: React.FC = () => {
       <About language={language} />
       <Services language={language} />
       <Steps language={language} />
+      <ContactSection />
       {/* <Connect language={language} /> */}
 
       <Footer />

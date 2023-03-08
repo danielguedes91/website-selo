@@ -1,11 +1,17 @@
 @font-face {
   font-family: 'Aileron';
-  font-style: normal;
-  font-weight: 100 1000;
-  src: url(../fonts/Aileron-Regular.otf) format('truetype'),
+  src: 
+  
+  url(../fonts/Aileron-Regular.otf) format('truetype'),
   url(../fonts/Aileron-Light.otf) format('truetype'),
   url(../fonts/Aileron-Bold.otf) format('truetype');
+
 }
+
+
+
+
+
 
 html {
   scroll-behavior: smooth;
@@ -13,7 +19,7 @@ html {
 
 body {
   margin: 0;
-  font-family: Aileron, Arial, sans-serif;
+  font-family: Aileron;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;

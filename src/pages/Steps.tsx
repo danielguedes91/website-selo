@@ -144,6 +144,7 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
           <h2
           style={{
             fontSize: "54px",
+            
             textAlign: "center",
             fontStyle: 'italic'
           }}>

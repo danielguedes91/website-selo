@@ -10,10 +10,6 @@ import StrategyStudy from "../assets/steps/selo-etiquette-strategy-study-min.png
 import IdentityProposal from "../assets/steps/selo-signature-identity-proposal-min.png";
 import { GRID_MAX_WIDTH } from "../features/gridUtils";
 
-// alinhar home
-// navbar no fixed
-
-
 type StepsProps = LanguageProp;
 
 export const Steps: React.FC<StepsProps> = ({ language }) => {
@@ -35,10 +31,51 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
     },
   };
 
-  const content: Record<Language, string> = {
-    en: `We ask questions, listen and learn. We go to the core of the issue to build the most accurate and effective strategy.`,
-    pt: `Fazemos perguntas, ouvimos e aprendemos. Vamos ao fundo da questão para construir a estratégia mais precisa e eficaz.`,
+  const contentKeys = ["default", "auth", "etiquette", "signature"] as const;
+  type ContentKey = typeof contentKeys[number];
+  const [selectedContent, setSelectedContent] =
+    React.useState<ContentKey>("default");
+
+  const content: Record<
+    ContentKey,
+    { text: Record<Language, string>; title: string; imgSrc?: string }
+  > = {
+    default: {
+      text: {
+        en: "We ask questions, listen and learn. We go to the core of the issue to build the most accurate and effective strategy.",
+        pt: "Fazemos perguntas, ouvimos e aprendemos. Vamos ao fundo da questão para construir a estratégia mais precisa e eficaz.",
+      },
+      title: "title",
+    },
+    auth: {
+      text: {
+        en: "With your team at every step of the way, we create the tools to find your uniqueness, confirm and establish your brand’s authentic self.",
+        pt: "Com a sua equipa em cada passo do caminho, criamos as ferramentas para encontrar a singularidade, confirmar e estabelecer a unicidade da sua marca.",
+      },
+      title:
+        "Autenticação, Aplicação e ativação / Authentication, Application and Activation",
+      imgSrc: ApplicationActivation,
+    },
+    etiquette: {
+      text: {
+        pt: "Fazemos perguntas, ouvimos e aprendemos. Vamos ao fundo da questão para construir a estratégia mais precisa e eficaz.",
+        en: "We ask questions, listen and learn. We go to the core of the issue to build the most accurate and effective strategy.",
+      },
+      title: "Etiqueta, Estratégia e Estudo / Etiquette, Strategy & Study",
+      imgSrc: StrategyStudy,
+    },
+    signature: {
+      text: {
+        pt: "Desenhamos protótipos e colocamos no papel o plano de ação para trazer a sua visão à vida.",
+        en: "We develop prototypes and put on paper the action plan to bring your vision to life.",
+      },
+      title:
+        "Assinatura, Identidade e Proposta / Signature, Identity & Proposal",
+      imgSrc: IdentityProposal,
+    },
   };
+
+  const handleImageClick = (key: ContentKey) => setSelectedContent(key);
 
   return (
     <div id="steps" style={styles.main}>
@@ -56,17 +93,25 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
               STEPS <br />
               FOR OFFICIAL GUARANTEE CERTIFICATION
             </h3>
-            <text>{content[language]}</text>
+            <text>{content[selectedContent].text[language]}</text>
           </Grid.Col>
-          <Grid.Col span={3}>
-            <img src={ApplicationActivation} alt="" style={{ width: "100%" }} />
-          </Grid.Col>
-          <Grid.Col span={3}>
-            <img src={StrategyStudy} alt="" style={{ width: "100%" }} />
-          </Grid.Col>
-          <Grid.Col span={3}>
-            <img src={IdentityProposal} alt="" style={{ width: "100%" }} />
-          </Grid.Col>
+
+          {(Object.keys(content) as Array<ContentKey>).map(
+            (key: ContentKey, index) => {
+              const { imgSrc } = content[key];
+              // Thist guarantees that wherever the content, we'll only have 3 images
+              return index <= 3 && imgSrc ? (
+                <Grid.Col span={3}>
+                  <div
+                    onClick={() => handleImageClick(key)}
+                    style={{ cursor: "pointer" }}
+                  >
+                    <img src={imgSrc} alt="" style={{ width: "100%" }} />
+                  </div>
+                </Grid.Col>
+              ) : null;
+            }
+          )}
         </Grid.Col>
         <Grid.Col span={12}>
           <h2
@@ -88,40 +133,3 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
     </div>
   );
 };
-
-
-
-/*
-
-
-Autenticação, Aplicação e ativação / Authentication, Application and Activation
-en -
-With your team at every step of the way, we create the tools to find your uniqueness, confirm and establish your brand’s authentic self.
-pt -
-Com a sua equipa em cada passo do caminho, criamos as ferramentas para encontrar a singularidade, confirmar e estabelecer a unicidade da sua marca.
-
-
-
-
-Etiqueta, Estratégia e Estudo / Etiquette, Strategy & Study
-pt -
-Fazemos perguntas, ouvimos e aprendemos. Vamos ao fundo da questão para construir a estratégia mais precisa e eficaz.
-en -
-We ask questions, listen and learn. We go to the core of the issue to build the most accurate and effective strategy.
-
-
-
-
-
-Assinatura, Identidade e Proposta / Signature, Identity & Proposal
-pt -
-Desenhamos protótipos e colocamos no papel o plano de ação para trazer a sua visão à vida.
-en -
-We develop prototypes and put on paper the action plan to bring your vision to life.
-
-
-
-
-
-
-*/

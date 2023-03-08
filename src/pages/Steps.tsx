@@ -56,8 +56,8 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
         pt: "Com a sua equipa em cada passo do caminho, criamos as ferramentas para encontrar a singularidade, confirmar e estabelecer a unicidade da sua marca.",
       },
       title: {
-        pt: "Autenticação, Aplicação e ativação",
-        en: "Authentication, Application and Activation",
+        pt: "AUTENTICAÇÃO, APLICAÇÃO E ATIVAÇÃO",
+        en: "AUTHENTICATION, APPLICATION AND ACTIVATION",
       },
       imgSrc: ApplicationActivation,
     },
@@ -68,8 +68,8 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
       },
 
       title: {
-        pt: "Etiqueta, Estratégia e Estudo",
-        en: "Etiquette, Strategy & Study",
+        pt: "ETIQUETA, ESTRATÉGIA E ESTUDO",
+        en: "ETIQUETTE, STRATEGY & STUDY",
       },
       imgSrc: StrategyStudy,
     },
@@ -79,8 +79,8 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
         en: "We develop prototypes and put on paper the action plan to bring your vision to life.",
       },
       title: {
-        pt: "Assinatura, Identidade e Proposta",
-        en: "Signature, Identity & Proposal",
+        pt: "ASSINATURA, IDENTIDADE E PROPOSTA",
+        en: "SIGNATURE, IDENTITY & PROPOSAL",
       },
       imgSrc: IdentityProposal,
     },

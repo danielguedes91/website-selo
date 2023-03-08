@@ -17,7 +17,7 @@ type HomeProps = LanguageProp;
 export const Home: React.FC<HomeProps> = () => {
   const [isLogoShow, setIsLogoShow] = React.useState<boolean>(false);
   const [isTransition, setIsTransition] = React.useState<boolean>(false);
-  const [isHomeReached, setIsHomeReached] = React.useState<boolean>(false);
+  // const [isHomeReached, setIsHomeReached] = React.useState<boolean>(false);
 
   window.addEventListener("scroll", () => {
     if (window.scrollY >= 30) {
@@ -28,9 +28,9 @@ export const Home: React.FC<HomeProps> = () => {
       setIsTransition(false);
     } else setIsTransition(true);
 
-    if (window.scrollY >= 1020) {
-      setIsHomeReached(true);
-    } else setIsHomeReached(false);
+    // if (window.scrollY >= 1020) {
+    //   setIsHomeReached(true);
+    // } else setIsHomeReached(false);
   });
 
   const styles: Record<string, React.CSSProperties> = {

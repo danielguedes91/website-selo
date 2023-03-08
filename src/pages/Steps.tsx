@@ -38,7 +38,11 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
 
   const content: Record<
     ContentKey,
-    { text: Record<Language, string>; title?: string; imgSrc?: string }
+    {
+      text: Record<Language, string>;
+      title?: Record<Language, string>;
+      imgSrc?: string;
+    }
   > = {
     default: {
       text: {
@@ -51,8 +55,10 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
         en: "With your team at every step of the way, we create the tools to find your uniqueness, confirm and establish your brand’s authentic self.",
         pt: "Com a sua equipa em cada passo do caminho, criamos as ferramentas para encontrar a singularidade, confirmar e estabelecer a unicidade da sua marca.",
       },
-      title:
-        "Autenticação, Aplicação e ativação / Authentication, Application and Activation",
+      title: {
+        pt: "Autenticação, Aplicação e ativação",
+        en: "Authentication, Application and Activation",
+      },
       imgSrc: ApplicationActivation,
     },
     etiquette: {
@@ -60,7 +66,11 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
         pt: "Fazemos perguntas, ouvimos e aprendemos. Vamos ao fundo da questão para construir a estratégia mais precisa e eficaz.",
         en: "We ask questions, listen and learn. We go to the core of the issue to build the most accurate and effective strategy.",
       },
-      title: "Etiqueta, Estratégia e Estudo / Etiquette, Strategy & Study",
+
+      title: {
+        pt: "Etiqueta, Estratégia e Estudo",
+        en: "Etiquette, Strategy & Study",
+      },
       imgSrc: StrategyStudy,
     },
     signature: {
@@ -68,13 +78,16 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
         pt: "Desenhamos protótipos e colocamos no papel o plano de ação para trazer a sua visão à vida.",
         en: "We develop prototypes and put on paper the action plan to bring your vision to life.",
       },
-      title:
-        "Assinatura, Identidade e Proposta / Signature, Identity & Proposal",
+      title: {
+        pt: "Assinatura, Identidade e Proposta",
+        en: "Signature, Identity & Proposal",
+      },
       imgSrc: IdentityProposal,
     },
   };
 
   const handleImageClick = (key: ContentKey) => setSelectedContent(key);
+  const BOTTOM_HEIGHT = 50;
 
   return (
     <div id="steps" style={styles.main}>
@@ -92,7 +105,7 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
               STEPS <br />
               FOR OFFICIAL GUARANTEE CERTIFICATION
             </h3>
-            <text>{content[selectedContent].text[language]}</text>
+            <text style={{ marginBottom: BOTTOM_HEIGHT }}>{content[selectedContent].text[language]}</text>
           </Grid.Col>
 
           {(Object.keys(content) as Array<ContentKey>).map(
@@ -110,8 +123,8 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
                   >
                     <img src={imgSrc} alt="" style={{ width: "100%" }} />
                   </div>
-                  <div>
-                    <h3>{title}</h3>
+                  <div style={{ height: BOTTOM_HEIGHT }}>
+                    <h3>{title?.[language]}</h3>
                   </div>
                 </Grid.Col>
               ) : null;

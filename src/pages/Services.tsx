@@ -187,7 +187,7 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
             : false;
           const { en, pt, subtitle } = content[key];
           const textContent = language === "en" ? en : pt;
-          const { src, alignment: orientation } = content[key].img;
+          const { src, blurSrc, alignment: orientation } = content[key].img;
           return (
             <Grid.Col
               key={`image-text-container-${index}-${key}`}
@@ -215,6 +215,7 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
                 >
                   <ImageComponent
                     imgSrc={src}
+                    imgBlurSrc={index === 0 ? blurSrc : undefined}
                     onClickHandler={() => onClickEvent(key)}
                   />
                 </Grid.Col>

@@ -38,14 +38,13 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
 
   const content: Record<
     ContentKey,
-    { text: Record<Language, string>; title: string; imgSrc?: string }
+    { text: Record<Language, string>; title?: string; imgSrc?: string }
   > = {
     default: {
       text: {
         en: "We ask questions, listen and learn. We go to the core of the issue to build the most accurate and effective strategy.",
         pt: "Fazemos perguntas, ouvimos e aprendemos. Vamos ao fundo da questão para construir a estratégia mais precisa e eficaz.",
       },
-      title: "title",
     },
     auth: {
       text: {
@@ -98,15 +97,21 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
 
           {(Object.keys(content) as Array<ContentKey>).map(
             (key: ContentKey, index) => {
-              const { imgSrc } = content[key];
+              const { imgSrc, title } = content[key];
               // Thist guarantees that wherever the content, we'll only have 3 images
               return index <= 3 && imgSrc ? (
-                <Grid.Col span={3}>
+                <Grid.Col
+                  span={3}
+                  sx={{ display: "flex", flexDirection: "column" }}
+                >
                   <div
                     onClick={() => handleImageClick(key)}
                     style={{ cursor: "pointer" }}
                   >
                     <img src={imgSrc} alt="" style={{ width: "100%" }} />
+                  </div>
+                  <div>
+                    <h3>{title}</h3>
                   </div>
                 </Grid.Col>
               ) : null;

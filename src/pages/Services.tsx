@@ -140,7 +140,7 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
       alignItems: "center",
       maxWidth: '100vw',
       margin: `0px ${OUTTER_GUTTER}px`,
-      marginTop: '200px',
+      marginTop: '160px',
       
     },
     gridContainer: {
@@ -192,7 +192,7 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
             <Grid.Col
               key={`image-text-container-${index}-${key}`}
               span={12}
-              style={{ display: "flex", flexDirection: "column", padding: 0, marginBottom: 200 }}
+              style={{ display: "flex", flexDirection: "column", padding: 0, marginBottom: 160 }}
             >
               <Grid.Col
                 span={12}
@@ -237,7 +237,7 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
                   padding: 0,
                 }}
               >
-                <Grid.Col span={IMAGE_COL_SPAN} style={{ padding: 0, marginTop: '80px', }}>
+                <Grid.Col span={IMAGE_COL_SPAN} style={{ padding: 0, marginTop: '20px', }}>
                   <h3
                     style={{
                       color: GRAY_COLOR,

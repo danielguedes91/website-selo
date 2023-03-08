@@ -134,18 +134,28 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
         <Grid.Col span={12}>
           <h2
             style={{
-              fontSize: "40px",
-              fontWeight: "bold",
+              fontSize: "55px",
               textAlign: "center",
+              fontStyle: 'italic'
             }}
           >
             ROADS?
           </h2>
-          <h2>
+          <h2
+          style={{
+            fontSize: "54px",
+            textAlign: "center",
+            fontStyle: 'italic'
+          }}>
             Where we're going, <br />
             we don't need roads!
           </h2>
-          <h5>Dr. Emmett Brown, Back to the future</h5>
+          <h5
+          style={{
+              fontSize: "25px",
+              textAlign: "center",
+              fontStyle: 'italic'
+            }}>Dr. Emmett Brown, Back to the future</h5>
         </Grid.Col>
       </Grid>
     </div>

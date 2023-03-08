@@ -88,3 +88,40 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
     </div>
   );
 };
+
+
+
+/*
+
+
+Autenticação, Aplicação e ativação / Authentication, Application and Activation
+en -
+With your team at every step of the way, we create the tools to find your uniqueness, confirm and establish your brand’s authentic self.
+pt -
+Com a sua equipa em cada passo do caminho, criamos as ferramentas para encontrar a singularidade, confirmar e estabelecer a unicidade da sua marca.
+
+
+
+
+Etiqueta, Estratégia e Estudo / Etiquette, Strategy & Study
+pt -
+Fazemos perguntas, ouvimos e aprendemos. Vamos ao fundo da questão para construir a estratégia mais precisa e eficaz.
+en -
+We ask questions, listen and learn. We go to the core of the issue to build the most accurate and effective strategy.
+
+
+
+
+
+Assinatura, Identidade e Proposta / Signature, Identity & Proposal
+pt -
+Desenhamos protótipos e colocamos no papel o plano de ação para trazer a sua visão à vida.
+en -
+We develop prototypes and put on paper the action plan to bring your vision to life.
+
+
+
+
+
+
+*/

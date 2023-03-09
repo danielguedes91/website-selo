@@ -124,7 +124,7 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
                     <img src={imgSrc} alt="" style={{ width: "100%" }} />
                   </div>
                   <div style={{ height: BOTTOM_HEIGHT }}>
-                    <h3>{title?.[language]}</h3>
+                    <h3>{(selectedContent === 'default' || selectedContent === key) && title?.[language]}</h3>
                   </div>
                 </Grid.Col>
               ) : null;

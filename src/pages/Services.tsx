@@ -23,7 +23,6 @@ import SeloPhotographyBlur from "../assets/services/selo-product-photography-blu
 import SeloEditorial from "../assets/services/selo-editorial-design-min.png";
 import SeloEditorialBlur from "../assets/services/selo-editorial-design-blur-min.png";
 
-
 import { ImageComponent } from "../components/ImageComponent";
 import { Grid } from "@mantine/core";
 import { GRAY_COLOR, OUTTER_GUTTER } from "../components/Navbar";
@@ -69,7 +68,6 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
       subtitle: "CREATIVE CONSULTANCY",
     },
 
-
     stereoProduction: {
       pt: `Entendendo a comunicação como um todo, estudamos a sua visão em produção e pós-produção de audio. Em produtos de rádio, instalações de arte e cinema desenhamos o som, assistimos e consultamos sobre audio e sonoplastia.`,
       en: `Understanding communication as a whole, we study and execute your vision in audio production and post-production. In radio products, art installations and cinema, we assist and consult on audio and sound design.`,
@@ -107,9 +105,6 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
       subtitle: "PRODUCT PHOTOGRAPHY",
     },
 
-
-
-
     editorialDesign: {
       pt: `Elaboramos designs, composições e layouts que objetivam prender os olhos(e alma) do leitor à tua publicação considerando sempre os benchmarks, estudamos o seu caso cruzando a sua visão com as referências de melhor relevância, planejamos e implementamos no seu projeto para que a sua mensagem voe(não literalmentente), e seja transmitida com clareza e propósito.`,
       en: `We create designs, compositions and layouts that aim to catch the eye (and soul) of the reader. Always considering the benchmarks, we study your case crossing your vision with the most relevant references, we plan and implement on your project so that your message flies (not literally), and it's delivered with clarity and purpose.`,
@@ -120,17 +115,7 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
       },
       subtitle: "EDITORIAL DESIGN",
     },
-
   };
-
-
-// SERVICES
-// space between img and title = 80px DONE
-// space between title and img in the next service = 200px DONE
-// margin-x DONE
-// vertical align of imgs, navbar etc... DONE
-// CONNECT
-// check form width
 
   const styles: Record<string, React.CSSProperties> = {
     main: {
@@ -138,10 +123,9 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
       flexDirection: "column",
       justifyContent: "center",
       alignItems: "center",
-      maxWidth: '100vw',
+      maxWidth: "100vw",
       margin: `0px ${OUTTER_GUTTER}px`,
-      marginTop: '160px',
-      
+      marginTop: "160px",
     },
     gridContainer: {
       display: "flex",
@@ -177,8 +161,19 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
 
   return (
     <div id="services" style={styles.main}>
-      <h2 style={{ fontWeight: "bold", fontSize: "35px" }}>SERVICES</h2>
       <Grid style={{ ...styles.gridContainer, padding: 0 }}>
+        <Grid.Col span={12} sx={{ display: "flex", width: "100%", justifyContent: "space-between" }}>
+          <Grid.Col
+            span={TEXT_COL_SPAN}
+            style={{ padding: 0 }}
+          />
+          <Grid.Col
+            span={IMAGE_COL_SPAN}
+            style={{ padding: 0 }}
+          >
+            <h2 style={{ fontWeight: "bold", fontSize: "35px" }}>SERVICES</h2>
+          </Grid.Col>
+        </Grid.Col>
         {Object.keys(content).map((key, index) => {
           let isTextShowing = showingList.find(
             (listElement) => listElement === key
@@ -192,7 +187,12 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
             <Grid.Col
               key={`image-text-container-${index}-${key}`}
               span={12}
-              style={{ display: "flex", flexDirection: "column", padding: 0, marginBottom: 160 }}
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                padding: 0,
+                marginBottom: 160,
+              }}
             >
               <Grid.Col
                 span={12}
@@ -203,16 +203,16 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
                 }}
               >
                 {orientation === "right" ? (
-                  <Grid.Col span={TEXT_COL_SPAN} style={{ ...styles.textContainer, padding: 0 }}>
+                  <Grid.Col
+                    span={TEXT_COL_SPAN}
+                    style={{ ...styles.textContainer, padding: 0 }}
+                  >
                     {isTextShowing && (
                       <TextContent content={textContent} width="460px" />
                     )}
                   </Grid.Col>
                 ) : null}
-                <Grid.Col
-                  span={IMAGE_COL_SPAN}
-                  style={{ padding: 0 }}
-                >
+                <Grid.Col span={IMAGE_COL_SPAN} style={{ padding: 0 }}>
                   <ImageComponent
                     imgSrc={src}
                     imgBlurSrc={index === 0 ? blurSrc : undefined}
@@ -220,7 +220,10 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
                   />
                 </Grid.Col>
                 {orientation === "left" ? (
-                  <Grid.Col span={TEXT_COL_SPAN} style={{ ...styles.textContainer, padding: 0 }}>
+                  <Grid.Col
+                    span={TEXT_COL_SPAN}
+                    style={{ ...styles.textContainer, padding: 0 }}
+                  >
                     {isTextShowing && (
                       <TextContent content={textContent} width="460px" />
                     )}
@@ -237,14 +240,17 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
                   padding: 0,
                 }}
               >
-                <Grid.Col span={IMAGE_COL_SPAN} style={{ padding: 0, marginTop: '20px', }}>
+                <Grid.Col
+                  span={IMAGE_COL_SPAN}
+                  style={{ padding: 0, marginTop: "20px" }}
+                >
                   <h3
                     style={{
                       color: GRAY_COLOR,
                       opacity: 0.5,
                       fontStyle: "italic",
                       padding: 0,
-                      display: 'inline',
+                      display: "inline",
                     }}
                   >
                     {subtitle}

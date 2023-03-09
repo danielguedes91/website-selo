@@ -1,11 +1,18 @@
 @font-face {
   font-family: 'Aileron';
-  src: 
-  
-  url(../fonts/Aileron-Regular.otf) format('truetype'),
-  url(../fonts/Aileron-Light.otf) format('truetype'),
-  url(../fonts/Aileron-Bold.otf) format('truetype');
+  src: url(../fonts/Aileron-Regular.otf) format('opentype');
+}
 
+@font-face {
+  font-family: 'Aileron';
+  font-weight: light;
+  src: url(../fonts/Aileron-Light.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'Aileron';
+  font-weight: bold;
+  src: url(../fonts/Aileron-Bold.otf) format('opentype');
 }
 
 /* 
@@ -20,6 +27,7 @@ html {
 body {
   margin: 0;
   font-family: Aileron;
+  font-weight: light;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;

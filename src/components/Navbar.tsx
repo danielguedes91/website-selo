@@ -106,6 +106,7 @@ export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
                 textDecoration: "none",
                 color: isSmallScreen ? "white" : GRAY_COLOR,
                 fontSize: isSmallScreen ? "3rem" : "1rem",
+                fontWeight: 500,
               }}
               onClick={() => handleMenuClick(item.href)}
             >

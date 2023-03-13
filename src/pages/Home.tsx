@@ -16,7 +16,8 @@ type HomeProps = LanguageProp;
 
 export const Home: React.FC<HomeProps> = () => {
   const [isLogoShow, setIsLogoShow] = React.useState<boolean>(false);
-  const [isTransition, setIsTransition] = React.useState<boolean>(false);
+  const [isTextShow, setIsTextShow] = React.useState<boolean>(false);
+  // const [isTransition, setIsTransition] = React.useState<boolean>(false);
   // const [isHomeReached, setIsHomeReached] = React.useState<boolean>(false);
 
   window.addEventListener("scroll", () => {
@@ -24,9 +25,13 @@ export const Home: React.FC<HomeProps> = () => {
       setIsLogoShow(true);
     } else setIsLogoShow(false);
 
-    if (window.scrollY >= 500) {
-      setIsTransition(false);
-    } else setIsTransition(true);
+    // if (window.scrollY >= 500) {
+    //   setIsTransition(false);
+    // } else setIsTransition(true);
+
+    if (window.scrollY >= 1000) {
+      setIsTextShow(true);
+    } else setIsTextShow(false);
 
     // if (window.scrollY >= 1020) {
     //   setIsHomeReached(true);
@@ -42,8 +47,8 @@ export const Home: React.FC<HomeProps> = () => {
       margin: `0px ${OUTTER_GUTTER}px`,
     },
     logoTextContainer: {
-      opacity: isLogoShow ? 1 : 0,
-      transition: isTransition ? "all 300ms" : "none",
+      // opacity: isLogoShow ? 1 : 0,
+      // transition: isTransition ? "all 300ms" : "none",
       // position: isHomeReached ? undefined : "fixed",
       display: "flex",
       flexDirection: "column",
@@ -75,14 +80,14 @@ export const Home: React.FC<HomeProps> = () => {
             flexDirection: "row",
             padding: 0,
             position: "relative",
-            bottom: "20vw",
+            bottom: "-15vw",
           }}
         >
           <Grid.Col
             span={3}
             style={{
               paddingLeft: 0,
-              top: -250,
+              // top: -250,
             }}
           >
             <img alt="" src={LandingPageImage01} style={{ width: "100%" }} />
@@ -95,7 +100,7 @@ export const Home: React.FC<HomeProps> = () => {
 
         <Grid.Col
           span={12}
-          style={{ display: "flex", flexDirection: "row", marginTop: "-100px" }}
+          style={{ display: "flex", flexDirection: "row", marginTop: "300px" }}
         >
           <Grid.Col span={1} />
           <Grid.Col span={3}>
@@ -117,11 +122,24 @@ export const Home: React.FC<HomeProps> = () => {
         </Grid.Col>
       </Grid>
       <div style={styles.logoTextContainer}>
-        <div style={{ marginBottom: 80 }}>
-          <img src={SeloLogoGrey} alt="" width={540} />
+        <div style={{ display: "flex", alignItems: "flex-end", height: 350 }}>
+          <div
+            style={{
+              height: isLogoShow ? "100%" : 0,
+              overflow: "hidden",
+              transition: "all 400ms ease-in-out",
+              display: 'flex',
+              alignItems: 'flex-end'
+            }}
+          >
+            <div style={{ marginBottom: 80 }}>
+              <img src={SeloLogoGrey} alt="" width={540} />
+            </div>
+          </div>
         </div>
         <div
           style={{
+            opacity: isTextShow ? 1 : 0,
             textAlign: "center",
             fontSize: "25px",
             color: GRAY_COLOR,

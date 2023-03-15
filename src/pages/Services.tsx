@@ -25,7 +25,7 @@ import SeloEditorialBlur from "../assets/services/selo-editorial-design-blur-min
 
 import { ImageComponent } from "../components/ImageComponent";
 import { Grid } from "@mantine/core";
-import { GRAY_COLOR, OUTTER_GUTTER } from "../components/Navbar";
+import { OUTTER_GUTTER } from "../components/Navbar";
 
 const TEXT_COL_SPAN: number = 3;
 const IMAGE_COL_SPAN: number = 7;

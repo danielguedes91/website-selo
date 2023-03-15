@@ -101,9 +101,9 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
               justifyContent: "space-between",
             }}
           >
-            <h3 style={{ fontSize: "35px", fontWeight: "bold" }}>
+            <h3 style={{ fontSize: "24px", fontWeight: "bold" }}>
               STEPS <br />
-              FOR OFFICIAL GUARANTEE CERTIFICATION
+              <span>FOR OFFICIAL GUARANTEE CERTIFICATION</span>
             </h3>
             <text style={{ marginBottom: BOTTOM_HEIGHT }}>{content[selectedContent].text[language]}</text>
           </Grid.Col>
@@ -119,6 +119,7 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
                 >
                   <div
                     onClick={() => handleImageClick(key)}
+                    onMouseOver={() => handleImageClick(key)}
                     style={{ cursor: "pointer" }}
                   >
                     <img src={imgSrc} alt="" style={{ width: "100%" }} />

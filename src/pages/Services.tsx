@@ -171,7 +171,7 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
             span={IMAGE_COL_SPAN}
             style={{ padding: 0 }}
           >
-            <h2 style={{ fontWeight: "bold", fontSize: "35px" }}>SERVICES</h2>
+            <h2 style={{ fontWeight: "bold", fontSize: "24px" }}>SERVICES</h2>
           </Grid.Col>
         </Grid.Col>
         {Object.keys(content).map((key, index) => {
@@ -215,8 +215,9 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
                 <Grid.Col span={IMAGE_COL_SPAN} style={{ padding: 0 }}>
                   <ImageComponent
                     imgSrc={src}
-                    imgBlurSrc={index === 0 ? blurSrc : undefined}
+                    imgBlurSrc={blurSrc}
                     onClickHandler={() => onClickEvent(key)}
+                    disableMagnifier
                   />
                 </Grid.Col>
                 {orientation === "left" ? (
@@ -246,9 +247,10 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
                 >
                   <h3
                     style={{
-                      color: GRAY_COLOR,
+                      // color: GRAY_COLOR,
                       opacity: 0.5,
                       fontStyle: "italic",
+                      fontWeight: 500,
                       padding: 0,
                       display: "inline",
                     }}

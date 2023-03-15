@@ -155,7 +155,7 @@ export const Home: React.FC<HomeProps> = () => {
         style={{
           // marginTop: isHomeReached ? 90 : 1650,
           textAlign: "center",
-          fontSize: "80px",
+          fontSize: "64px",
           color: GRAY_COLOR,
           fontWeight: "bold",
         }}

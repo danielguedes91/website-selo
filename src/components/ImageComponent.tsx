@@ -7,6 +7,7 @@ interface ImageComponentProps {
   imgBlurSrc?: string;
   width?: string;
   onClickHandler?: () => void;
+  disableMagnifier?: boolean;
 }
 
 export const ImageComponent: React.FC<ImageComponentProps> = ({
@@ -14,6 +15,7 @@ export const ImageComponent: React.FC<ImageComponentProps> = ({
   imgBlurSrc,
   width,
   onClickHandler,
+  disableMagnifier,
 }) => {
   const [isBlur, setIsBlur] = React.useState<boolean>(false);
 
@@ -26,6 +28,7 @@ export const ImageComponent: React.FC<ImageComponentProps> = ({
       <ImageMagnifier
         src={isBlur && imgBlurSrc ? imgBlurSrc : imgSrc}
         width={width ?? "100%"}
+        disableMagnifier
       />
     </div>
   );

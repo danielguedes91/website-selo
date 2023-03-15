@@ -9,6 +9,7 @@ import ApplicationActivation from "../assets/steps/selo-authentication-applicati
 import StrategyStudy from "../assets/steps/selo-etiquette-strategy-study-min.png";
 import IdentityProposal from "../assets/steps/selo-signature-identity-proposal-min.png";
 import { GRID_MAX_WIDTH } from "../features/gridUtils";
+import { ImageComponent } from "../components/ImageComponent";
 
 type StepsProps = LanguageProp;
 
@@ -103,7 +104,7 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
           >
             <h3 style={{ fontSize: "24px", fontWeight: "bold" }}>
               STEPS <br />
-              <span>FOR OFFICIAL GUARANTEE CERTIFICATION</span>
+              <span style={{ fontStyle: 'italic', fontWeight: 500 }}>FOR OFFICIAL GUARANTEE CERTIFICATION</span>
             </h3>
             <text style={{ marginBottom: BOTTOM_HEIGHT }}>{content[selectedContent].text[language]}</text>
           </Grid.Col>
@@ -117,13 +118,13 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
                   span={3}
                   sx={{ display: "flex", flexDirection: "column" }}
                 >
-                  <div
+                  <ImageComponent imgSrc={imgSrc} onClickHandler={() => handleImageClick(key)} handleMouseEnter={() => handleImageClick(key)} />
+                  {/* <div
                     onClick={() => handleImageClick(key)}
                     onMouseOver={() => handleImageClick(key)}
                     style={{ cursor: "pointer" }}
                   >
-                    <img src={imgSrc} alt="" style={{ width: "100%" }} />
-                  </div>
+                  </div> */}
                   <div style={{ height: BOTTOM_HEIGHT }}>
                     <h3>{(selectedContent === 'default' || selectedContent === key) && title?.[language]}</h3>
                   </div>

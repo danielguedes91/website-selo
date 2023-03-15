@@ -150,6 +150,7 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
     return <span style={{ width: width }}>{content}</span>;
   };
 
+  const [tempShowingList, setTempShowingList] = React.useState<Array<string>>([]);
   const [showingList, setShowingList] = React.useState<Array<string>>([]);
 
   function onClickEvent(listKey: string) {
@@ -157,6 +158,17 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
     const eleAlreadyExists = Boolean(newList.find((key) => key === listKey)); // verificar se o elemento ja existe na lista
     newList.push(listKey); // adicionar o elemento
     !eleAlreadyExists && setShowingList(newList);
+  }
+
+  function onMouseEnterEvent(listKey: string, mouseEventValue: boolean) {
+    const index = tempShowingList.findIndex((value) => listKey === value);
+    const newList = [...tempShowingList];
+    if (mouseEventValue === true) {
+      index === -1 && newList.push(listKey);
+    } else {
+      index !== -1 && newList.splice(index, 1);
+    }
+    setTempShowingList(newList);
   }
 
   return (
@@ -175,7 +187,9 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
           </Grid.Col>
         </Grid.Col>
         {Object.keys(content).map((key, index) => {
-          let isTextShowing = showingList.find(
+          let isTextShowing = tempShowingList.find(
+            (listElement) => listElement === key
+          ) || showingList.find(
             (listElement) => listElement === key
           )
             ? true
@@ -217,6 +231,7 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
                     imgSrc={src}
                     imgBlurSrc={blurSrc}
                     onClickHandler={() => onClickEvent(key)}
+                    handleMouseEnter={(value: boolean) => onMouseEnterEvent(key, value)}
                     disableMagnifier
                   />
                 </Grid.Col>
@@ -247,7 +262,6 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
                 >
                   <h3
                     style={{
-                      // color: GRAY_COLOR,
                       opacity: 0.5,
                       fontStyle: "italic",
                       fontWeight: 500,

@@ -36,25 +36,25 @@ export const Footer: React.FC = () => {
     <div style={styles.main}>
       <div style={styles.mainContainer}>
         {/* TODO: replace with domain from website */}
-        <a href="https://facebook.com/selovisualstudio/" target="_blank" rel="noreferrer" style={styles.anchor}>
+        <a className="footer-link" href="https://facebook.com/selovisualstudio/" target="_blank" rel="noreferrer" style={styles.anchor}>
           SELO VISUAL STUDIO
         </a>
 
-        <a href="https://grafemadesign.com/" target="_blank" rel="noreferrer" style={styles.anchor}>
+        <a className="footer-link" href="https://grafemadesign.com/" target="_blank" rel="noreferrer" style={styles.anchor}>
           BY GRAFEMA DESIGN
         </a>
 
-        <a href="https://www.facebook.com/selovisualstudio" target="_blank" rel="noreferrer" style={styles.anchor}>
+        <a className="footer-link" href="https://www.facebook.com/selovisualstudio" target="_blank" rel="noreferrer" style={styles.anchor}>
           FACEBOOK
         </a>
-        <a href="https://vimeo.com/selovisuals" target="_blank" rel="noreferrer" style={styles.anchor}>
+        <a className="footer-link" href="https://vimeo.com/selovisuals" target="_blank" rel="noreferrer" style={styles.anchor}>
           VIMEO
         </a>
 
-        <a href="https:www.behance.net/selovisuals" target="_blank" rel="noreferrer" style={styles.anchor}>
+        <a className="footer-link" href="https:www.behance.net/selovisuals" target="_blank" rel="noreferrer" style={styles.anchor}>
           BEHANCE
         </a>
-        <a href="https://www.instagram.com/selovisuals/" target="_blank" rel="noreferrer" style={styles.anchor}>
+        <a className="footer-link" href="https://www.instagram.com/selovisuals/" target="_blank" rel="noreferrer" style={styles.anchor}>
           INSTAGRAM
         </a>
       </div>

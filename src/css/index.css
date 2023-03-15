@@ -45,3 +45,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.footer-link:hover {
+  font-weight: bolder;
+}

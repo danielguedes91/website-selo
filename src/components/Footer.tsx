@@ -35,8 +35,8 @@ export const Footer: React.FC = () => {
   return (
     <div style={styles.main}>
       <div style={styles.mainContainer}>
-        {/* TODO: replace with domain from website */}
-        <a className="footer-link" href="https://facebook.com/selovisualstudio/" target="_blank" rel="noreferrer" style={styles.anchor}>
+
+        <a className="footer-link" href="#home" rel="noreferrer" style={styles.anchor}>
           SELO VISUAL STUDIO
         </a>
 

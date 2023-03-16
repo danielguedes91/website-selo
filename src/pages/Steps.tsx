@@ -20,7 +20,7 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
       justifyContent: "center",
       alignItems: "center",
       width: "100%",
-      paddingBottom: "100px",
+      // paddingBottom: "100px",
     },
     gridContainer: {
       display: "flex",
@@ -51,17 +51,7 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
         pt: "Fazemos perguntas, ouvimos e aprendemos. Vamos ao fundo da questão para construir a estratégia mais precisa e eficaz.",
       },
     },
-    auth: {
-      text: {
-        en: "With your team at every step of the way, we create the tools to find your uniqueness, confirm and establish your brand’s authentic self.",
-        pt: "Com a sua equipa em cada passo do caminho, criamos as ferramentas para encontrar a singularidade, confirmar e estabelecer a unicidade da sua marca.",
-      },
-      title: {
-        pt: "AUTENTICAÇÃO, APLICAÇÃO E ATIVAÇÃO",
-        en: "AUTHENTICATION, APPLICATION AND ACTIVATION",
-      },
-      imgSrc: ApplicationActivation,
-    },
+
     etiquette: {
       text: {
         pt: "Fazemos perguntas, ouvimos e aprendemos. Vamos ao fundo da questão para construir a estratégia mais precisa e eficaz.",
@@ -85,6 +75,17 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
       },
       imgSrc: IdentityProposal,
     },
+    auth: {
+      text: {
+        en: "With your team at every step of the way, we create the tools to find your uniqueness, confirm and establish your brand’s authentic self.",
+        pt: "Com a sua equipa em cada passo do caminho, criamos as ferramentas para encontrar a singularidade, confirmar e estabelecer a unicidade da sua marca.",
+      },
+      title: {
+        pt: "AUTENTICAÇÃO, APLICAÇÃO E ATIVAÇÃO",
+        en: "AUTHENTICATION, APPLICATION AND ACTIVATION",
+      },
+      imgSrc: ApplicationActivation,
+    },
   };
 
   const handleImageClick = (key: ContentKey) => setSelectedContent(key);
@@ -104,9 +105,13 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
           >
             <h3 style={{ fontSize: "24px", fontWeight: "bold" }}>
               STEPS <br />
-              <span style={{ fontStyle: 'italic', fontWeight: 500 }}>FOR OFFICIAL GUARANTEE CERTIFICATION</span>
+              <span style={{ fontStyle: "italic", fontWeight: 500 }}>
+                FOR OFFICIAL GUARANTEE CERTIFICATION
+              </span>
             </h3>
-            <text style={{ marginBottom: BOTTOM_HEIGHT }}>{content[selectedContent].text[language]}</text>
+            <text style={{ marginBottom: BOTTOM_HEIGHT }}>
+              {content[selectedContent].text[language]}
+            </text>
           </Grid.Col>
 
           {(Object.keys(content) as Array<ContentKey>).map(
@@ -116,49 +121,61 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
               return index <= 3 && imgSrc ? (
                 <Grid.Col
                   span={3}
-                  sx={{ display: "flex", flexDirection: "column" }}
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    padding: "12px",
+                  }}
                 >
-                  <ImageComponent imgSrc={imgSrc} onClickHandler={() => handleImageClick(key)} handleMouseEnter={() => handleImageClick(key)} />
-                  {/* <div
-                    onClick={() => handleImageClick(key)}
-                    onMouseOver={() => handleImageClick(key)}
-                    style={{ cursor: "pointer" }}
-                  >
-                  </div> */}
+                  <ImageComponent
+                    imgSrc={imgSrc}
+                    onClickHandler={() => handleImageClick(key)}
+                    handleMouseEnter={() => handleImageClick(key)}
+                  />
                   <div style={{ height: BOTTOM_HEIGHT }}>
-                    <h3>{(selectedContent === 'default' || selectedContent === key) && title?.[language]}</h3>
+                    <h3>
+                      {(selectedContent === "default" ||
+                        selectedContent === key) &&
+                        title?.[language]}
+                    </h3>
                   </div>
                 </Grid.Col>
               ) : null;
             }
           )}
         </Grid.Col>
-        <Grid.Col span={12}>
+        <Grid.Col span={12} sx={{ marginTop: '400px' }}>
           <h2
             style={{
               fontSize: "55px",
               textAlign: "center",
-              fontStyle: 'italic'
+              fontStyle: "italic",
+              margin: 0,
             }}
           >
             ROADS?
           </h2>
           <h2
-          style={{
-            fontSize: "54px",
-            
-            textAlign: "center",
-            fontStyle: 'italic'
-          }}>
-            Where we're going, <br />
-            we don't need roads!
+            style={{
+              fontSize: "54px",
+              textAlign: "center",
+              fontStyle: "italic",
+              fontWeight: 500,
+              margin: 0,
+            }}
+          >
+            WHERE WE'RE GOING, <br />
+            WE DON'T NEED ROADS!
           </h2>
           <h5
-          style={{
+            style={{
               fontSize: "25px",
               textAlign: "center",
-              fontStyle: 'italic'
-            }}>Dr. Emmett Brown, Back to the future</h5>
+              fontStyle: "italic",
+            }}
+          >
+            <span style={{ fontWeight: 500, fontStyle: 'italic' }}>DR.EMMETT BROWN, BACK TO THE FUTURE</span> 
+          </h5>
         </Grid.Col>
       </Grid>
     </div>

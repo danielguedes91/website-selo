@@ -1,5 +1,5 @@
 import React from "react";
-import { LanguageProp } from "../MainPage";
+import { Language, LanguageProp } from "../MainPage";
 
 import SeloLogoGrey from "../assets/home/selo-logo-grey.svg";
 
@@ -14,7 +14,7 @@ import { Grid } from "@mantine/core";
 // const FACTOR_WIDTH = 270;
 type HomeProps = LanguageProp;
 
-export const Home: React.FC<HomeProps> = () => {
+export const Home: React.FC<HomeProps> = ({ language }) => {
   const [isLogoShow, setIsLogoShow] = React.useState<boolean>(false);
   const [isTextShow, setIsTextShow] = React.useState<boolean>(false);
   // const [isTransition, setIsTransition] = React.useState<boolean>(false);
@@ -58,6 +58,41 @@ export const Home: React.FC<HomeProps> = () => {
       bottom: "25vh",
       marginTop: "100px",
       marginBottom: "100px",
+    },
+  };
+
+  const content: Record<string, Record<Language, React.ReactNode>> = {
+    content_01: {
+      en: (
+        <>
+          <span>YOU DON'T ACHIEVE YOUR DREAMS</span>
+          <br />
+          <span>BY PLAYING IT SAFE</span>
+        </>
+      ),
+      pt: (
+        <>
+          <span>VOCÊ NÃO ALCANÇA OS SEUS SONHOS</span>
+          <br />
+          <span>JOGANDO SEGURO</span>
+        </>
+      ),
+    },
+    content_02: {
+      en: (
+        <>
+          <span>STORIES MAKE MAGIC,</span>
+          <br />
+          <span>NOT WANDS.</span>
+        </>
+      ),
+      pt: (
+        <>
+          <span>HISTÓRIAS FAZEM MAGIA,</span>
+          <br />
+          <span>NÃO VARINHAS</span>
+        </>
+      ),
     },
   };
 
@@ -128,8 +163,8 @@ export const Home: React.FC<HomeProps> = () => {
               height: isLogoShow ? "100%" : 0,
               overflow: "hidden",
               transition: "all 400ms ease-in-out",
-              display: 'flex',
-              alignItems: 'flex-end'
+              display: "flex",
+              alignItems: "flex-end",
             }}
           >
             <div style={{ marginBottom: 80 }}>
@@ -146,9 +181,7 @@ export const Home: React.FC<HomeProps> = () => {
             fontWeight: "bold",
           }}
         >
-          <span>YOU DON'T ACHIEVE YOUR DREAMS</span>
-          <br />
-          <span>BY PLAYING IT SAFE</span>
+          {content.content_01[language]}
         </div>
       </div>
       <div
@@ -160,9 +193,7 @@ export const Home: React.FC<HomeProps> = () => {
           fontWeight: "bold",
         }}
       >
-        <span>STORIES MAKE MAGIC,</span>
-        <br />
-        <span>NOT WANDS.</span>
+        {content.content_02[language]}
       </div>
     </div>
   );

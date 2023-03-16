@@ -49,3 +49,6 @@ code {
 .footer-link:hover {
   font-weight: bolder;
 }
+.navbar-link:hover {
+  font-weight: normal !important;
+}

@@ -20,7 +20,7 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
       justifyContent: "center",
       alignItems: "center",
       width: "100%",
-      paddingBottom: "100px",
+      // paddingBottom: "100px",
     },
     gridContainer: {
       display: "flex",
@@ -51,17 +51,7 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
         pt: "Fazemos perguntas, ouvimos e aprendemos. Vamos ao fundo da questão para construir a estratégia mais precisa e eficaz.",
       },
     },
-    auth: {
-      text: {
-        en: "With your team at every step of the way, we create the tools to find your uniqueness, confirm and establish your brand’s authentic self.",
-        pt: "Com a sua equipa em cada passo do caminho, criamos as ferramentas para encontrar a singularidade, confirmar e estabelecer a unicidade da sua marca.",
-      },
-      title: {
-        pt: "AUTENTICAÇÃO, APLICAÇÃO E ATIVAÇÃO",
-        en: "AUTHENTICATION, APPLICATION AND ACTIVATION",
-      },
-      imgSrc: ApplicationActivation,
-    },
+
     etiquette: {
       text: {
         pt: "Fazemos perguntas, ouvimos e aprendemos. Vamos ao fundo da questão para construir a estratégia mais precisa e eficaz.",
@@ -84,6 +74,17 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
         en: "SIGNATURE, IDENTITY & PROPOSAL",
       },
       imgSrc: IdentityProposal,
+    },
+    auth: {
+      text: {
+        en: "With your team at every step of the way, we create the tools to find your uniqueness, confirm and establish your brand’s authentic self.",
+        pt: "Com a sua equipa em cada passo do caminho, criamos as ferramentas para encontrar a singularidade, confirmar e estabelecer a unicidade da sua marca.",
+      },
+      title: {
+        pt: "AUTENTICAÇÃO, APLICAÇÃO E ATIVAÇÃO",
+        en: "AUTHENTICATION, APPLICATION AND ACTIVATION",
+      },
+      imgSrc: ApplicationActivation,
     },
   };
 
@@ -136,19 +137,17 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
               return index <= 3 && imgSrc ? (
                 <Grid.Col
                   span={3}
-                  sx={{ display: "flex", flexDirection: "column" }}
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    padding: "12px",
+                  }}
                 >
                   <ImageComponent
                     imgSrc={imgSrc}
                     onClickHandler={() => handleImageClick(key)}
                     handleMouseEnter={() => handleImageClick(key)}
                   />
-                  {/* <div
-                    onClick={() => handleImageClick(key)}
-                    onMouseOver={() => handleImageClick(key)}
-                    style={{ cursor: "pointer" }}
-                  >
-                  </div> */}
                   <div style={{ height: BOTTOM_HEIGHT }}>
                     <h3>
                       {(selectedContent === "default" ||
@@ -161,12 +160,13 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
             }
           )}
         </Grid.Col>
-        <Grid.Col span={12}>
+        <Grid.Col span={12} sx={{ marginTop: '400px' }}>
           <h2
             style={{
               fontSize: "55px",
               textAlign: "center",
               fontStyle: "italic",
+              margin: 0,
             }}
           >
             ROADS?
@@ -174,13 +174,14 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
           <h2
             style={{
               fontSize: "54px",
-
               textAlign: "center",
               fontStyle: "italic",
+              fontWeight: 500,
+              margin: 0,
             }}
           >
-            Where we're going, <br />
-            we don't need roads!
+            WHERE WE'RE GOING, <br />
+            WE DON'T NEED ROADS!
           </h2>
           <h5
             style={{
@@ -189,7 +190,7 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
               fontStyle: "italic",
             }}
           >
-            Dr. Emmett Brown, Back to the future
+            <span style={{ fontWeight: 500, fontStyle: 'italic' }}>DR.EMMETT BROWN, BACK TO THE FUTURE</span> 
           </h5>
         </Grid.Col>
       </Grid>

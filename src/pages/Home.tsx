@@ -115,7 +115,7 @@ export const Home: React.FC<HomeProps> = ({ language }) => {
             flexDirection: "row",
             padding: 0,
             position: "relative",
-            bottom: "-15vw",
+            bottom: "-8vw",
           }}
         >
           <Grid.Col

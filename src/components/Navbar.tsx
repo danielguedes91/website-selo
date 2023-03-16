@@ -100,13 +100,14 @@ export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
         {links.map((item, index) => (
           <div key={`nav-link-${index}`}>
             <a
+              className="navbar-link"
               key={`content-${language}-${index}`}
               href={item.href}
               style={{
                 textDecoration: "none",
                 color: isSmallScreen ? "white" : GRAY_COLOR,
-                fontSize: isSmallScreen ? "3rem" : "1rem",
-                fontWeight: 500,
+                fontSize: isSmallScreen ? "3rem" : "15px",
+                fontWeight: 'bold',
               }}
               onClick={() => handleMenuClick(item.href)}
             >

@@ -66,6 +66,11 @@ const App: React.FC = () => {
           radius="xl"
           size="lg"
           sx={buttonStyles}
+          type="button"
+          onClick={(e) => {
+            e.preventDefault();
+            window.location.href = 'mailto:hello@selovisualstudio.com';
+          }}
         >
           {language === "en" ? "Get in touch" : "Entrar em contato"}
         </Button>
@@ -82,8 +87,6 @@ const App: React.FC = () => {
       <Services language={language} />
       <Steps language={language} />
       <ContactSection />
-      {/* <Connect language={language} /> */}
-
       <Footer />
     </div>
   );

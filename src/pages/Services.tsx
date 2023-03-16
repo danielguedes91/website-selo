@@ -1,6 +1,6 @@
 import React from "react";
 
-import { LanguageProp } from "../MainPage";
+import { Language, LanguageProp } from "../MainPage";
 
 import { GRID_MAX_WIDTH } from "../features/gridUtils";
 
@@ -43,7 +43,7 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
         alignment: "left" | "right";
         style?: React.CSSProperties;
       };
-      subtitle: string;
+      subtitle: Record<Language, string>;
     }
   > = {
     branding: {
@@ -54,7 +54,10 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
         blurSrc: SeloBrandingBlur,
         alignment: "right",
       },
-      subtitle: "BRANDING",
+      subtitle: {
+        en: "BRANDING",
+        pt: "BRANDING",
+      },
     },
 
     creativeConsultancy: {
@@ -65,7 +68,10 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
         blurSrc: SeloConsultancyBlur,
         alignment: "left",
       },
-      subtitle: "CREATIVE CONSULTANCY",
+      subtitle: {
+        en: "CREATIVE CONSULTANCY",
+        pt: "CONSULTORIA CRIATIVA ",
+      },
     },
 
     stereoProduction: {
@@ -76,7 +82,10 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
         blurSrc: SeloStereoBlur,
         alignment: "right",
       },
-      subtitle: "STEREO PRODUCTION",
+      subtitle: {
+        en: "STEREO PRODUCTION",
+        pt: "PRODUÇÃO STEREO",
+      },
     },
 
     visualProduction: {
@@ -91,7 +100,10 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
         blurSrc: SeloVisualBlur,
         alignment: "left",
       },
-      subtitle: "VISUAL PRODUCTION",
+      subtitle: {
+        en: "VISUAL PRODUCTION",
+        pt: "PRODUÇÃO DE IMAGEM ",
+      },
     },
 
     productPhotography: {
@@ -102,7 +114,10 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
         blurSrc: SeloPhotographyBlur,
         alignment: "right",
       },
-      subtitle: "PRODUCT PHOTOGRAPHY",
+      subtitle: {
+        en: "PRODUCT PHOTOGRAPHY",
+        pt: "FOTOGRAFIA DE PRODUTO",
+      },
     },
 
     editorialDesign: {
@@ -113,7 +128,10 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
         blurSrc: SeloEditorialBlur,
         alignment: "left",
       },
-      subtitle: "EDITORIAL DESIGN",
+      subtitle: {
+        en: "EDITORIAL DESIGN",
+        pt: "DESIGN EDITORIAL",
+      },
     },
   };
 
@@ -171,6 +189,11 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
     setTempShowingList(newList);
   }
 
+  const title: Record<Language, string> = {
+    en: 'SERVICES',
+    pt: 'SERVIÇOS'
+  }
+
   return (
     <div id="services" style={styles.main}>
       <Grid style={{ ...styles.gridContainer, padding: 0 }}>
@@ -183,7 +206,7 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
             span={IMAGE_COL_SPAN}
             style={{ padding: 0 }}
           >
-            <h2 style={{ fontWeight: "bold", fontSize: "24px" }}>SERVICES</h2>
+            <h2 style={{ fontWeight: "bold", fontSize: "24px" }}>{title[language]}</h2>
           </Grid.Col>
         </Grid.Col>
         {Object.keys(content).map((key, index) => {
@@ -269,7 +292,7 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
                       display: "inline",
                     }}
                   >
-                    {subtitle}
+                    {subtitle[language]}
                   </h3>
                 </Grid.Col>
               </Grid.Col>

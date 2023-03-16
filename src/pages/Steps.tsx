@@ -90,6 +90,25 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
   const handleImageClick = (key: ContentKey) => setSelectedContent(key);
   const BOTTOM_HEIGHT = 50;
 
+  const leftTitle: Record<Language, React.ReactNode> = {
+    en: (
+      <>
+        STEPS <br />
+        <span style={{ fontStyle: "italic", fontWeight: 500 }}>
+          FOR OFFICIAL GUARANTEE CERTIFICATION
+        </span>
+      </>
+    ),
+    pt: (
+      <>
+        DEGRAUS <br />
+        <span style={{ fontStyle: "italic", fontWeight: 500 }}>
+          DE CERTIFICAÇÃO OFICIAL DE GARANTIA
+        </span>
+      </>
+    ),
+  };
+
   return (
     <div id="steps" style={styles.main}>
       <Grid style={styles.gridContainer}>
@@ -103,10 +122,11 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
             }}
           >
             <h3 style={{ fontSize: "24px", fontWeight: "bold" }}>
-              STEPS <br />
-              <span style={{ fontStyle: 'italic', fontWeight: 500 }}>FOR OFFICIAL GUARANTEE CERTIFICATION</span>
+              {leftTitle[language]}
             </h3>
-            <text style={{ marginBottom: BOTTOM_HEIGHT }}>{content[selectedContent].text[language]}</text>
+            <text style={{ marginBottom: BOTTOM_HEIGHT }}>
+              {content[selectedContent].text[language]}
+            </text>
           </Grid.Col>
 
           {(Object.keys(content) as Array<ContentKey>).map(
@@ -118,7 +138,11 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
                   span={3}
                   sx={{ display: "flex", flexDirection: "column" }}
                 >
-                  <ImageComponent imgSrc={imgSrc} onClickHandler={() => handleImageClick(key)} handleMouseEnter={() => handleImageClick(key)} />
+                  <ImageComponent
+                    imgSrc={imgSrc}
+                    onClickHandler={() => handleImageClick(key)}
+                    handleMouseEnter={() => handleImageClick(key)}
+                  />
                   {/* <div
                     onClick={() => handleImageClick(key)}
                     onMouseOver={() => handleImageClick(key)}
@@ -126,7 +150,11 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
                   >
                   </div> */}
                   <div style={{ height: BOTTOM_HEIGHT }}>
-                    <h3>{(selectedContent === 'default' || selectedContent === key) && title?.[language]}</h3>
+                    <h3>
+                      {(selectedContent === "default" ||
+                        selectedContent === key) &&
+                        title?.[language]}
+                    </h3>
                   </div>
                 </Grid.Col>
               ) : null;
@@ -138,27 +166,31 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
             style={{
               fontSize: "55px",
               textAlign: "center",
-              fontStyle: 'italic'
+              fontStyle: "italic",
             }}
           >
             ROADS?
           </h2>
           <h2
-          style={{
-            fontSize: "54px",
-            
-            textAlign: "center",
-            fontStyle: 'italic'
-          }}>
+            style={{
+              fontSize: "54px",
+
+              textAlign: "center",
+              fontStyle: "italic",
+            }}
+          >
             Where we're going, <br />
             we don't need roads!
           </h2>
           <h5
-          style={{
+            style={{
               fontSize: "25px",
               textAlign: "center",
-              fontStyle: 'italic'
-            }}>Dr. Emmett Brown, Back to the future</h5>
+              fontStyle: "italic",
+            }}
+          >
+            Dr. Emmett Brown, Back to the future
+          </h5>
         </Grid.Col>
       </Grid>
     </div>

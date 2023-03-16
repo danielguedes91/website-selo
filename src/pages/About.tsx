@@ -21,6 +21,11 @@ export const About: React.FC<AboutProps> = ({ language }) => {
     Criatividade e paixão são os aspectos principais que definem a história, os valores e pilares da nossa organização. Exercitamos o storytelling para pintar as superfícies que nos são dadas, do simples ao complexo, dos confortos aos desconfortos, da terra que nascemos ao céu que olhamos.</>,
   };
 
+  const title: Record<Language, string> = {
+    en: 'ABOUT US',
+    pt: 'SOBRE NÓS'
+  }
+
   const styles: Record<string, React.CSSProperties> = {
     main: {
       display: "flex",
@@ -41,7 +46,7 @@ export const About: React.FC<AboutProps> = ({ language }) => {
     <div style={styles.main} id="about">
       <div style={styles.textContainer}>
         <div style={{ width: "calc(50% - 20px)" }}>
-          <h2 style={{ fontSize: '24px' }}>ABOUT US</h2>
+          <h2 style={{ fontSize: '24px' }}>{title[language]}</h2>
           <span>{text[language]}</span>
         </div>
       </div>

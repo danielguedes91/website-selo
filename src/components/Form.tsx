@@ -4,11 +4,11 @@ import { LanguageProp } from "../MainPage";
 
 import { useForm } from "@mantine/form";
 import { TextInput, Button, Group, Sx } from "@mantine/core";
-import { GRAY_COLOR, OUTTER_GUTTER } from "./Navbar";
+import { OUTTER_GUTTER } from "./Navbar";
 
 type FormProps = LanguageProp;
 
-export const Form: React.FC<FormProps> = () => {
+export const Form: React.FC<FormProps> = ({ language }) => {
   const form = useForm({
     initialValues: {
       name: "",
@@ -29,8 +29,24 @@ export const Form: React.FC<FormProps> = () => {
     borderBottom: "1px solid black",
   };
 
+  const buttonStyles: Sx = {
+    transition: "all 400ms",
+    margin: "50px 0px",
+    "&:hover": {
+      color: "white",
+      // borderWidth: "100px",
+      boxShadow: "inset 0 0 0 40px black",
+    },
+  };
+
   return (
-    <div style={{ display: "flex", justifyContent: "center", width: "100vw" }}>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        width: "80%",
+      }}
+    >
       <form
         onSubmit={form.onSubmit((values) =>
           window.alert(`
@@ -89,14 +105,17 @@ export const Form: React.FC<FormProps> = () => {
         <Group position="center" mt="xl">
           <Button
             variant="outline"
-            type="submit"
-            sx={{
-              borderColor: GRAY_COLOR,
-              color: GRAY_COLOR,
-              borderRadius: "18px",
+            color="dark"
+            radius="xl"
+            size="lg"
+            sx={buttonStyles}
+            type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              window.location.href = "mailto:hello@selovisualstudio.com";
             }}
           >
-            GET IN TOUCH
+            {language === "en" ? "Get in touch" : "Entrar em contato"}
           </Button>
         </Group>
       </form>

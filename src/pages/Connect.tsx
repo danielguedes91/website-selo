@@ -11,7 +11,6 @@ export const Connect: React.FC<ConnectProps> = ({ language }) => {
   const styles: Record<string, React.CSSProperties> = {
     main: {
       display: "flex",
-      justifyContent: "center",
       alignItems: "center",
       width: "100%",
     },
@@ -19,7 +18,12 @@ export const Connect: React.FC<ConnectProps> = ({ language }) => {
   return (
     <div id="connect" style={styles.main}>
       <Grid
-        sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          width: "100%",
+        }}
       >
         <Grid.Col span={12}>
           <h3>Fill out the form or email us at</h3>

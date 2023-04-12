@@ -285,7 +285,7 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
                 >
                   <h3
                     style={{
-                      opacity: 0.5,
+                      opacity: 1,
                       fontStyle: "italic",
                       fontWeight: 500,
                       padding: 0,

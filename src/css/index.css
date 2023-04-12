@@ -46,8 +46,12 @@ code {
     monospace;
 }
 
+.footer-link {
+  text-decoration: none;
+}
 .footer-link:hover {
-  font-weight: bolder;
+  text-decoration: underline !important;
+  text-underline-offset: 4px;
 }
 .navbar-link:hover {
   font-weight: normal !important;

@@ -7,6 +7,8 @@ import { useMediaQuery } from "@mantine/hooks";
 import { ActionIcon, Drawer } from "@mantine/core";
 import { Burger } from "@mantine/core";
 
+import '../css/App.css';
+
 interface NavbarProps {
   handleClick: () => void;
 }
@@ -72,7 +74,7 @@ export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
       display: "flex",
       flexDirection: "row",
       fontSize: "15px",
-      fontWeight: "bold", // TODO: check import font files
+      fontWeight: "bold",
       gap: "30px",
     },
     languageButton: {
@@ -91,28 +93,25 @@ export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
   const [open, setOpen] = React.useState<boolean>(false);
   const toggleOpen = () => setOpen((prevValue) => !prevValue);
 
-  // const [menuShow, setMenuShow] = React.useState<boolean>(false);
-  // const toggleMenuShow = () => setMenuShow((prevValue) => !prevValue);
-
   const MenuComponents = () => {
     return (
       <>
         {links.map((item, index) => (
-          <div key={`nav-link-${index}`} style={{ width: '80px' }}>
-            <a
-              className="navbar-link"
-              key={`content-${language}-${index}`}
-              href={item.href}
-              style={{
-                textDecoration: "none",
-                color: isSmallScreen ? "white" : GRAY_COLOR,
-                fontSize: isSmallScreen ? "3rem" : "15px",
-                fontWeight: 'bold',
-              }}
-              onClick={() => handleMenuClick(item.href)}
-            >
-              {item.content[language].toUpperCase()}
-            </a>
+          <div key={`nav-link-${index}`} className="hover-link">
+              <a
+                className="navbar-link"
+                key={`content-${language}-${index}`}
+                href={item.href}
+                style={{
+                  textDecoration: "none",
+                  color: isSmallScreen ? "white" : GRAY_COLOR,
+                  fontSize: isSmallScreen ? "3rem" : "15px",
+                  fontWeight: "normal",
+                }}
+                onClick={() => handleMenuClick(item.href)}
+              >
+                {item.content[language].toUpperCase()}
+              </a>
           </div>
         ))}
 

@@ -191,7 +191,7 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
             }
           )}
         </Grid.Col>
-        <Grid.Col span={12} sx={{ marginTop: "400px" }}>
+        <Grid.Col span={12} sx={{ marginTop: "200px" }}>
           <h2
             style={{
               fontSize: "55px",

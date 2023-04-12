@@ -24,12 +24,6 @@ export const Footer: React.FC = () => {
     },
     logo: {},
     links: {},
-    anchorContainer: {
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      width: '100%',
-    },
     anchor: {
       textDecoration: "none",
       color: GRAY_COLOR,

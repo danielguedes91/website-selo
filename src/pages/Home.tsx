@@ -29,7 +29,7 @@ export const Home: React.FC<HomeProps> = ({ language }) => {
     //   setIsTransition(false);
     // } else setIsTransition(true);
 
-    if (window.scrollY >= 1000) {
+    if (window.scrollY >= 1400) {
       setIsTextShow(true);
     } else setIsTextShow(false);
 

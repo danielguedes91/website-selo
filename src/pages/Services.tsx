@@ -168,7 +168,9 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
     return <span style={{ width: width }}>{content}</span>;
   };
 
-  const [tempShowingList, setTempShowingList] = React.useState<Array<string>>([]);
+  const [tempShowingList, setTempShowingList] = React.useState<Array<string>>(
+    []
+  );
   const [showingList, setShowingList] = React.useState<Array<string>>([]);
 
   function onClickEvent(listKey: string) {
@@ -190,33 +192,34 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
   }
 
   const title: Record<Language, string> = {
-    en: 'SERVICES',
-    pt: 'SERVIÇOS'
-  }
+    en: "SERVICES",
+    pt: "SERVIÇOS",
+  };
 
   return (
     <div id="services" style={styles.main}>
       <Grid style={{ ...styles.gridContainer, padding: 0 }}>
-        <Grid.Col span={12} sx={{ display: "flex", width: "100%", justifyContent: "space-between" }}>
-          <Grid.Col
-            span={TEXT_COL_SPAN}
-            style={{ padding: 0 }}
-          />
-          <Grid.Col
-            span={IMAGE_COL_SPAN}
-            style={{ padding: 0 }}
-          >
-            <h2 style={{ fontWeight: "bold", fontSize: "24px" }}>{title[language]}</h2>
+        <Grid.Col
+          span={12}
+          sx={{
+            display: "flex",
+            width: "100%",
+            justifyContent: "space-between",
+          }}
+        >
+          <Grid.Col span={TEXT_COL_SPAN} style={{ padding: 0 }} />
+          <Grid.Col span={IMAGE_COL_SPAN} style={{ padding: 0 }}>
+            <h2 style={{ fontWeight: "bold", fontSize: "24px" }}>
+              {title[language]}
+            </h2>
           </Grid.Col>
         </Grid.Col>
         {Object.keys(content).map((key, index) => {
-          let isTextShowing = tempShowingList.find(
-            (listElement) => listElement === key
-          ) || showingList.find(
-            (listElement) => listElement === key
-          )
-            ? true
-            : false;
+          let isTextShowing =
+            tempShowingList.find((listElement) => listElement === key) ||
+            showingList.find((listElement) => listElement === key)
+              ? true
+              : false;
           const { en, pt, subtitle } = content[key];
           const textContent = language === "en" ? en : pt;
           const { src, blurSrc, alignment: orientation } = content[key].img;
@@ -254,7 +257,9 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
                     imgSrc={src}
                     imgBlurSrc={blurSrc}
                     onClickHandler={() => onClickEvent(key)}
-                    handleMouseEnter={(value: boolean) => onMouseEnterEvent(key, value)}
+                    handleMouseEnter={(value: boolean) =>
+                      onMouseEnterEvent(key, value)
+                    }
                     disableMagnifier
                   />
                 </Grid.Col>

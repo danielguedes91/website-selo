@@ -156,7 +156,7 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
             <h3 style={{ fontSize: "24px", fontWeight: "bold" }}>
               {leftTitle[language]}
             </h3>
-            <text style={{ marginBottom: BOTTOM_HEIGHT }}>
+            <text style={{ marginBottom: BOTTOM_HEIGHT + 7 }}>
               {content[selectedContent].text[language]}
             </text>
           </Grid.Col>

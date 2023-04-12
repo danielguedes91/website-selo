@@ -37,6 +37,37 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
   const [selectedContent, setSelectedContent] =
     React.useState<ContentKey>("default");
 
+  const mainContent: Record<
+    "roads" | "text" | "signature",
+    Record<Language, React.ReactNode>
+  > = {
+    roads: {
+      en: <>ROADS?</>,
+      pt: <>ESTRADAS?</>,
+    },
+    text: {
+      en: (
+        <>
+          WHERE WE'RE GOING, <br />
+          WE DON'T NEED ROADS!
+        </>
+      ),
+      pt: (
+        <>
+          AONDE VAMOS, <br /> NÃO PRECISAMOS DE ESTRADAS!
+        </>
+      ),
+    },
+    signature: {
+      en: <>
+        DR.EMMETT BROWN, BACK TO THE FUTURE
+      </>,
+      pt: <>
+        DR.EMMETT BROWN, BACK TO THE FUTURE
+      </>
+    },
+  };
+
   const content: Record<
     ContentKey,
     {
@@ -160,7 +191,7 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
             }
           )}
         </Grid.Col>
-        <Grid.Col span={12} sx={{ marginTop: '400px' }}>
+        <Grid.Col span={12} sx={{ marginTop: "400px" }}>
           <h2
             style={{
               fontSize: "55px",
@@ -169,7 +200,7 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
               margin: 0,
             }}
           >
-            ROADS?
+            {mainContent.roads[language]}
           </h2>
           <h2
             style={{
@@ -179,10 +210,7 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
               fontWeight: 500,
               margin: 0,
             }}
-          >
-            WHERE WE'RE GOING, <br />
-            WE DON'T NEED ROADS!
-          </h2>
+          >{mainContent.text[language]}</h2>
           <h5
             style={{
               fontSize: "25px",
@@ -190,7 +218,9 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
               fontStyle: "italic",
             }}
           >
-            <span style={{ fontWeight: 500, fontStyle: 'italic' }}>DR.EMMETT BROWN, BACK TO THE FUTURE</span> 
+            <span style={{ fontWeight: 500, fontStyle: "italic" }}>
+              {mainContent.signature[language]}
+            </span>
           </h5>
         </Grid.Col>
       </Grid>

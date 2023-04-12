@@ -47,7 +47,7 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
     }
   > = {
     branding: {
-      pt: `Trabalhamos com o propósito de criar marcas humanas(como tu, como nós). Abordamos a criação de marcas de forma holística em que a forma informa a função.`,
+      pt: `Trabalhamos com o propósito de criar marcas humanas (como tu, como nós). Abordamos a criação de marcas de forma holística em que a forma informa a função.`,
       en: `We are committed to creating brands that are human (like you, like us). We approach brand building from an holistic perspective in which form infuses function.`,
       img: {
         src: SeloBranding,

@@ -20,43 +20,108 @@ export const Footer: React.FC = () => {
       display: "flex",
       justifyContent: "space-between",
       alignItems: "center",
-      fontSize: '15px',
-      
+      fontSize: "15px",
     },
     logo: {},
-    links: {
+    links: {},
+    anchorContainer: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      width: '100%',
     },
     anchor: {
-      textDecoration: 'none',
+      textDecoration: "none",
       color: GRAY_COLOR,
     },
   };
 
+  
+
+
   return (
     <div style={styles.main}>
       <div style={styles.mainContainer}>
+        <div
+          style={styles.anchorContainer}
+        >
+          <a
+            className="footer-link"
+            href="#home"
+            rel="noreferrer"
+            style={styles.anchor}
+          >
+            SELO VISUAL STUDIO
+          </a>
+        </div>
 
-        <a className="footer-link" href="#home" rel="noreferrer" style={styles.anchor}>
-          SELO VISUAL STUDIO
-        </a>
+        <div
+          style={styles.anchorContainer}
+        >
+          <a
+            className="footer-link"
+            href="https://grafemadesign.com/"
+            target="_blank"
+            rel="noreferrer"
+            style={styles.anchor}
+          >
+            BY GRAFEMA DESIGN
+          </a>
+        </div>
 
-        <a className="footer-link" href="https://grafemadesign.com/" target="_blank" rel="noreferrer" style={styles.anchor}>
-          BY GRAFEMA DESIGN
-        </a>
+        <div
+          style={styles.anchorContainer}
+        >
+          <a
+            className="footer-link"
+            href="https://www.facebook.com/selovisualstudio"
+            target="_blank"
+            rel="noreferrer"
+            style={styles.anchor}
+          >
+            FACEBOOK
+          </a>
+        </div>
+        <div
+          style={styles.anchorContainer}
+        >
+          <a
+            className="footer-link"
+            href="https://vimeo.com/selovisuals"
+            target="_blank"
+            rel="noreferrer"
+            style={styles.anchor}
+          >
+            VIMEO
+          </a>
+        </div>
 
-        <a className="footer-link" href="https://www.facebook.com/selovisualstudio" target="_blank" rel="noreferrer" style={styles.anchor}>
-          FACEBOOK
-        </a>
-        <a className="footer-link" href="https://vimeo.com/selovisuals" target="_blank" rel="noreferrer" style={styles.anchor}>
-          VIMEO
-        </a>
-
-        <a className="footer-link" href="https:www.behance.net/selovisuals" target="_blank" rel="noreferrer" style={styles.anchor}>
-          BEHANCE
-        </a>
-        <a className="footer-link" href="https://www.instagram.com/selovisuals/" target="_blank" rel="noreferrer" style={styles.anchor}>
-          INSTAGRAM
-        </a>
+        <div
+          style={styles.anchorContainer}
+        >
+          <a
+            className="footer-link"
+            href="https:www.behance.net/selovisuals"
+            target="_blank"
+            rel="noreferrer"
+            style={styles.anchor}
+          >
+            BEHANCE
+          </a>
+        </div>
+        <div
+          style={styles.anchorContainer}
+        >
+          <a
+            className="footer-link"
+            href="https://www.instagram.com/selovisuals/"
+            target="_blank"
+            rel="noreferrer"
+            style={styles.anchor}
+          >
+            INSTAGRAM
+          </a>
+        </div>
       </div>
     </div>
   );

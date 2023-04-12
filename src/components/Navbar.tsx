@@ -21,6 +21,9 @@ export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
   language,
   handleClick,
 }) => {
+  const [isScrolled, setIsScrolled] = React.useState<boolean>(false);
+  window.addEventListener('scroll', () => setIsScrolled(true));
+
   const isSmallScreen = useMediaQuery(
     `(max-width: ${SMALL_SCREEN_BREAKPOINT}px)`
   );
@@ -46,13 +49,6 @@ export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
         pt: "Passos",
       },
     },
-    // {
-    //   href: "#connect",
-    //   content: {
-    //     en: "Connect",
-    //     pt: "Conectar",
-    //   },
-    // },
   ];
 
   const styles: Record<string, React.CSSProperties> = {
@@ -68,6 +64,8 @@ export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
       height: "80px",
       zIndex: 10,
       padding: `0px ${OUTTER_GUTTER}px`,
+      opacity: isScrolled ? 1 : 0,
+      transition: 'all 300ms ease-in',
     },
     logoContainer: {},
     links: {

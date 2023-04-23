@@ -156,9 +156,9 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
             <h3 style={{ fontSize: "24px", fontWeight: "bold" }}>
               {leftTitle[language]}
             </h3>
-            <text style={{ marginBottom: BOTTOM_HEIGHT + 7 }}>
+            <div style={{ marginBottom: BOTTOM_HEIGHT + 7 }}>
               {content[selectedContent].text[language]}
-            </text>
+            </div>
           </Grid.Col>
 
           {(Object.keys(content) as Array<ContentKey>).map(
@@ -173,6 +173,7 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
                     flexDirection: "column",
                     padding: "12px",
                   }}
+                  key={index + '-image'}
                 >
                   <ImageComponent
                     imgSrc={imgSrc}

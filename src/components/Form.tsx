@@ -3,7 +3,7 @@ import React from "react";
 import { LanguageProp, PAPER_BG } from "../MainPage";
 
 import { useForm } from "@mantine/form";
-import { TextInput, Button, Group, Sx } from "@mantine/core";
+import { TextInput, Button, Group, Sx, Grid } from "@mantine/core";
 import { OUTTER_GUTTER } from "./Navbar";
 
 type FormProps = LanguageProp;
@@ -47,7 +47,8 @@ export const Form: React.FC<FormProps> = ({ language }) => {
       style={{
         display: "flex",
         justifyContent: "center",
-        width: "80%",
+        width: "100%",
+        border: '3px solid green',
       }}
     >
       <form
@@ -58,15 +59,13 @@ export const Form: React.FC<FormProps> = ({ language }) => {
             message: ${values.description}
           `)
         )}
-        style={{ width: "100%", margin: `0px ${OUTTER_GUTTER}` }}
+        style={{
+          width: "100%",
+          // margin: `0px ${OUTTER_GUTTER}`
+        }}
       >
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-          }}
-        >
-          <div style={{ padding: 6 }}>
+        <Grid sx={{ width: "100%" }}>
+          <Grid.Col span={3} style={{ border: "1px solid orange", padding: 6 }}>
             <TextInput
               label="MESSAGE"
               sx={{
@@ -78,7 +77,7 @@ export const Form: React.FC<FormProps> = ({ language }) => {
               }}
               {...form.getInputProps("description")}
             />
-          </div>
+          </Grid.Col>
           <div style={{ padding: 6 }}>
             <TextInput
               label="NAME"
@@ -119,7 +118,7 @@ export const Form: React.FC<FormProps> = ({ language }) => {
               </Button>
             </Group>
           </div>
-        </div>
+        </Grid>
       </form>
     </div>
   );

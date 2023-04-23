@@ -209,7 +209,7 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
         >
           <Grid.Col span={TEXT_COL_SPAN} style={{ padding: 0 }} />
           <Grid.Col span={IMAGE_COL_SPAN} style={{ padding: 0 }}>
-            <h2 style={{ fontWeight: "bold", fontSize: "24px" }}>
+            <h2 style={{ fontWeight: "bold", fontSize: "24px",   marginBottom: '40px' }}>
               {title[language]}
             </h2>
           </Grid.Col>

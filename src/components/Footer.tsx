@@ -95,7 +95,7 @@ export const Footer: React.FC = () => {
         >
           <a
             className="footer-link"
-            href="https:www.behance.net/selovisuals"
+            href="https://behance.net/selovisuals"
             target="_blank"
             rel="noreferrer"
             style={styles.anchor}

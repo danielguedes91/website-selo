@@ -27,7 +27,7 @@ export const Connect: React.FC<ConnectProps> = ({ language }) => {
       >
         <Grid.Col span={12} sx={{ textAlign: 'center', lineHeight: 0.6, marginBottom: '40px', marginTop: '200px' }}>
           <h3>FILL OUT THE FORM OR EMAIL US AT</h3>
-          <h3 style={{ fontWeight: 'normal', fontStyle: 'italic' }}>SELOVISUALSTUDIO.COM</h3>
+          <h3 style={{ fontWeight: 'normal', fontStyle: 'italic' }}>HELLO@SELOVISUALSTUDIO.COM</h3>
         </Grid.Col>
         <Form language={language} />
       </Grid>

@@ -68,7 +68,7 @@ export const Form: React.FC<FormProps> = ({ language }) => {
         >
           <div style={{ padding: 6 }}>
             <TextInput
-              label="Message"
+              label="MESSAGE"
               sx={{
                 "& .mantine-Input-input": {
                   width: "300px",
@@ -81,7 +81,7 @@ export const Form: React.FC<FormProps> = ({ language }) => {
           </div>
           <div style={{ padding: 6 }}>
             <TextInput
-              label="Name"
+              label="NAME"
               sx={{
                 "& .mantine-Input-input": {
                   width: "200px",
@@ -93,7 +93,7 @@ export const Form: React.FC<FormProps> = ({ language }) => {
           </div>
           <div style={{ padding: 6 }}>
             <TextInput
-              label="Email"
+              label="EMAIL"
               sx={{
                 "& .mantine-Input-input": {
                   width: "200px",

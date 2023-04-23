@@ -20,7 +20,7 @@ export const Footer: React.FC = () => {
       display: "flex",
       justifyContent: "space-between",
       alignItems: "center",
-      fontSize: "15px",
+      fontSize: "14px",
     },
     logo: {},
     links: {},

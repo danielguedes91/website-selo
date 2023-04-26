@@ -23,11 +23,10 @@ export interface LanguageProp {
 }
 
 const App: React.FC = () => {
-  const [isSleepingPage, setIsSleepingPage] = React.useState<boolean>(false);
   const [language, setLanguage] = React.useState<Language>("en"); // estado central
-
+  
+  const [isSleepingPage, setIsSleepingPage] = React.useState<boolean>(false);
   let timeout: any;
-
   const sendIdleEvent = () => {
     removeListener();
     setIsSleepingPage(true);
@@ -38,18 +37,21 @@ const App: React.FC = () => {
     timeout = setTimeout(sendIdleEvent, TIMEOUT_MS);
   }
 
-  resetIdleTimeout();
-
-  const addEventListener = () => window.addEventListener('scroll', sendIdleEvent);
+  const addEventListener = () => window.addEventListener('scroll', resetIdleTimeout);
   const removeListener = () => window.removeEventListener('scroll', sendIdleEvent);
 
   const handleSleepingPageClick = () => {
     setIsSleepingPage(false);
-    sendIdleEvent();
+    resetIdleTimeout();
+    removeListener();
+    addEventListener();
   };
 
   React.useEffect(() => {
+    console.log('useEffect');
     addEventListener();
+    resetIdleTimeout();
+    return () => removeListener();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

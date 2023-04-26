@@ -1,14 +1,29 @@
 import React from "react";
 
-import { LanguageProp, PAPER_BG } from "../MainPage";
+import { Language, LanguageProp, PAPER_BG } from "../MainPage";
 
 import { useForm } from "@mantine/form";
 import { TextInput, Button, Group, Sx, Grid } from "@mantine/core";
-import { OUTTER_GUTTER } from "./Navbar";
 
 type FormProps = LanguageProp;
 
 export const Form: React.FC<FormProps> = ({ language }) => {
+
+  const formLabels: Record<string, Record<Language, string>> = {
+    message: {
+      pt: "MENSAGEM",
+      en: "MESSAGE",
+    },
+    name: {
+      pt: "NOME",
+      en: "NAME",
+    },
+    email: {
+      pt: "EMAIL",
+      en: "EMAIL",
+    },
+  }
+
   const form = useForm({
     initialValues: {
       name: "",
@@ -76,7 +91,7 @@ export const Form: React.FC<FormProps> = ({ language }) => {
         >
           <Grid.Col span={6} style={{ padding: '0px 10px' }}>
             <TextInput
-              label="MESSAGE"
+              label={formLabels.message[language]}
               sx={{
                 "& .mantine-Input-input": {
                   width: "100%",
@@ -89,7 +104,7 @@ export const Form: React.FC<FormProps> = ({ language }) => {
           </Grid.Col>
           <Grid.Col span={3} style={{ padding: '0px 10px' }}>
             <TextInput
-              label="NAME"
+              label={formLabels.name[language]}
               sx={{
                 "& .mantine-Input-input": {
                   width: "100%",
@@ -101,7 +116,7 @@ export const Form: React.FC<FormProps> = ({ language }) => {
           </Grid.Col>
           <Grid.Col span={3} style={{ padding: '0px 10px' }}>
             <TextInput
-              label="EMAIL"
+              label={formLabels.email[language]}
               sx={{
                 "& .mantine-Input-input": {
                   width: "100%",

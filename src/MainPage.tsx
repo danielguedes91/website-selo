@@ -17,7 +17,7 @@ import { Footer } from "./components/Footer";
 export const PAPER_BG: string = "#f5f3f2";
 export type Language = "en" | "pt";
 
-const TIMEOUT_MS = 500000;
+const TIMEOUT_MS = 5000;
 export interface LanguageProp {
   language: Language;
 }

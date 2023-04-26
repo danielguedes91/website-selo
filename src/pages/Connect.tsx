@@ -24,6 +24,7 @@ export const Connect: React.FC<ConnectProps> = ({ language }) => {
           alignItems: "center",
           width: "100%",
           margin: 0,
+
         }}
       >
         <Grid.Col span={12} sx={{ textAlign: 'center', lineHeight: 0.6, marginBottom: '40px', marginTop: '200px' }}>

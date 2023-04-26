@@ -48,7 +48,6 @@ export const Form: React.FC<FormProps> = ({ language }) => {
         display: "flex",
         justifyContent: "center",
         width: "100%",
-        border: '3px solid green',
       }}
     >
       <form
@@ -60,17 +59,27 @@ export const Form: React.FC<FormProps> = ({ language }) => {
           `)
         )}
         style={{
+          display: 'flex',
+          justifyContent: 'center',
           width: "100%",
           // margin: `0px ${OUTTER_GUTTER}`
+          margin: 0,
+          padding: 0,
         }}
       >
-        <Grid sx={{ width: "100%" }}>
-          <Grid.Col span={3} style={{ border: "1px solid orange", padding: 6 }}>
+        <Grid
+          sx={{
+            width: "calc(100% - 100px)",
+            margin: 0,
+            padding: 0,
+          }}
+        >
+          <Grid.Col span={6} style={{ padding: '0px 10px' }}>
             <TextInput
               label="MESSAGE"
               sx={{
                 "& .mantine-Input-input": {
-                  width: "300px",
+                  width: "100%",
                   height: "100px",
                   ...defaultSxUnstyle,
                 },
@@ -78,24 +87,24 @@ export const Form: React.FC<FormProps> = ({ language }) => {
               {...form.getInputProps("description")}
             />
           </Grid.Col>
-          <div style={{ padding: 6 }}>
+          <Grid.Col span={3} style={{ padding: '0px 10px' }}>
             <TextInput
               label="NAME"
               sx={{
                 "& .mantine-Input-input": {
-                  width: "200px",
+                  width: "100%",
                   ...defaultSxUnstyle,
                 },
               }}
               {...form.getInputProps("name")}
             />
-          </div>
-          <div style={{ padding: 6 }}>
+          </Grid.Col>
+          <Grid.Col span={3} style={{ padding: '0px 10px' }}>
             <TextInput
               label="EMAIL"
               sx={{
                 "& .mantine-Input-input": {
-                  width: "200px",
+                  width: "100%",
                   ...defaultSxUnstyle,
                 },
               }}
@@ -117,7 +126,7 @@ export const Form: React.FC<FormProps> = ({ language }) => {
                 {language === "en" ? "GET IN TOUCH" : "ENTRAR EM CONTATO"}
               </Button>
             </Group>
-          </div>
+          </Grid.Col>
         </Grid>
       </form>
     </div>

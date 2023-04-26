@@ -7,10 +7,11 @@ import { useMediaQuery } from "@mantine/hooks";
 import { ActionIcon, Drawer } from "@mantine/core";
 import { Burger } from "@mantine/core";
 
-import '../css/App.css';
+import "../css/App.css";
 
 interface NavbarProps {
   handleClick: () => void;
+  show?: boolean;
 }
 
 export const SMALL_SCREEN_BREAKPOINT = 700;
@@ -19,10 +20,9 @@ export const OUTTER_GUTTER: number = 100;
 
 export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
   language,
+  show,
   handleClick,
 }) => {
-  const [isScrolled, setIsScrolled] = React.useState<boolean>(false);
-  window.addEventListener('scroll', () => setIsScrolled(true));
 
   const isSmallScreen = useMediaQuery(
     `(max-width: ${SMALL_SCREEN_BREAKPOINT}px)`
@@ -53,7 +53,7 @@ export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
 
   const styles: Record<string, React.CSSProperties> = {
     main: {
-      // position: "fixed",
+      position: "fixed",
       top: 0,
       left: 0,
       right: 0,
@@ -64,8 +64,8 @@ export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
       height: "80px",
       zIndex: 10,
       padding: `0px ${OUTTER_GUTTER}px`,
-      opacity: isScrolled ? 1 : 0,
-      transition: 'all 300ms ease-in',
+      opacity: show ? 1 : 0,
+      transition: "all 300ms ease-in",
     },
     logoContainer: {},
     links: {
@@ -96,20 +96,20 @@ export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
       <>
         {links.map((item, index) => (
           <div key={`nav-link-${index}`} className="hover-link">
-              <a
-                className="navbar-link"
-                key={`content-${language}-${index}`}
-                href={item.href}
-                style={{
-                  textDecoration: "none",
-                  color: isSmallScreen ? "white" : GRAY_COLOR,
-                  fontSize: isSmallScreen ? "3rem" : "14px",
-                  fontWeight: "bold",
-                }}
-                onClick={() => handleMenuClick(item.href)}
-              >
-                {item.content[language].toUpperCase()}
-              </a>
+            <a
+              className="navbar-link"
+              key={`content-${language}-${index}`}
+              href={item.href}
+              style={{
+                textDecoration: "none",
+                color: isSmallScreen ? "white" : GRAY_COLOR,
+                fontSize: isSmallScreen ? "3rem" : "14px",
+                fontWeight: "bold",
+              }}
+              onClick={() => handleMenuClick(item.href)}
+            >
+              {item.content[language].toUpperCase()}
+            </a>
           </div>
         ))}
 

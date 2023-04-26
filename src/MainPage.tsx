@@ -23,76 +23,65 @@ export interface LanguageProp {
 }
 
 const App: React.FC = () => {
-  const [language, setLanguage] = React.useState<Language>("en"); // estado central
-  
+  // Language
+  const [language, setLanguage] = React.useState<Language>("en");
+  const toggleLanguage = () => setLanguage(language === "en" ? "pt" : "en");
+
+  // Scroll menu fixed
+  const [isFixedMenu, setIsFixedMenu] = React.useState<boolean>(false);
+
+  const lastScrollTop = React.useRef<number>(0);
+
+  const handleScrollMenuFixed = () => {
+    const distanceTop = document.documentElement.scrollTop;
+    // Down scroll
+    if (distanceTop > lastScrollTop.current) {
+      setIsFixedMenu(false);
+      // Up scroll
+    } else if (distanceTop < lastScrollTop.current) {
+      setIsFixedMenu(true);
+    }
+    // Update last scroll to top
+    lastScrollTop.current = distanceTop <= 0 ? 0 : distanceTop;
+  };
+
+  // Sleeping page
   const [isSleepingPage, setIsSleepingPage] = React.useState<boolean>(false);
   let timeout: any;
   const sendIdleEvent = () => {
-    removeListener();
+    removerScrollSleepingEventListener();
     setIsSleepingPage(true);
-  }
+  };
 
   const resetIdleTimeout = () => {
     clearTimeout(timeout);
     timeout = setTimeout(sendIdleEvent, TIMEOUT_MS);
-  }
+  };
 
-  const addEventListener = () => window.addEventListener('scroll', resetIdleTimeout);
-  const removeListener = () => window.removeEventListener('scroll', sendIdleEvent);
+  const addScrollSleepingEventListener = () =>
+    window.addEventListener("scroll", () => {
+      handleScrollMenuFixed();
+      resetIdleTimeout();
+    });
+  const removerScrollSleepingEventListener = () =>
+    window.removeEventListener("scroll", () => {
+      handleScrollMenuFixed();
+      sendIdleEvent();
+    });
 
   const handleSleepingPageClick = () => {
     setIsSleepingPage(false);
     resetIdleTimeout();
-    removeListener();
-    addEventListener();
+    removerScrollSleepingEventListener();
+    addScrollSleepingEventListener();
   };
 
   React.useEffect(() => {
-    console.log('useEffect');
-    addEventListener();
+    addScrollSleepingEventListener();
     resetIdleTimeout();
-    return () => removeListener();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    return () => removerScrollSleepingEventListener();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  // let sleepingPageTimeout: NodeJS.Timeout;
-  // clearTimeout(sleepingPageTimeout);
-
-  // const scrollFunction = () => {
-  //   clearTimeout(sleepingPageTimeout);
-  //   sleepingPageTimeout = setTimeout(() => {
-  //     clearTimeout(sleepingPageTimeout);
-  //     setIsSleepingPage(true);
-  //     console.log('1');
-  //   }, TIMEOUT_MS);
-  // }
-  // function sendIdleEvent() {
-  //   window.removeEventListener('scroll', scrollFunction);
-  // }
-
-  // window.addEventListener("scroll", scrollFunction);
-
-  // function resetIdleEvent() {
-  //   clearTimeout()
-  // }
-
-  // sleepingPageTimeout = setTimeout(() => {
-  //   clearTimeout(sleepingPageTimeout);
-  //   setIsSleepingPage(true);
-  //   console.log('0')
-  // }, TIMEOUT_MS);
-
-
-  // const handleSleepingPageClick = () => {
-  //   setIsSleepingPage(false);
-  //   sleepingPageTimeout = setTimeout(() => {
-  //     clearTimeout(sleepingPageTimeout);
-  //     setIsSleepingPage(true);
-  //     console.log('2');
-  //   }, TIMEOUT_MS);
-  // };
-
-  const toggleLanguage = () => setLanguage(language === "en" ? "pt" : "en");
 
   const styles: Record<string, React.CSSProperties> = {
     main: {
@@ -104,7 +93,11 @@ const App: React.FC = () => {
 
   return (
     <div style={styles.main}>
-      <Navbar language={language} handleClick={toggleLanguage} />
+      <Navbar
+        language={language}
+        handleClick={toggleLanguage}
+        show={isFixedMenu}
+      />
 
       <Home language={language} />
       <About language={language} />

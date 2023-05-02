@@ -9,6 +9,7 @@ interface ImageComponentProps {
   onClickHandler?: () => void;
   disableMagnifier?: boolean;
   handleMouseEnter?: (value: boolean) => void;
+  customBg?: string;
 }
 
 export const ImageComponent: React.FC<ImageComponentProps> = ({
@@ -18,6 +19,7 @@ export const ImageComponent: React.FC<ImageComponentProps> = ({
   onClickHandler,
   disableMagnifier,
   handleMouseEnter,
+  customBg
 }) => {
   const [isBlur, setIsBlur] = React.useState<boolean>(false);
   const disableMag = disableMagnifier;
@@ -38,6 +40,7 @@ export const ImageComponent: React.FC<ImageComponentProps> = ({
         src={isBlur && imgBlurSrc ? imgBlurSrc : imgSrc}
         width={width ?? "100%"}
         disableMagnifier={disableMag}
+        customBg={customBg}
       />
     </div>
   );

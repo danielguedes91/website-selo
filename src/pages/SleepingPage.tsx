@@ -1,8 +1,8 @@
 import React from "react";
 
-import SeloLogo from "../assets/home/selo-logo-grey.svg";
+import SeloLogoWhite from "../assets/home/selo-logo-white.svg";
+import { PAPER_BG_BLACK } from "../MainPage";
 import { ImageComponent } from "../components/ImageComponent";
-import { PAPER_BG } from "../MainPage";
 
 interface SleepingPageProps {
      handleClick: () => void;
@@ -23,10 +23,10 @@ const SleepingPage: React.FC<SleepingPageProps> = ({ handleClick }) => {
         left: 0,
         zIndex: 100,
         overflow: "hidden",
-        backgroundColor: PAPER_BG,
+        backgroundColor: PAPER_BG_BLACK,
       }}
     >
-      <ImageComponent imgSrc={SeloLogo} onClickHandler={handleClick} />
+      <ImageComponent imgSrc={SeloLogoWhite} onClickHandler={handleClick} customBg={PAPER_BG_BLACK} />
     </div>
   );
 };

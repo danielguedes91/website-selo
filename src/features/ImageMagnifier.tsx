@@ -10,6 +10,7 @@ export const ImageMagnifier = ({
   magnifieWidth = 100,
   zoomLevel = 1.5,
   disableMagnifier = false,
+  customBg,
 }: {
   src: string;
   width?: string;
@@ -18,6 +19,7 @@ export const ImageMagnifier = ({
   magnifieWidth?: number;
   zoomLevel?: number;
   disableMagnifier?: boolean;
+  customBg?: string;
 }) => {
   const [[x, y], setXY] = React.useState([0, 0]);
   const [[imgWidth, imgHeight], setSize] = React.useState([0, 0]);
@@ -77,7 +79,7 @@ export const ImageMagnifier = ({
           left: `${x - magnifieWidth / 2}px`,
           opacity: "1", // reduce opacity so you can verify position
           border: "1px solid lightgray",
-          backgroundColor: "white",
+          backgroundColor: customBg ?? "white",
           backgroundImage: `url('${src}')`,
           backgroundRepeat: "no-repeat",
 

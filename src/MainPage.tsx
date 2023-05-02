@@ -15,6 +15,7 @@ import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
 
 export const PAPER_BG: string = "#f5f3f2";
+export const PAPER_BG_BLACK: string = "#393A3A";
 export type Language = "en" | "pt";
 
 const TIMEOUT_MS = 60000; // 1 minute
@@ -46,7 +47,7 @@ const App: React.FC = () => {
   };
 
   // Sleeping page
-  const [isSleepingPage, setIsSleepingPage] = React.useState<boolean>(false);
+  const [isSleepingPage, setIsSleepingPage] = React.useState<boolean>(true);
   let timeout: any;
   const sendIdleEvent = () => {
     removerScrollSleepingEventListener();

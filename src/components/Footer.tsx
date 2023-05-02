@@ -1,6 +1,6 @@
 import React from "react";
 import { PAPER_BG } from "../MainPage";
-import { GRAY_COLOR } from "./Navbar";
+import { GRAY_COLOR, OUTTER_GUTTER } from "./Navbar";
 
 export const Footer: React.FC = () => {
   const styles: Record<string, React.CSSProperties> = {
@@ -12,7 +12,7 @@ export const Footer: React.FC = () => {
       backgroundColor: PAPER_BG,
       height: "60px",
       marginTop: "10px",
-      padding: "0px 50px",
+      padding: `0px ${OUTTER_GUTTER}px`,
     },
     mainContainer: {
       width: "100%",

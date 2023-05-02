@@ -6,6 +6,7 @@ import { Form } from "../components/Form";
 import { Language, LanguageProp } from "../MainPage";
 import TermsAndConditionsPage from "./TermsAndConditionsPage";
 import PrivacyPolicyPage from "./PrivacyPolicyPage";
+import { OUTTER_GUTTER } from "../components/Navbar";
 
 type ConnectProps = LanguageProp;
 
@@ -68,8 +69,8 @@ export const Connect: React.FC<ConnectProps> = ({ language }) => {
             display: "flex",
             flexDirection: "column",
             width: "100%",
-            paddingLeft: "50px",
-            paddingRight: "50px",
+            paddingLeft: `${OUTTER_GUTTER}px`,
+            paddingRight: `${OUTTER_GUTTER}px`,
             alignItems: "flex-start",
           }}
         >

@@ -3,7 +3,8 @@ import React from "react";
 import { Language, LanguageProp, PAPER_BG } from "../MainPage";
 
 import { useForm } from "@mantine/form";
-import { TextInput, Button, Group, Sx, Grid } from "@mantine/core";
+import { TextInput, Button, Group, Sx, Grid, Textarea } from "@mantine/core";
+import { OUTTER_GUTTER } from "./Navbar";
 
 interface FormProps extends LanguageProp {
   handleSubmitFormClick: () => void;
@@ -47,7 +48,7 @@ export const Form: React.FC<FormProps> = ({ language, handleSubmitFormClick }) =
 
   const buttonStyles: Sx = {
     transition: "all 400ms",
-    margin: "50px 0px",
+    margin: `50px 0px`,
     fontWeight: "bold",
     fontSize: "12px",
     fontFamily: "Aileron",
@@ -79,20 +80,19 @@ export const Form: React.FC<FormProps> = ({ language, handleSubmitFormClick }) =
           display: "flex",
           justifyContent: "center",
           width: "100%",
-          // margin: `0px ${OUTTER_GUTTER}`
           margin: 0,
           padding: 0,
         }}
       >
         <Grid
           sx={{
-            width: "calc(100% - 100px)",
+            width: `calc(100% - ${OUTTER_GUTTER * 2}px)`,
             margin: 0,
             padding: 0,
           }}
         >
           <Grid.Col span={6} style={{ padding: "0px 10px" }}>
-            <TextInput
+            <Textarea
               label={formLabels.message[language]}
               labelProps={{
                 sx: {
@@ -107,6 +107,7 @@ export const Form: React.FC<FormProps> = ({ language, handleSubmitFormClick }) =
                   ...defaultSxUnstyle,
                 },
               }}
+              
               {...form.getInputProps("description")}
             />
           </Grid.Col>

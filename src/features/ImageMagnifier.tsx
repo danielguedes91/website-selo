@@ -1,4 +1,5 @@
 import React from "react";
+import { PAPER_BG } from "../MainPage";
 
 // Ref:
 // https://codesandbox.io/s/image-magnifier-3jsqs?from-embed=&file=/src/App.tsx:77-2558
@@ -79,7 +80,7 @@ export const ImageMagnifier = ({
           left: `${x - magnifieWidth / 2}px`,
           opacity: "1", // reduce opacity so you can verify position
           border: "1px solid lightgray",
-          backgroundColor: customBg ?? "white",
+          backgroundColor: customBg ?? PAPER_BG,
           backgroundImage: `url('${src}')`,
           backgroundRepeat: "no-repeat",
 

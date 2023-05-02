@@ -60,10 +60,10 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
     },
     signature: {
       en: <>
-        DR.EMMETT BROWN, BACK TO THE FUTURE
+        DR. EMMETT BROWN, BACK TO THE FUTURE
       </>,
       pt: <>
-        DR.EMMETT BROWN, BACK TO THE FUTURE
+        DR. EMMETT BROWN, BACK TO THE FUTURE
       </>
     },
   };

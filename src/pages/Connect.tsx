@@ -3,7 +3,7 @@ import React from "react";
 
 import { Form } from "../components/Form";
 
-import { LanguageProp } from "../MainPage";
+import { Language, LanguageProp } from "../MainPage";
 import TermsAndConditionsPage from "./TermsAndConditionsPage";
 import PrivacyPolicyPage from "./PrivacyPolicyPage";
 
@@ -13,6 +13,11 @@ export const Connect: React.FC<ConnectProps> = ({ language }) => {
 
   const [showTCPage, setShowTCPage] = React.useState<boolean>(false);
   const [showPPPage, setShowPPPage] = React.useState<boolean>(false);
+
+  const textTitleForm: Record<Language, string> = {
+    en: "FILL OUT THE FORM OR EMAIL US AT",
+    pt: "PREENCHE O FORMULÁRIO OU ENVIA-NOS UM EMAIL PARA",
+  }
 
   const styles: Record<string, React.CSSProperties> = {
     main: {
@@ -41,7 +46,7 @@ export const Connect: React.FC<ConnectProps> = ({ language }) => {
             marginTop: "200px",
           }}
         >
-          <h3>FILL OUT THE FORM OR EMAIL US AT</h3>
+          <h3>{textTitleForm[language]}</h3>
           <h3 style={{ fontWeight: "normal", fontStyle: "italic" }}>
             HELLO@SELOVISUALSTUDIO.COM
           </h3>

@@ -5,9 +5,11 @@ import { Language, LanguageProp, PAPER_BG } from "../MainPage";
 import { useForm } from "@mantine/form";
 import { TextInput, Button, Group, Sx, Grid } from "@mantine/core";
 
-type FormProps = LanguageProp;
+interface FormProps extends LanguageProp {
+  handleSubmitFormClick: () => void;
+}
 
-export const Form: React.FC<FormProps> = ({ language }) => {
+export const Form: React.FC<FormProps> = ({ language, handleSubmitFormClick }) => {
   const formLabels: Record<string, Record<Language, string>> = {
     message: {
       pt: "MENSAGEM",
@@ -151,7 +153,8 @@ export const Form: React.FC<FormProps> = ({ language }) => {
                 type="button"
                 onClick={(e) => {
                   e.preventDefault();
-                  window.location.href = "mailto:hello@selovisualstudio.com";
+                  // window.location.href = "mailto:hello@selovisualstudio.com";
+                  handleSubmitFormClick();
                 }}
               >
                 {language === "en" ? "GET IN TOUCH" : "ENTRAR EM CONTATO"}

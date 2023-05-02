@@ -47,7 +47,7 @@ const App: React.FC = () => {
   };
 
   // Sleeping page
-  const [isSleepingPage, setIsSleepingPage] = React.useState<boolean>(true);
+  const [isSleepingPage, setIsSleepingPage] = React.useState<boolean>(false);
   let timeout: any;
   const sendIdleEvent = () => {
     removerScrollSleepingEventListener();

@@ -8,7 +8,6 @@ import { TextInput, Button, Group, Sx, Grid } from "@mantine/core";
 type FormProps = LanguageProp;
 
 export const Form: React.FC<FormProps> = ({ language }) => {
-
   const formLabels: Record<string, Record<Language, string>> = {
     message: {
       pt: "MENSAGEM",
@@ -22,7 +21,7 @@ export const Form: React.FC<FormProps> = ({ language }) => {
       pt: "EMAIL",
       en: "EMAIL",
     },
-  }
+  };
 
   const form = useForm({
     initialValues: {
@@ -49,6 +48,7 @@ export const Form: React.FC<FormProps> = ({ language }) => {
     margin: "50px 0px",
     fontWeight: "bold",
     fontSize: "12px",
+    fontFamily: "Aileron",
     "&:hover": {
       "& span": {
         color: PAPER_BG,
@@ -74,8 +74,8 @@ export const Form: React.FC<FormProps> = ({ language }) => {
           `)
         )}
         style={{
-          display: 'flex',
-          justifyContent: 'center',
+          display: "flex",
+          justifyContent: "center",
           width: "100%",
           // margin: `0px ${OUTTER_GUTTER}`
           margin: 0,
@@ -89,9 +89,15 @@ export const Form: React.FC<FormProps> = ({ language }) => {
             padding: 0,
           }}
         >
-          <Grid.Col span={6} style={{ padding: '0px 10px' }}>
+          <Grid.Col span={6} style={{ padding: "0px 10px" }}>
             <TextInput
               label={formLabels.message[language]}
+              labelProps={{
+                sx: {
+                  fontWeight: "bold",
+                  fontFamily: "Aileron",
+                },
+              }}
               sx={{
                 "& .mantine-Input-input": {
                   width: "100%",
@@ -102,9 +108,14 @@ export const Form: React.FC<FormProps> = ({ language }) => {
               {...form.getInputProps("description")}
             />
           </Grid.Col>
-          <Grid.Col span={3} style={{ padding: '0px 10px' }}>
+          <Grid.Col span={3} style={{ padding: "0px 10px" }}>
             <TextInput
               label={formLabels.name[language]}
+              labelProps={{
+                sx: {
+                  fontFamily: "Aileron",
+                }
+              }}
               sx={{
                 "& .mantine-Input-input": {
                   width: "100%",
@@ -114,9 +125,14 @@ export const Form: React.FC<FormProps> = ({ language }) => {
               {...form.getInputProps("name")}
             />
           </Grid.Col>
-          <Grid.Col span={3} style={{ padding: '0px 10px' }}>
+          <Grid.Col span={3} style={{ padding: "0px 10px" }}>
             <TextInput
               label={formLabels.email[language]}
+              labelProps={{
+                sx: {
+                  fontFamily: "Aileron",
+                }
+              }}
               sx={{
                 "& .mantine-Input-input": {
                   width: "100%",

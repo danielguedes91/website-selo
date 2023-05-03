@@ -14,14 +14,24 @@ export const Connect: React.FC<ConnectProps> = ({ language }) => {
   const [showTCPage, setShowTCPage] = React.useState<boolean>(false);
   const [showPPPage, setShowPPPage] = React.useState<boolean>(false);
 
-  const textTitleForm: Record<Language, string> = {
-    en: "FILL OUT THE FORM OR EMAIL US AT",
-    pt: "PREENCHE O FORMULÁRIO OU ENVIA-NOS UM EMAIL PARA",
+  const content: Record<string, Record<Language, string>> = {
+    textTitleForm: {
+      en: "FILL OUT THE FORM OR EMAIL US AT",
+      pt: "PREENCHE O FORMULÁRIO OU ENVIA-NOS UM EMAIL PARA",
+    },
+    termsAndConditions: {
+      en: "Terms & Conditions",
+      pt: "Termos & Condições",
+    },
+    privacyPolicy: {
+      en: "Privacy Policy",
+      pt: "Política de Privacidade",
+    },
   };
 
   const handleSendForm = () => {
     window.alert("Form to be sent");
-  }
+  };
 
   const styles: Record<string, React.CSSProperties> = {
     main: {
@@ -56,7 +66,7 @@ export const Connect: React.FC<ConnectProps> = ({ language }) => {
             style={{ color: "#3a3a3a", fontSize: "1.17em", fontWeight: "bold" }}
             onClick={handleSendForm}
           >
-            {textTitleForm[language]}
+            {content.textTitleForm[language]}
           </Anchor>
           <h3 style={{ fontWeight: "normal", fontStyle: "italic" }}>
             HELLO@SELOVISUALSTUDIO.COM
@@ -72,21 +82,22 @@ export const Connect: React.FC<ConnectProps> = ({ language }) => {
             paddingLeft: `${OUTTER_GUTTER}px`,
             paddingRight: `${OUTTER_GUTTER}px`,
             alignItems: "flex-start",
+            marginBottom: "100px",
           }}
         >
           <Anchor
             component="button"
             onClick={() => setShowTCPage(true)}
-            sx={{ color: "#3a3a3a" }}
+            sx={{ color: "#3a3a3a", fontSize: "14px" }}
           >
-            Terms&Conditions
+            {content.termsAndConditions[language]}
           </Anchor>
           <Anchor
             component="button"
             onClick={() => setShowPPPage(true)}
-            sx={{ color: "#3a3a3a" }}
+            sx={{ color: "#3a3a3a", fontSize: "14px" }}
           >
-            Privacy Policy
+            {content.privacyPolicy[language]}
           </Anchor>
         </Grid.Col>
       </Grid>

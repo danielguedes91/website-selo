@@ -35,7 +35,7 @@ const SleepingPage: React.FC<SleepingPageProps> = ({ handleClick }) => {
           top: 30,
           right: 30,
           backgroundColor: "transparent !important",
-          svg: { stroke: "white", fill: "white" },
+          '& *': { stroke: "#fff !important", color: "#fff !important" },
         }}
       />
       <ImageComponent

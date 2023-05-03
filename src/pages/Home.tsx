@@ -167,7 +167,7 @@ export const Home: React.FC<HomeProps> = ({ language }) => {
               alignItems: "flex-end",
             }}
           >
-            <div style={{ marginBottom: 80 }}>
+            <div style={{ marginBottom: 80, position: "relative", right: 4 }}>
               <img src={SeloLogoGrey} alt="" width={540} />
             </div>
           </div>

@@ -116,6 +116,7 @@ export const Form: React.FC<FormProps> = ({ language, handleSubmitFormClick }) =
               label={formLabels.name[language]}
               labelProps={{
                 sx: {
+                  fontWeight: "bold",
                   fontFamily: "Aileron",
                 }
               }}
@@ -133,6 +134,7 @@ export const Form: React.FC<FormProps> = ({ language, handleSubmitFormClick }) =
               label={formLabels.email[language]}
               labelProps={{
                 sx: {
+                  fontWeight: "bold",
                   fontFamily: "Aileron",
                 }
               }}

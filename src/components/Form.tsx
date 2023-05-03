@@ -10,7 +10,10 @@ interface FormProps extends LanguageProp {
   handleSubmitFormClick: () => void;
 }
 
-export const Form: React.FC<FormProps> = ({ language, handleSubmitFormClick }) => {
+export const Form: React.FC<FormProps> = ({
+  language,
+  handleSubmitFormClick,
+}) => {
   const formLabels: Record<string, Record<Language, string>> = {
     message: {
       pt: "MENSAGEM",
@@ -50,7 +53,7 @@ export const Form: React.FC<FormProps> = ({ language, handleSubmitFormClick }) =
     transition: "all 400ms",
     margin: `50px 0px`,
     fontWeight: "bold",
-    fontSize: "12px",
+    fontSize: "14px",
     fontFamily: "Aileron",
     "&:hover": {
       "& span": {
@@ -107,7 +110,6 @@ export const Form: React.FC<FormProps> = ({ language, handleSubmitFormClick }) =
                   ...defaultSxUnstyle,
                 },
               }}
-              
               {...form.getInputProps("description")}
             />
           </Grid.Col>
@@ -118,7 +120,7 @@ export const Form: React.FC<FormProps> = ({ language, handleSubmitFormClick }) =
                 sx: {
                   fontWeight: "bold",
                   fontFamily: "Aileron",
-                }
+                },
               }}
               sx={{
                 "& .mantine-Input-input": {
@@ -136,7 +138,7 @@ export const Form: React.FC<FormProps> = ({ language, handleSubmitFormClick }) =
                 sx: {
                   fontWeight: "bold",
                   fontFamily: "Aileron",
-                }
+                },
               }}
               sx={{
                 "& .mantine-Input-input": {
@@ -154,7 +156,7 @@ export const Form: React.FC<FormProps> = ({ language, handleSubmitFormClick }) =
                 size="lg"
                 sx={buttonStyles}
                 type="button"
-                onClick={(e) => {
+                onClick={(e: { preventDefault: () => void }) => {
                   e.preventDefault();
                   // window.location.href = "mailto:hello@selovisualstudio.com";
                   handleSubmitFormClick();

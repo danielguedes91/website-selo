@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emailjs/browser": "^3.11.0",
     "@emotion/react": "^11.10.5",
     "@mantine/core": "^5.10.3",
     "@mantine/form": "^5.10.3",

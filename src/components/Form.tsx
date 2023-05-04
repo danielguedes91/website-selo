@@ -6,39 +6,34 @@ import { useForm } from "@mantine/form";
 import { TextInput, Button, Group, Sx, Grid, Textarea } from "@mantine/core";
 import { OUTTER_GUTTER } from "./Navbar";
 
-// import { SMTPClient } from "emailjs";
+import emailjs from "@emailjs/browser";
 
-// const client = new SMTPClient({
-//   // user: "luis.rodrigues@selovisualstudio.com",
-//   // password: "Vertigo-2023",
-//   // host: "smtp.selovisualstudio.com",
-//   user: "goncalojferreira92@gmail.com",
-//   password: "P@dr3c@s1CogitoErgoSum",
-//   host: "smtp.gmail.com",
-//   ssl: true,
-// });
+// user: "luis.rodrigues@selovisualstudio.com",
+// password: "Vertigo-2023",
 
-// https://www.npmjs.com/package/emailjs
-async function sendEmail(
-  text?: string,
-  from?: string,
-  to?: string,
-  cc?: string,
-  subject?: string
-) {
-  // try {
-  //   const message = await client.sendAsync({
-  //     text: text ?? "This is a text message",
-  //     from: from ?? "Its-a me-a goncalo-a",
-  //     // to: 'someone <someone@your-email.com>, another <another@your-email.com>',
-  //     to: to ?? "Gonçalo Ferreira <goncaloferreira@ua.pt>",
-  //     cc: cc ?? "Gonçalo Ferreira <goncaloferreira@ua.pt>",
-  //     subject: subject ?? "testing emailjs",
-  //   });
-  //   console.log(message);
-  // } catch (err) {
-  //   console.error(err);
-  // }
+// https://www.abstractapi.com/guides/react-send-email-from-your-app-without-a-backend#send-emails-in-a-react-app-using-emailjs
+const PUBLIC_KEY = "-v1B-a2fUchKhKnNJ";
+const SERVICE_ID = "selovisualstudio_e1ci9fn";
+const TEMPLATE_ID = "selovisualstudioTemplate";
+
+async function sendEmail(message: string, name: string, email: string) {
+  emailjs
+    .send(
+      SERVICE_ID,
+      TEMPLATE_ID,
+      {
+        message,
+        name,
+        email,
+      },
+      PUBLIC_KEY
+    )
+    .then((res) => {
+      console.log("SUCCESS!", res.status, res.text);
+    })
+    .catch((err) => {
+      console.error("error...", err);
+    });
 }
 
 interface FormProps extends LanguageProp {
@@ -195,7 +190,7 @@ export const Form: React.FC<FormProps> = ({
                   e.preventDefault();
                   // window.location.href = "mailto:hello@selovisualstudio.com";
                   handleSubmitFormClick();
-                  sendEmail()
+                  sendEmail("message", "name", "wtv");
                 }}
               >
                 {language === "en" ? "GET IN TOUCH" : "ENTRAR EM CONTATO"}

@@ -6,17 +6,44 @@ import { useForm } from "@mantine/form";
 import { TextInput, Button, Group, Sx, Grid, Textarea } from "@mantine/core";
 import { OUTTER_GUTTER } from "./Navbar";
 
+// import { SMTPClient } from "emailjs";
+
+// const client = new SMTPClient({
+//   // user: "luis.rodrigues@selovisualstudio.com",
+//   // password: "Vertigo-2023",
+//   // host: "smtp.selovisualstudio.com",
+//   user: "goncalojferreira92@gmail.com",
+//   password: "P@dr3c@s1CogitoErgoSum",
+//   host: "smtp.gmail.com",
+//   ssl: true,
+// });
+
+// https://www.npmjs.com/package/emailjs
+async function sendEmail(
+  text?: string,
+  from?: string,
+  to?: string,
+  cc?: string,
+  subject?: string
+) {
+  // try {
+  //   const message = await client.sendAsync({
+  //     text: text ?? "This is a text message",
+  //     from: from ?? "Its-a me-a goncalo-a",
+  //     // to: 'someone <someone@your-email.com>, another <another@your-email.com>',
+  //     to: to ?? "Gonçalo Ferreira <goncaloferreira@ua.pt>",
+  //     cc: cc ?? "Gonçalo Ferreira <goncaloferreira@ua.pt>",
+  //     subject: subject ?? "testing emailjs",
+  //   });
+  //   console.log(message);
+  // } catch (err) {
+  //   console.error(err);
+  // }
+}
+
 interface FormProps extends LanguageProp {
   handleSubmitFormClick: () => void;
 }
-
-/**
- * 
- * Access credentials:
- * plataforma Hostinger
- * luis.rodrigues@selovisualstudio.com
- * Vertigo-2023
- */
 
 export const Form: React.FC<FormProps> = ({
   language,
@@ -168,6 +195,7 @@ export const Form: React.FC<FormProps> = ({
                   e.preventDefault();
                   // window.location.href = "mailto:hello@selovisualstudio.com";
                   handleSubmitFormClick();
+                  sendEmail()
                 }}
               >
                 {language === "en" ? "GET IN TOUCH" : "ENTRAR EM CONTATO"}

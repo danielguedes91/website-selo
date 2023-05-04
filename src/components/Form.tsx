@@ -10,6 +10,14 @@ interface FormProps extends LanguageProp {
   handleSubmitFormClick: () => void;
 }
 
+/**
+ * 
+ * Access credentials:
+ * plataforma Hostinger
+ * luis.rodrigues@selovisualstudio.com
+ * Vertigo-2023
+ */
+
 export const Form: React.FC<FormProps> = ({
   language,
   handleSubmitFormClick,

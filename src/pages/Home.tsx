@@ -10,6 +10,7 @@ import LandingPageImage04 from "../assets/landing/selo-landing-page-4-min.png";
 import LandingPageImage05 from "../assets/landing/selo-landing-page-5-min.png";
 import { GRAY_COLOR, OUTTER_GUTTER } from "../components/Navbar";
 import { Grid } from "@mantine/core";
+import useMediaQueryMd from "../features/useMediaQueryMd";
 
 // const FACTOR_WIDTH = 270;
 type HomeProps = LanguageProp;
@@ -29,7 +30,7 @@ export const Home: React.FC<HomeProps> = ({ language }) => {
     //   setIsTransition(false);
     // } else setIsTransition(true);
 
-    if (window.scrollY >= 1400) {
+    if (window.scrollY >= (isSmallScreen ? 800 : 1400)) {
       setIsTextShow(true);
     } else setIsTextShow(false);
 
@@ -96,66 +97,119 @@ export const Home: React.FC<HomeProps> = ({ language }) => {
     },
   };
 
-  return (
-    <div style={styles.main} id="home">
-      <Grid
-        gutter={10}
+  const isSmallScreen = useMediaQueryMd();
+
+  const ScreenVersion = () => (
+    <Grid
+      gutter={10}
+      style={{
+        display: "flex",
+        flexDirection: "row",
+        width: "100%",
+        height: "100%",
+      }}
+    >
+      <Grid.Col
+        span={12}
         style={{
+          zIndex: -1,
           display: "flex",
           flexDirection: "row",
-          width: "100%",
-          height: "100%",
+          padding: 0,
+          position: "relative",
+          bottom: "-8vw",
         }}
       >
         <Grid.Col
-          span={12}
+          span={3}
           style={{
-            zIndex: -1,
-            display: "flex",
-            flexDirection: "row",
-            padding: 0,
-            position: "relative",
-            bottom: "-8vw",
+            paddingLeft: 0,
+            // top: -250,
           }}
         >
-          <Grid.Col
-            span={3}
-            style={{
-              paddingLeft: 0,
-              // top: -250,
-            }}
-          >
-            <img alt="" src={LandingPageImage01} style={{ width: "100%" }} />
-          </Grid.Col>
-          <Grid.Col span={3} />
-          <Grid.Col span={3} style={{ padding: 0 }}>
-            <img alt="" src={LandingPageImage02} style={{ width: "100%" }} />
-          </Grid.Col>
+          <img alt="" src={LandingPageImage01} style={{ width: "100%" }} />
         </Grid.Col>
+        <Grid.Col span={3} />
+        <Grid.Col span={3} style={{ padding: 0 }}>
+          <img alt="" src={LandingPageImage02} style={{ width: "100%" }} />
+        </Grid.Col>
+      </Grid.Col>
 
-        <Grid.Col
-          span={12}
-          style={{ display: "flex", flexDirection: "row", marginTop: "300px" }}
-        >
-          <Grid.Col span={1} />
-          <Grid.Col span={3}>
-            <div style={{ maxWidth: "100%", height: "100px" }}>
-              <img alt="" src={LandingPageImage03} style={{ width: "100%" }} />
-            </div>
-          </Grid.Col>
-          <Grid.Col span={2} />
-          <Grid.Col span={3}>
-            <img
-              alt=""
-              src={LandingPageImage05}
-              style={{ width: "100%", marginTop: "40vw" }}
-            />
-          </Grid.Col>
-          <Grid.Col span={3}>
-            <img alt="" src={LandingPageImage04} style={{ width: "100%" }} />
-          </Grid.Col>
+      <Grid.Col
+        span={12}
+        style={{ display: "flex", flexDirection: "row", marginTop: "300px" }}
+      >
+        <Grid.Col span={1} />
+        <Grid.Col span={3}>
+          <div style={{ maxWidth: "100%", height: "100px" }}>
+            <img alt="" src={LandingPageImage03} style={{ width: "100%" }} />
+          </div>
         </Grid.Col>
-      </Grid>
+        <Grid.Col span={2} />
+        <Grid.Col span={3}>
+          <img
+            alt=""
+            src={LandingPageImage05}
+            style={{ width: "100%", marginTop: "40vw" }}
+          />
+        </Grid.Col>
+        <Grid.Col span={3}>
+          <img alt="" src={LandingPageImage04} style={{ width: "100%" }} />
+        </Grid.Col>
+      </Grid.Col>
+    </Grid>
+  );
+
+  const MobileVersion = () => (
+    <Grid
+      // gutter={10}
+      style={{
+        display: "flex",
+        flexDirection: "row",
+        width: "100%",
+        height: "100%",
+      }}
+    >
+      <Grid.Col
+        span={12}
+        style={{ display: "flex", justifyContent: "space-between", padding: 0 }}
+      >
+        <img alt="" src={LandingPageImage01} style={{ width: "45%" }} />
+        <img
+          alt=""
+          src={LandingPageImage02}
+          style={{ width: "45%", position: "relative", top: 200 }}
+        />
+      </Grid.Col>
+      <Grid.Col
+        span={12}
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          padding: 0,
+          marginTop: 300,
+        }}
+      >
+        <img alt="" src={LandingPageImage03} style={{ width: "45%" }} />
+        <img
+          alt=""
+          src={LandingPageImage04}
+          style={{ width: "45%", position: "relative", top: 200 }}
+        />
+      </Grid.Col>
+      <Grid.Col span={12} style={{ display: "flex", justifyContent: "center" }}>
+        <img
+          alt=""
+          src={LandingPageImage05}
+          style={{ width: "45%", marginTop: "40vw" }}
+        />
+      </Grid.Col>
+    </Grid>
+  );
+
+  return (
+    <div style={styles.main} id="home">
+      {isSmallScreen ? <MobileVersion /> : <ScreenVersion />}
       <div style={styles.logoTextContainer}>
         <div style={{ display: "flex", alignItems: "flex-end", height: 350 }}>
           <div
@@ -165,10 +219,17 @@ export const Home: React.FC<HomeProps> = ({ language }) => {
               transition: "all 400ms ease-in-out",
               display: "flex",
               alignItems: "flex-end",
+              justifyContent: "center",
+              position: "relative",
+              right: isSmallScreen ? 0 : 4,
             }}
           >
-            <div style={{ marginBottom: 80, position: "relative", right: 4 }}>
-              <img src={SeloLogoGrey} alt="" width={540} />
+            <div style={{ marginBottom: 80, overflow: "visible" }}>
+              <img
+                src={SeloLogoGrey}
+                alt=""
+                width={isSmallScreen ? 250 : 540}
+              />
             </div>
           </div>
         </div>

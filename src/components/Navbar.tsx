@@ -49,6 +49,13 @@ export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
         pt: "Passos",
       },
     },
+    {
+      href: "#connect",
+      content: {
+        en: "Connect",
+        pt: "Conectar",
+      },
+    },
   ];
 
   const styles: Record<string, React.CSSProperties> = {

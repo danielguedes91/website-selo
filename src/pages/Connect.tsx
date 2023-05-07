@@ -12,7 +12,7 @@ type ConnectProps = LanguageProp;
 
 export const Connect: React.FC<ConnectProps> = ({ language }) => {
   const [showTCPage, setShowTCPage] = React.useState<boolean>(false);
-  const [showPPPage, setShowPPPage] = React.useState<boolean>(false);
+  const [showPPPage, setShowPPPage] = React.useState<boolean>(true);
 
   const content: Record<string, Record<Language, string>> = {
     textTitleForm: {
@@ -104,7 +104,7 @@ export const Connect: React.FC<ConnectProps> = ({ language }) => {
       {showTCPage && (
         <TermsAndConditionsPage onClose={() => setShowTCPage(false)} />
       )}
-      {showPPPage && <PrivacyPolicyPage onClose={() => setShowPPPage(false)} />}
+      {showPPPage && <PrivacyPolicyPage language={language} onClose={() => setShowPPPage(false)} />}
     </div>
   );
 };

@@ -1,4 +1,7 @@
 import React from "react";
+
+import { Grid } from "@mantine/core";
+
 import { OUTTER_GUTTER } from "../components/Navbar";
 import { GRID_MAX_WIDTH } from "../features/gridUtils";
 import { Language, LanguageProp } from "../MainPage";
@@ -44,12 +47,12 @@ export const About: React.FC<AboutProps> = ({ language }) => {
 
   return (
     <div style={styles.main} id="about">
-      <div style={styles.textContainer}>
-        <div style={{ width: "calc(50% - 20px)" }}>
+      <Grid style={styles.textContainer}>
+        <Grid.Col xs={12} sm={6} sx={{ padding: 0 }}>
           <h2 style={{ fontSize: '24px' }}>{title[language]}</h2>
           <span>{text[language]}</span>
-        </div>
-      </div>
+        </Grid.Col>
+      </Grid>
     </div>
   );
 };

@@ -5,6 +5,7 @@ import { Language, LanguageProp, PAPER_BG } from "../MainPage";
 import { useForm } from "@mantine/form";
 import { TextInput, Button, Group, Sx, Grid, Textarea } from "@mantine/core";
 import { OUTTER_GUTTER } from "./Navbar";
+import useMediaQueryMd from "../features/useMediaQueryMd";
 
 interface FormProps extends LanguageProp {
   handleSubmitFormClick: () => void;
@@ -42,6 +43,8 @@ export const Form: React.FC<FormProps> = ({
     },
   });
 
+  const isSmallScreen = useMediaQueryMd();
+
   const defaultSxUnstyle: Sx = {
     background: "none",
     borderRadius: 0,
@@ -52,6 +55,7 @@ export const Form: React.FC<FormProps> = ({
   const buttonStyles: Sx = {
     transition: "all 400ms",
     margin: `50px 0px`,
+    marginTop: isSmallScreen ? "100px" : undefined,
     fontWeight: "bold",
     fontSize: "14px",
     fontFamily: "Aileron",
@@ -94,7 +98,7 @@ export const Form: React.FC<FormProps> = ({
             padding: 0,
           }}
         >
-          <Grid.Col span={6} style={{ padding: "0px 10px" }}>
+          <Grid.Col xs={12} md={6} style={{ padding: "0px 10px" }}>
             <Textarea
               label={formLabels.message[language]}
               labelProps={{
@@ -106,14 +110,14 @@ export const Form: React.FC<FormProps> = ({
               sx={{
                 "& .mantine-Input-input": {
                   width: "100%",
-                  height: "100px",
+                  height: isSmallScreen ? "150px" : "100px",
                   ...defaultSxUnstyle,
                 },
               }}
               {...form.getInputProps("description")}
             />
           </Grid.Col>
-          <Grid.Col span={3} style={{ padding: "0px 10px" }}>
+          <Grid.Col xs={12} md={3} style={{ padding: "0px 10px", marginTop: isSmallScreen ? '100px' : '0px' }}>
             <TextInput
               label={formLabels.name[language]}
               labelProps={{
@@ -131,7 +135,7 @@ export const Form: React.FC<FormProps> = ({
               {...form.getInputProps("name")}
             />
           </Grid.Col>
-          <Grid.Col span={3} style={{ padding: "0px 10px" }}>
+          <Grid.Col xs={12} md={3} style={{ padding: "0px 10px", marginTop: isSmallScreen ? '100px' : '0px' }}>
             <TextInput
               label={formLabels.email[language]}
               labelProps={{
@@ -158,7 +162,6 @@ export const Form: React.FC<FormProps> = ({
                 type="button"
                 onClick={(e: { preventDefault: () => void }) => {
                   e.preventDefault();
-                  // window.location.href = "mailto:hello@selovisualstudio.com";
                   handleSubmitFormClick();
                 }}
               >

@@ -1,12 +1,28 @@
 import React from "react";
-import { CloseButton, Text } from "@mantine/core";
-import { PAPER_BG } from "../MainPage";
+import { CloseButton, Grid } from "@mantine/core";
+import { LanguageProp, PAPER_BG } from "../MainPage";
+import { TitleContentComponent, TitleContentData } from "./PrivacyPolicyPage";
 
-interface TermsAndConditionsPageProps {
+interface TermsAndConditionsPageProps extends LanguageProp {
   onClose: () => void;
 }
 
+
+const titlesAndContent: TitleContentData = [
+  {
+    title: {
+      en: "Terms and Conditions page",
+      pt: "",
+    },
+    content: {
+      en: [],
+      pt: [],
+    },
+  },
+]
+
 const TermsAndConditionsPage: React.FC<TermsAndConditionsPageProps> = ({
+  language,
   onClose,
 }) => {
   return (
@@ -38,7 +54,11 @@ const TermsAndConditionsPage: React.FC<TermsAndConditionsPageProps> = ({
             // svg: { stroke: "white" },
           }}
         />
-        <Text>Terms and Conditions page</Text>
+        <Grid sx={{ padding: "0px 30px", width: "100%", maxWidth: "100%" }}>
+        {titlesAndContent.map(({ title, content }) => (
+          <TitleContentComponent language={language} title={title} content={content} />
+        ))}
+      </Grid>
       </div>
     </div>
   );

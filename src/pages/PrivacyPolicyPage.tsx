@@ -1,20 +1,19 @@
 import { CloseButton, Grid, Text } from "@mantine/core";
 import React from "react";
-import { Language, PAPER_BG } from "../MainPage";
+import { Language, LanguageProp, PAPER_BG } from "../MainPage";
 
-interface PrivacyPolicyPageProps {
-  language: Language;
+interface PrivacyPolicyPageProps extends LanguageProp {
   onClose: () => void;
 }
 
-interface TitleContentComponentProps {
+export interface TitleContentComponentProps {
   title: Record<Language, string>;
   content: Record<Language, string[]>;
 }
 
+export type TitleContentData = Array<TitleContentComponentProps>;
 
-
-const titlesAndContent: Array<TitleContentComponentProps> = [
+const titlesAndContent: TitleContentData = [
   {
     title: {
       en: "Privacy Policy",
@@ -169,27 +168,28 @@ const titlesAndContent: Array<TitleContentComponentProps> = [
   },
 ];
 
-const PrivacyPolicyPage: React.FC<PrivacyPolicyPageProps> = ({ language, onClose }) => {
+export const TitleContentComponent = ({
+  title,
+  content,
+  language,
+}: TitleContentComponentProps & { language: Language }) => {
+  return (
+    <>
+      <Grid.Col span={6}>
+        <Text fz="xl" fw={700}>
+          {title[language]}
+        </Text>
+      </Grid.Col>
+      <Grid.Col span={6}>
+        {content[language].map((unitContent) => {
+          return <Text>{unitContent}</Text>;
+        })}
+      </Grid.Col>
+    </>
+  );
+};
 
-  const TitleContentComponent = ({
-    title,
-    content,
-  }: TitleContentComponentProps) => {
-    return (
-      <>
-        <Grid.Col span={6}>
-          <Text fz="xl" fw={700}>
-            {title[language]}
-          </Text>
-        </Grid.Col>
-        <Grid.Col span={6}>
-          {content[language].map((unitContent) => {
-            return <Text>{unitContent}</Text>;
-          })}
-        </Grid.Col>
-      </>
-    );
-  };
+const PrivacyPolicyPage: React.FC<PrivacyPolicyPageProps> = ({ language, onClose }) => {
 
   return (
     <div
@@ -219,7 +219,7 @@ const PrivacyPolicyPage: React.FC<PrivacyPolicyPageProps> = ({ language, onClose
       />
       <Grid sx={{ padding: "0px 30px", width: "100%", maxWidth: "100%" }}>
         {titlesAndContent.map(({ title, content }) => (
-          <TitleContentComponent title={title} content={content} />
+          <TitleContentComponent language={language} title={title} content={content} />
         ))}
       </Grid>
     </div>

@@ -102,7 +102,7 @@ export const Connect: React.FC<ConnectProps> = ({ language }) => {
         </Grid.Col>
       </Grid>
       {showTCPage && (
-        <TermsAndConditionsPage onClose={() => setShowTCPage(false)} />
+        <TermsAndConditionsPage language={language} onClose={() => setShowTCPage(false)} />
       )}
       {showPPPage && <PrivacyPolicyPage language={language} onClose={() => setShowPPPage(false)} />}
     </div>

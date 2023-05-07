@@ -196,6 +196,8 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
     pt: "SERVIÇOS",
   };
 
+  const isSmallScreen = true;
+
   return (
     <div id="services" style={styles.main}>
       <Grid style={{ ...styles.gridContainer, padding: 0 }}>
@@ -207,12 +209,36 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
             justifyContent: "space-between",
           }}
         >
-          <Grid.Col span={TEXT_COL_SPAN} style={{ padding: 0 }} />
-          <Grid.Col span={IMAGE_COL_SPAN} style={{ padding: 0 }}>
-            <h2 style={{ fontWeight: "bold", fontSize: "24px",   marginBottom: '40px' }}>
-              {title[language]}
-            </h2>
-          </Grid.Col>
+          {isSmallScreen ? (
+            <>
+              <Grid.Col span={12} style={{ padding: 0 }}>
+                <h2
+                  style={{
+                    fontWeight: "bold",
+                    fontSize: "24px",
+                    marginBottom: "40px",
+                  }}
+                >
+                  {title[language]}
+                </h2>
+              </Grid.Col>
+            </>
+          ) : (
+            <>
+              <Grid.Col span={TEXT_COL_SPAN} style={{ padding: 0 }} />
+              <Grid.Col span={IMAGE_COL_SPAN} style={{ padding: 0 }}>
+                <h2
+                  style={{
+                    fontWeight: "bold",
+                    fontSize: "24px",
+                    marginBottom: "40px",
+                  }}
+                >
+                  {title[language]}
+                </h2>
+              </Grid.Col>
+            </>
+          )}
         </Grid.Col>
         {Object.keys(content).map((key, index) => {
           let isTextShowing =
@@ -234,73 +260,117 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
                 marginBottom: 160,
               }}
             >
-              <Grid.Col
-                span={12}
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  padding: 0,
-                }}
-              >
-                {orientation === "right" ? (
-                  <Grid.Col
-                    span={TEXT_COL_SPAN}
-                    style={{ ...styles.textContainer, padding: 0 }}
-                  >
-                    {isTextShowing && (
-                      <TextContent content={textContent} width="460px" />
-                    )}
+              {isSmallScreen ? (
+                <>
+                  <Grid.Col span={12} style={{ padding: 0 }}>
+                    <ImageComponent
+                      imgSrc={src}
+                      imgBlurSrc={blurSrc}
+                      onClickHandler={() => onClickEvent(key)}
+                      handleMouseEnter={(value: boolean) =>
+                        onMouseEnterEvent(key, value)
+                      }
+                      disableMagnifier
+                    />
                   </Grid.Col>
-                ) : null}
-                <Grid.Col span={IMAGE_COL_SPAN} style={{ padding: 0 }}>
-                  <ImageComponent
-                    imgSrc={src}
-                    imgBlurSrc={blurSrc}
-                    onClickHandler={() => onClickEvent(key)}
-                    handleMouseEnter={(value: boolean) =>
-                      onMouseEnterEvent(key, value)
-                    }
-                    disableMagnifier
-                  />
-                </Grid.Col>
-                {orientation === "left" ? (
-                  <Grid.Col
-                    span={TEXT_COL_SPAN}
-                    style={{ ...styles.textContainer, padding: 0 }}
-                  >
-                    {isTextShowing && (
-                      <TextContent content={textContent} width="460px" />
-                    )}
+                  <Grid.Col span={12} style={{ padding: 0, marginTop: 15 }}>
+                    <h3
+                      style={{
+                        opacity: 1,
+                        fontStyle: "italic",
+                        fontWeight: 500,
+                        padding: 0,
+                        display: "inline",
+                      }}
+                    >
+                      {subtitle[language]}
+                    </h3>
                   </Grid.Col>
-                ) : null}
-              </Grid.Col>
-              <Grid.Col
-                span={12}
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyContent:
-                    orientation === "right" ? "flex-end" : "flex-start",
-                  padding: 0,
-                }}
-              >
-                <Grid.Col
-                  span={IMAGE_COL_SPAN}
-                  style={{ padding: 0, marginTop: "20px" }}
-                >
-                  <h3
+                  <Grid.Col span={12} style={{ padding: 0 }}>
+                    <Grid.Col
+                      span={12}
+                      style={{
+                        ...styles.textContainer,
+                        padding: 0,
+                        marginTop: 15,
+                      }}
+                    >
+                      <TextContent content={textContent} />
+                    </Grid.Col>
+                  </Grid.Col>
+                </>
+              ) : (
+                <>
+                  <Grid.Col
+                    span={12}
                     style={{
-                      opacity: 1,
-                      fontStyle: "italic",
-                      fontWeight: 500,
+                      display: "flex",
+                      justifyContent: "space-between",
                       padding: 0,
-                      display: "inline",
+                      flexWrap: "wrap",
                     }}
                   >
-                    {subtitle[language]}
-                  </h3>
-                </Grid.Col>
-              </Grid.Col>
+                    {orientation === "right" ? (
+                      <Grid.Col
+                        span={TEXT_COL_SPAN}
+                        style={{ ...styles.textContainer, padding: 0 }}
+                      >
+                        {isTextShowing && (
+                          <TextContent content={textContent} width="460px" />
+                        )}
+                      </Grid.Col>
+                    ) : null}
+                    <Grid.Col span={IMAGE_COL_SPAN} style={{ padding: 0 }}>
+                      <ImageComponent
+                        imgSrc={src}
+                        imgBlurSrc={blurSrc}
+                        onClickHandler={() => onClickEvent(key)}
+                        handleMouseEnter={(value: boolean) =>
+                          onMouseEnterEvent(key, value)
+                        }
+                        disableMagnifier
+                      />
+                    </Grid.Col>
+                    {orientation === "left" ? (
+                      <Grid.Col
+                        span={TEXT_COL_SPAN}
+                        style={{ ...styles.textContainer, padding: 0 }}
+                      >
+                        {isTextShowing && (
+                          <TextContent content={textContent} width="460px" />
+                        )}
+                      </Grid.Col>
+                    ) : null}
+                  </Grid.Col>
+                  <Grid.Col
+                    span={12}
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent:
+                        orientation === "right" ? "flex-end" : "flex-start",
+                      padding: 0,
+                    }}
+                  >
+                    <Grid.Col
+                      span={IMAGE_COL_SPAN}
+                      style={{ padding: 0, marginTop: "20px" }}
+                    >
+                      <h3
+                        style={{
+                          opacity: 1,
+                          fontStyle: "italic",
+                          fontWeight: 500,
+                          padding: 0,
+                          display: "inline",
+                        }}
+                      >
+                        {subtitle[language]}
+                      </h3>
+                    </Grid.Col>
+                  </Grid.Col>
+                </>
+              )}
             </Grid.Col>
           );
         })}

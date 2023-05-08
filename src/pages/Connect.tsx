@@ -4,8 +4,6 @@ import React from "react";
 import { Form } from "../components/Form";
 
 import { Language, LanguageProp } from "../MainPage";
-import TermsAndConditionsPage from "./TermsAndConditionsPage";
-import PrivacyPolicyPage from "./PrivacyPolicyPage";
 import { OUTTER_GUTTER } from "../components/Navbar";
 import useMediaQueryMd from "../features/useMediaQueryMd";
 
@@ -114,10 +112,6 @@ export const Connect: React.FC<ConnectProps> = ({
           </Anchor>
         </Grid.Col>
       </Grid>
-      {showTCPage && (
-        <TermsAndConditionsPage language={language} onClose={() => handleShowTCPage(false)} />
-      )}
-      {showPPPage && <PrivacyPolicyPage language={language} onClose={() => handleShowPPPage(false)} />}
     </div>
   );
 };

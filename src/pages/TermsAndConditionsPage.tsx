@@ -55,8 +55,8 @@ const TermsAndConditionsPage: React.FC<TermsAndConditionsPageProps> = ({
           }}
         />
         <Grid sx={{ padding: "0px 30px", width: "100%", maxWidth: "100%" }}>
-        {titlesAndContent.map(({ title, content }) => (
-          <TitleContentComponent language={language} title={title} content={content} />
+        {titlesAndContent.map(({ title, content }, index) => (
+          <TitleContentComponent language={language} title={title} content={content} index={index} />
         ))}
       </Grid>
       </div>

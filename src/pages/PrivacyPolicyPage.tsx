@@ -1,10 +1,12 @@
-import { CloseButton, Grid, Text } from "@mantine/core";
+import { Grid, Text } from "@mantine/core";
 import React from "react";
-import { Language, LanguageProp, PAPER_BG } from "../MainPage";
-
-interface PrivacyPolicyPageProps extends LanguageProp {
-  onClose: () => void;
-}
+import { Language, LanguageProp } from "../MainPage";
+import {
+  NAVBAR_HEIGHT,
+  OUTTER_GUTTER,
+  OUTTER_GUTTER_MOBILE,
+} from "../components/Navbar";
+import useMediaQueryMd from "../features/useMediaQueryMd";
 
 export interface TitleContentComponentProps {
   title: Record<Language, string>;
@@ -80,7 +82,6 @@ const titlesAndContent: TitleContentData = [
         "● collected for specified, legitimate and explicit purposes and never further processed in a way incompatible with those purposes;",
         "● accurate and, as required, kept up to date, while providing for appropriate measures to ensure the deletion and rectification of incomplete or inaccurate data, taking into account the purposes for which they were collected or for which they are further processed;",
         "● kept in a form which permits the identification of data subjects for no longer than is necessary and legally required for the purposes for which the data were collected or for which they are to be further processed.",
-      
       ],
       pt: [],
     },
@@ -165,15 +166,16 @@ export const TitleContentComponent = ({
   title,
   content,
   language,
-}: TitleContentComponentProps & { language: Language }) => {
+  index,
+}: TitleContentComponentProps & { language: Language, index: number }) => {
   return (
     <>
-      <Grid.Col xs={12} md={6}>
+      <Grid.Col xs={12} md={6} sx={{ marginTop: index === 0 ? undefined : `${OUTTER_GUTTER}px` }}>
         <Text fz="xl" fw={700}>
           {title[language]}
         </Text>
       </Grid.Col>
-      <Grid.Col xs={12} md={6}>
+      <Grid.Col xs={12} md={6} sx={{ marginTop: index === 0 ? undefined : `${OUTTER_GUTTER}px` }}>
         {content[language].map((unitContent) => {
           return <Text>{unitContent}</Text>;
         })}
@@ -182,56 +184,28 @@ export const TitleContentComponent = ({
   );
 };
 
-const PrivacyPolicyPage: React.FC<PrivacyPolicyPageProps> = ({
-  language,
-  onClose,
-}) => {
+const PrivacyPolicyPage: React.FC<LanguageProp> = ({ language }) => {
+  const isSmallScreen = useMediaQueryMd();
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        position: "fixed",
-        width: "100vw",
-        height: "100vh",
-        top: 0,
-        right: 0,
-        // overflow: "hidden",
-        overflow: "auto",
-        zIndex: 100,
-        backgroundColor: PAPER_BG,
+    <Grid
+      sx={{
+        padding: `${NAVBAR_HEIGHT + OUTTER_GUTTER}px ${
+          isSmallScreen ? OUTTER_GUTTER_MOBILE : OUTTER_GUTTER
+        }px`,
+        maxWidth: "100%",
+        flexWrap: "wrap",
+        // gap: `${OUTTER_GUTTER}px`,
       }}
     >
-      <CloseButton
-        onClick={onClose}
-        size="xl"
-        sx={{
-          position: "fixed",
-          top: 30,
-          right: 30,
-          backgroundColor: `${PAPER_BG} !important`,
-          borderRadius: "50%",
-        }}
-      />
-      <Grid
-        sx={{
-          padding: "0px 30px",
-          width: "100%",
-          maxWidth: "100%",
-          flexWrap: "wrap",
-          maxHeight: "100%",
-        }}
-      >
-        {titlesAndContent.map(({ title, content }) => (
-          <TitleContentComponent
-            language={language}
-            title={title}
-            content={content}
-          />
-        ))}
-      </Grid>
-    </div>
+      {titlesAndContent.map(({ title, content }, index) => (
+        <TitleContentComponent
+          language={language}
+          title={title}
+          content={content}
+          index={index}
+        />
+      ))}
+    </Grid>
   );
 };
 

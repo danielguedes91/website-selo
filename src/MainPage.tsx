@@ -13,6 +13,8 @@ import SleepingPage from "./pages/SleepingPage";
 // Components
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
+import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
+import TermsAndConditionsPage from "./pages/TermsAndConditionsPage";
 
 export const PAPER_BG: string = "#f5f3f2";
 export const PAPER_BG_BLACK: string = "#393A3A";
@@ -35,6 +37,7 @@ const App: React.FC = () => {
 
   const handleScrollMenuFixed = () => {
     const distanceTop = document.documentElement.scrollTop;
+
     // Down scroll
     if (distanceTop > lastScrollTop.current) {
       setIsFixedMenu(false);
@@ -49,8 +52,6 @@ const App: React.FC = () => {
   // External pages
   const [showTCPage, setShowTCPage] = React.useState<boolean>(false);
   const [showPPPage, setShowPPPage] = React.useState<boolean>(true);
-
-  const isExternalPage = showTCPage || showPPPage;
 
   // Sleeping page
   const [isSleepingPage, setIsSleepingPage] = React.useState<boolean>(false);
@@ -94,8 +95,26 @@ const App: React.FC = () => {
     main: {
       width: "100%",
       height: "100vh",
-      overflow: isSleepingPage || isExternalPage ? "hidden" : undefined,
+      overflow: isSleepingPage ? "hidden" : undefined,
     },
+  };
+
+  const MainPages = () => {
+    return (
+      <>
+        <Home language={language} />
+        <About language={language} />
+        <Services language={language} />
+        <Steps language={language} />
+        <Connect
+          language={language}
+          showTCPage={showTCPage}
+          handleShowTCPage={setShowTCPage}
+          showPPPage={showPPPage}
+          handleShowPPPage={setShowPPPage}
+        />
+      </>
+    );
   };
 
   return (
@@ -106,17 +125,16 @@ const App: React.FC = () => {
         show={isFixedMenu}
       />
 
-      <Home language={language} />
-      <About language={language} />
-      <Services language={language} />
-      <Steps language={language} />
-      <Connect 
-        language={language} 
-        showTCPage={showTCPage}
-        handleShowTCPage={setShowTCPage}
-        showPPPage={showPPPage}
-        handleShowPPPage={setShowPPPage}
-      />
+      {showPPPage ? (
+        <PrivacyPolicyPage language={language} />
+      ) : showTCPage ? (
+        <TermsAndConditionsPage
+          language={language}
+          onClose={() => setShowTCPage(false)}
+        />
+      ) : (
+        <MainPages />
+      )}
 
       <Footer />
 

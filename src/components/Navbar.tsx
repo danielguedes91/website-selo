@@ -18,6 +18,7 @@ export const SMALL_SCREEN_BREAKPOINT = 700;
 export const GRAY_COLOR: string = "#3a3a3a";
 export const OUTTER_GUTTER: number = 100;
 export const OUTTER_GUTTER_MOBILE: number = 50;
+export const NAVBAR_HEIGHT = 80;
 
 export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
   language,
@@ -68,7 +69,7 @@ export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
       justifyContent: "space-between",
       alignItems: "center",
       backgroundColor: PAPER_BG,
-      height: "80px",
+      height: NAVBAR_HEIGHT,
       zIndex: 10,
       padding: `0px ${isSmallScreen ? OUTTER_GUTTER_MOBILE : OUTTER_GUTTER}px`,
       opacity: show ? 1 : 0,

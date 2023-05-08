@@ -7,6 +7,7 @@ import { Language, LanguageProp } from "../MainPage";
 import TermsAndConditionsPage from "./TermsAndConditionsPage";
 import PrivacyPolicyPage from "./PrivacyPolicyPage";
 import { OUTTER_GUTTER } from "../components/Navbar";
+import useMediaQueryMd from "../features/useMediaQueryMd";
 
 interface ConnectProps extends LanguageProp {
   showTCPage: boolean;
@@ -42,6 +43,8 @@ export const Connect: React.FC<ConnectProps> = ({
     window.alert("Form to be sent");
   };
 
+  const isSmallScreen = useMediaQueryMd();
+
   const styles: Record<string, React.CSSProperties> = {
     main: {
       display: "flex",
@@ -49,6 +52,7 @@ export const Connect: React.FC<ConnectProps> = ({
       width: "100%",
     },
   };
+
   return (
     <div id="connect" style={styles.main}>
       <Grid
@@ -97,14 +101,14 @@ export const Connect: React.FC<ConnectProps> = ({
           <Anchor
             component="button"
             onClick={() => handleShowTCPage(true)}
-            sx={{ color: "#3a3a3a", fontSize: "14px" }}
+            sx={{ color: "#3a3a3a", fontSize: isSmallScreen ? "16px" : "14px", fontWeight: isSmallScreen ? "bold" : undefined }}
           >
             {content.termsAndConditions[language]}
           </Anchor>
           <Anchor
             component="button"
             onClick={() => handleShowPPPage(true)}
-            sx={{ color: "#3a3a3a", fontSize: "14px" }}
+            sx={{ color: "#3a3a3a", fontSize: isSmallScreen ? "16px" : "14px", fontWeight: isSmallScreen ? "bold" : undefined }}
           >
             {content.privacyPolicy[language]}
           </Anchor>

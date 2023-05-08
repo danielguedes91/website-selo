@@ -70,7 +70,7 @@ const titlesAndContent: TitleContentData = [
   },
   {
     title: {
-      en: "4. ProcessingofPersonalData",
+      en: "4. Processing of Personal Data",
       pt: "",
     },
     content: {
@@ -197,7 +197,8 @@ const PrivacyPolicyPage: React.FC<PrivacyPolicyPageProps> = ({
         height: "100vh",
         top: 0,
         right: 0,
-        overflow: "hidden",
+        // overflow: "hidden",
+        overflow: "auto",
         zIndex: 100,
         backgroundColor: PAPER_BG,
       }}
@@ -206,10 +207,11 @@ const PrivacyPolicyPage: React.FC<PrivacyPolicyPageProps> = ({
         onClick={onClose}
         size="xl"
         sx={{
-          position: "absolute",
+          position: "fixed",
           top: 30,
           right: 30,
-          backgroundColor: "transparent !important",
+          backgroundColor: `${PAPER_BG} !important`,
+          borderRadius: "50%",
         }}
       />
       <Grid
@@ -218,6 +220,7 @@ const PrivacyPolicyPage: React.FC<PrivacyPolicyPageProps> = ({
           width: "100%",
           maxWidth: "100%",
           flexWrap: "wrap",
+          maxHeight: "100%",
         }}
       >
         {titlesAndContent.map(({ title, content }) => (

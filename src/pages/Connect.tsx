@@ -8,11 +8,20 @@ import TermsAndConditionsPage from "./TermsAndConditionsPage";
 import PrivacyPolicyPage from "./PrivacyPolicyPage";
 import { OUTTER_GUTTER } from "../components/Navbar";
 
-type ConnectProps = LanguageProp;
+interface ConnectProps extends LanguageProp {
+  showTCPage: boolean;
+  handleShowTCPage: (value: boolean) => void;
+  showPPPage: boolean;
+  handleShowPPPage: (value: boolean) => void;
+};
 
-export const Connect: React.FC<ConnectProps> = ({ language }) => {
-  const [showTCPage, setShowTCPage] = React.useState<boolean>(false);
-  const [showPPPage, setShowPPPage] = React.useState<boolean>(true);
+export const Connect: React.FC<ConnectProps> = ({ 
+  language,
+  showTCPage,
+  handleShowTCPage,
+  showPPPage,
+  handleShowPPPage,
+}) => {
 
   const content: Record<string, Record<Language, string>> = {
     textTitleForm: {
@@ -87,14 +96,14 @@ export const Connect: React.FC<ConnectProps> = ({ language }) => {
         >
           <Anchor
             component="button"
-            onClick={() => setShowTCPage(true)}
+            onClick={() => handleShowTCPage(true)}
             sx={{ color: "#3a3a3a", fontSize: "14px" }}
           >
             {content.termsAndConditions[language]}
           </Anchor>
           <Anchor
             component="button"
-            onClick={() => setShowPPPage(true)}
+            onClick={() => handleShowPPPage(true)}
             sx={{ color: "#3a3a3a", fontSize: "14px" }}
           >
             {content.privacyPolicy[language]}
@@ -102,9 +111,9 @@ export const Connect: React.FC<ConnectProps> = ({ language }) => {
         </Grid.Col>
       </Grid>
       {showTCPage && (
-        <TermsAndConditionsPage language={language} onClose={() => setShowTCPage(false)} />
+        <TermsAndConditionsPage language={language} onClose={() => handleShowTCPage(false)} />
       )}
-      {showPPPage && <PrivacyPolicyPage language={language} onClose={() => setShowPPPage(false)} />}
+      {showPPPage && <PrivacyPolicyPage language={language} onClose={() => handleShowPPPage(false)} />}
     </div>
   );
 };

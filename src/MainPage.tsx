@@ -46,6 +46,12 @@ const App: React.FC = () => {
     lastScrollTop.current = distanceTop <= 0 ? 0 : distanceTop;
   };
 
+  // External pages
+  const [showTCPage, setShowTCPage] = React.useState<boolean>(false);
+  const [showPPPage, setShowPPPage] = React.useState<boolean>(true);
+
+  const isExternalPage = showTCPage || showPPPage;
+
   // Sleeping page
   const [isSleepingPage, setIsSleepingPage] = React.useState<boolean>(false);
   let timeout: any;
@@ -88,7 +94,7 @@ const App: React.FC = () => {
     main: {
       width: "100%",
       height: "100vh",
-      overflow: isSleepingPage ? "hidden" : undefined,
+      overflow: isSleepingPage || isExternalPage ? "hidden" : undefined,
     },
   };
 
@@ -104,7 +110,13 @@ const App: React.FC = () => {
       <About language={language} />
       <Services language={language} />
       <Steps language={language} />
-      <Connect language={language} />
+      <Connect 
+        language={language} 
+        showTCPage={showTCPage}
+        handleShowTCPage={setShowTCPage}
+        showPPPage={showPPPage}
+        handleShowPPPage={setShowPPPage}
+      />
 
       <Footer />
 

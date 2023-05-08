@@ -1,4 +1,4 @@
-import { Grid, Text } from "@mantine/core";
+import { Grid, Sx, Text } from "@mantine/core";
 import React from "react";
 import { Language, LanguageProp } from "../MainPage";
 import {
@@ -157,7 +157,7 @@ const titlesAndContent: TitleContentData = [
     },
     content: {
       en: [
-        "9.1 SELO ensures appropriate levels of security and protection of personal data and data owners. To this end, it implements multiple organizational, technical and physical security measures, to preserve information against change, dissemination, loss, unauthorized processing or access, as well as any other form of illegal processing."
+        "9.1 SELO ensures appropriate levels of security and protection of personal data and data owners. To this end, it implements multiple organizational, technical and physical security measures, to preserve information against change, dissemination, loss, unauthorized processing or access, as well as any other form of illegal processing.",
       ],
       pt: [],
     },
@@ -185,7 +185,7 @@ const titlesAndContent: TitleContentData = [
       en: [
         "11.1 SELO complies with the legal regulations regarding the retention of personal data and may keep such data for:",
         "(a) Up to ten years after the end of the contract;",
-        "b) While there are obligations resulting from the contractual relationship."
+        "b) While there are obligations resulting from the contractual relationship.",
       ],
       pt: [],
     },
@@ -193,31 +193,27 @@ const titlesAndContent: TitleContentData = [
   {
     title: {
       en: "12. How to access your Data",
-      pt: ""
+      pt: "",
     },
     content: {
       en: [
-        "12.1 SELO will strive to keep your personal information accurate, complete and up to date. If you wish to request to access and/or correct the personal data we hold about you, please request by contacting us via the contact details provided in number 2."
+        "12.1 SELO will strive to keep your personal information accurate, complete and up to date. If you wish to request to access and/or correct the personal data we hold about you, please request by contacting us via the contact details provided in number 2.",
       ],
-      pt: [
-
-      ]
-    }
+      pt: [],
+    },
   },
   {
     title: {
       en: "13. Privacy Policy Update",
-      pt: ""
+      pt: "",
     },
     content: {
       en: [
-        "13.1 SELO reserves the right to review, update, modify and replace this policy at any time, always by the principles stipulated in the legislation in force."
+        "13.1 SELO reserves the right to review, update, modify and replace this policy at any time, always by the principles stipulated in the legislation in force.",
       ],
-      pt: [
-
-      ]
-    }
-  }
+      pt: [],
+    },
+  },
 ];
 
 export const TitleContentComponent = ({
@@ -225,15 +221,23 @@ export const TitleContentComponent = ({
   content,
   language,
   index,
-}: TitleContentComponentProps & { language: Language, index: number }) => {
+}: TitleContentComponentProps & { language: Language; index: number }) => {
   return (
     <>
-      <Grid.Col xs={12} md={6} sx={{ marginTop: index === 0 ? undefined : `${OUTTER_GUTTER}px` }}>
+      <Grid.Col
+        xs={12}
+        md={6}
+        sx={{ marginTop: index === 0 ? undefined : `${OUTTER_GUTTER}px` }}
+      >
         <Text fz="xl" fw={700}>
           {title[language]}
         </Text>
       </Grid.Col>
-      <Grid.Col xs={12} md={6} sx={{ marginTop: index === 0 ? undefined : `${OUTTER_GUTTER}px` }}>
+      <Grid.Col
+        xs={12}
+        md={6}
+        sx={{ marginTop: index === 0 ? undefined : `${OUTTER_GUTTER}px` }}
+      >
         {content[language].map((unitContent) => {
           return <Text>{unitContent}</Text>;
         })}
@@ -242,19 +246,20 @@ export const TitleContentComponent = ({
   );
 };
 
+export const externalPageContentStyle: (isSmallScreen: boolean) => Sx = (isSmallScreen) => {
+  return {
+    padding: `${NAVBAR_HEIGHT + OUTTER_GUTTER}px ${
+      isSmallScreen ? OUTTER_GUTTER_MOBILE : OUTTER_GUTTER
+    }px`,
+    maxWidth: "100%",
+    flexWrap: "wrap",
+  }
+};
+
 const PrivacyPolicyPage: React.FC<LanguageProp> = ({ language }) => {
   const isSmallScreen = useMediaQueryMd();
   return (
-    <Grid
-      sx={{
-        padding: `${NAVBAR_HEIGHT + OUTTER_GUTTER}px ${
-          isSmallScreen ? OUTTER_GUTTER_MOBILE : OUTTER_GUTTER
-        }px`,
-        maxWidth: "100%",
-        flexWrap: "wrap",
-        // gap: `${OUTTER_GUTTER}px`,
-      }}
-    >
+    <Grid sx={externalPageContentStyle(isSmallScreen)}>
       {titlesAndContent.map(({ title, content }, index) => (
         <TitleContentComponent
           language={language}

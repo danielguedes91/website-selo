@@ -31,7 +31,6 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
       alignItems: "center",
       width: "100%",
       margin: `0px ${isSmallScreen ? OUTTER_GUTTER_MOBILE : OUTTER_GUTTER}px`,
-      border: "1px solid green",
     },
   };
 

@@ -10,8 +10,9 @@ import "../css/App.css";
 import useMediaQueryMd from "../features/useMediaQueryMd";
 
 interface NavbarProps {
-  handleClick: () => void;
+  handleLanguageClick: () => void;
   show?: boolean;
+  handleLinkClick: () => void;
 }
 
 export const SMALL_SCREEN_BREAKPOINT = 700;
@@ -23,7 +24,8 @@ export const NAVBAR_HEIGHT = 80;
 export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
   language,
   show,
-  handleClick,
+  handleLanguageClick,
+  handleLinkClick,
 }) => {
 
   const isSmallScreen = useMediaQueryMd();
@@ -108,6 +110,7 @@ export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
               className="navbar-link"
               key={`content-${language}-${index}`}
               href={item.href}
+              onClickCapture={handleLinkClick}
               style={{
                 textDecoration: "none",
                 color: isSmallScreen ? "white" : GRAY_COLOR,
@@ -123,7 +126,7 @@ export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
 
         {!isSmallScreen ? (
           <div>
-            <button onClick={handleClick} style={styles.languageButton}>
+            <button onClick={handleLanguageClick} style={styles.languageButton}>
               {language.toUpperCase()}
             </button>
           </div>

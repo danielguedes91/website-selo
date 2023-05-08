@@ -53,6 +53,11 @@ const App: React.FC = () => {
   const [showTCPage, setShowTCPage] = React.useState<boolean>(false);
   const [showPPPage, setShowPPPage] = React.useState<boolean>(true);
 
+  const handleNavLinkClick = () => {
+    showTCPage && setShowTCPage(false);
+    showPPPage && setShowPPPage(false);
+  }
+
   // Sleeping page
   const [isSleepingPage, setIsSleepingPage] = React.useState<boolean>(false);
   let timeout: any;
@@ -121,8 +126,9 @@ const App: React.FC = () => {
     <div style={styles.main}>
       <Navbar
         language={language}
-        handleClick={toggleLanguage}
+        handleLanguageClick={toggleLanguage}
         show={isFixedMenu}
+        handleLinkClick={handleNavLinkClick}
       />
 
       {showPPPage ? (

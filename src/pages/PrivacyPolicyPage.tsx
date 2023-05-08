@@ -10,7 +10,7 @@ import useMediaQueryMd from "../features/useMediaQueryMd";
 
 export interface TitleContentComponentProps {
   title: Record<Language, string>;
-  content: Record<Language, string[]>;
+  content: Record<Language, (React.ReactNode | string)[]>;
 }
 
 export type TitleContentData = Array<TitleContentComponentProps>;

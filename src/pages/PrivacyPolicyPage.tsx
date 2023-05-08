@@ -152,14 +152,72 @@ const titlesAndContent: TitleContentData = [
   },
   {
     title: {
-      en: "",
+      en: "9. How do we protect your data?",
       pt: "",
     },
     content: {
-      en: [],
+      en: [
+        "9.1 SELO ensures appropriate levels of security and protection of personal data and data owners. To this end, it implements multiple organizational, technical and physical security measures, to preserve information against change, dissemination, loss, unauthorized processing or access, as well as any other form of illegal processing."
+      ],
       pt: [],
     },
   },
+  {
+    title: {
+      en: "10. Online Activity",
+      pt: "",
+    },
+    content: {
+      en: [
+        "10.1 Cookies SELO uses cookies on its website. These are small files made up of numbers and letters that are installed on your device, with your permission, when you access the site. Cookies allow the website to recognize your device, identifying it on subsequent visits and providing a better experience.",
+        "10.1.2 Please note that we do not use cookies to identify you, only to optimize your experience on our site. If you prefer not to use them, you can change your browser settings to not have them automatically downloaded. However, it is important to remember that removing or blocking cookies may negatively affect your experience and functionality of our site.",
+        "10.2 Direct Marketing: We may send you direct marketing communications and information about our services, opportunities or events that we consider may be of interest to you if you have requested or consented to receive such communications.",
+      ],
+      pt: [],
+    },
+  },
+  {
+    title: {
+      en: "11. Data retention",
+      pt: "",
+    },
+    content: {
+      en: [
+        "11.1 SELO complies with the legal regulations regarding the retention of personal data and may keep such data for:",
+        "(a) Up to ten years after the end of the contract;",
+        "b) While there are obligations resulting from the contractual relationship."
+      ],
+      pt: [],
+    },
+  },
+  {
+    title: {
+      en: "12. How to access your Data",
+      pt: ""
+    },
+    content: {
+      en: [
+        "12.1 SELO will strive to keep your personal information accurate, complete and up to date. If you wish to request to access and/or correct the personal data we hold about you, please request by contacting us via the contact details provided in number 2."
+      ],
+      pt: [
+
+      ]
+    }
+  },
+  {
+    title: {
+      en: "13. Privacy Policy Update",
+      pt: ""
+    },
+    content: {
+      en: [
+        "13.1 SELO reserves the right to review, update, modify and replace this policy at any time, always by the principles stipulated in the legislation in force."
+      ],
+      pt: [
+
+      ]
+    }
+  }
 ];
 
 export const TitleContentComponent = ({

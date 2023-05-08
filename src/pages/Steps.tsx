@@ -8,13 +8,15 @@ import { Grid } from "@mantine/core";
 import ApplicationActivation from "../assets/steps/selo-authentication-application-activation-min.png";
 import StrategyStudy from "../assets/steps/selo-etiquette-strategy-study-min.png";
 import IdentityProposal from "../assets/steps/selo-signature-identity-proposal-min.png";
-import { GRID_MAX_WIDTH } from "../features/gridUtils";
 import { ImageComponent } from "../components/ImageComponent";
 import useMediaQueryMd from "../features/useMediaQueryMd";
+import { OUTTER_GUTTER, OUTTER_GUTTER_MOBILE } from "../components/Navbar";
 
 type StepsProps = LanguageProp;
 
 export const Steps: React.FC<StepsProps> = ({ language }) => {
+  const isSmallScreen = useMediaQueryMd();
+
   const styles: Record<string, React.CSSProperties> = {
     main: {
       display: "flex",
@@ -28,8 +30,8 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
       flexDirection: "column",
       alignItems: "center",
       width: "100%",
-      maxWidth: GRID_MAX_WIDTH,
-      margin: "0px 80px",
+      margin: `0px ${isSmallScreen ? OUTTER_GUTTER_MOBILE : OUTTER_GUTTER}px`,
+      border: "1px solid green",
     },
   };
 
@@ -137,8 +139,6 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
       </>
     ),
   };
-
-  const isSmallScreen = useMediaQueryMd();
 
   return (
     <div id="steps" style={styles.main}>

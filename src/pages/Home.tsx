@@ -8,7 +8,7 @@ import LandingPageImage02 from "../assets/landing/selo-landing-page-2-min.png";
 import LandingPageImage03 from "../assets/landing/selo-landing-page-3-min.png";
 import LandingPageImage04 from "../assets/landing/selo-landing-page-4-min.png";
 import LandingPageImage05 from "../assets/landing/selo-landing-page-5-min.png";
-import { GRAY_COLOR, OUTTER_GUTTER } from "../components/Navbar";
+import { GRAY_COLOR, OUTTER_GUTTER, OUTTER_GUTTER_MOBILE } from "../components/Navbar";
 import { Grid } from "@mantine/core";
 import useMediaQueryMd from "../features/useMediaQueryMd";
 
@@ -16,6 +16,8 @@ import useMediaQueryMd from "../features/useMediaQueryMd";
 type HomeProps = LanguageProp;
 
 export const Home: React.FC<HomeProps> = ({ language }) => {
+  const isSmallScreen = useMediaQueryMd();
+
   const [isLogoShow, setIsLogoShow] = React.useState<boolean>(false);
   const [isTextShow, setIsTextShow] = React.useState<boolean>(false);
   // const [isTransition, setIsTransition] = React.useState<boolean>(false);
@@ -45,7 +47,7 @@ export const Home: React.FC<HomeProps> = ({ language }) => {
       flexDirection: "column",
       alignItems: "center",
       minHeight: "100vh",
-      margin: `0px ${OUTTER_GUTTER}px`,
+      margin: `0px ${isSmallScreen ? OUTTER_GUTTER_MOBILE : OUTTER_GUTTER}px`,
     },
     logoTextContainer: {
       // opacity: isLogoShow ? 1 : 0,
@@ -96,8 +98,6 @@ export const Home: React.FC<HomeProps> = ({ language }) => {
       ),
     },
   };
-
-  const isSmallScreen = useMediaQueryMd();
 
   const ScreenVersion = () => (
     <Grid
@@ -162,7 +162,7 @@ export const Home: React.FC<HomeProps> = ({ language }) => {
 
   const MobileVersion = () => (
     <Grid
-      // gutter={10}
+    // gutter={10}
       style={{
         display: "flex",
         flexDirection: "row",

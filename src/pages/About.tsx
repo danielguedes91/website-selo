@@ -2,19 +2,17 @@ import React from "react";
 
 import { Grid } from "@mantine/core";
 
-import { OUTTER_GUTTER } from "../components/Navbar";
+import { OUTTER_GUTTER, OUTTER_GUTTER_MOBILE } from "../components/Navbar";
 import { GRID_MAX_WIDTH } from "../features/gridUtils";
 import { Language, LanguageProp } from "../MainPage";
-
-// 10 columns
-// gutter 40
-// margin 80
-// 1728 -> max-width
+import useMediaQueryMd from "../features/useMediaQueryMd";
 
 type AboutProps = LanguageProp;
 
 export const About: React.FC<AboutProps> = ({ language }) => {
-  // TODO: Paragraph
+
+  const isSmallScreen = useMediaQueryMd();
+
   const text: Record<Language, React.ReactNode> = {
     en: <>
     The passion for cinema and its ability to convey stories of true impact at all levels, bring together two professionals in writing, film production and artistic direction on a mission to transform the vision of the world and culture into an accessible enviroment for all eyes and hearts. <br/><br/>
@@ -39,7 +37,7 @@ export const About: React.FC<AboutProps> = ({ language }) => {
       
     },
     textContainer: {
-      margin: `0px ${OUTTER_GUTTER}px`,
+      margin: `0px ${isSmallScreen ? OUTTER_GUTTER_MOBILE : OUTTER_GUTTER}px`,
       width: "100%",
       maxWidth: GRID_MAX_WIDTH,
     },

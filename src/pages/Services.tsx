@@ -25,7 +25,7 @@ import SeloEditorialBlur from "../assets/services/selo-editorial-design-blur-min
 
 import { ImageComponent } from "../components/ImageComponent";
 import { Grid } from "@mantine/core";
-import { OUTTER_GUTTER } from "../components/Navbar";
+import { OUTTER_GUTTER, OUTTER_GUTTER_MOBILE } from "../components/Navbar";
 import useMediaQueryMd from "../features/useMediaQueryMd";
 
 const TEXT_COL_SPAN: number = 3;
@@ -33,6 +33,9 @@ const IMAGE_COL_SPAN: number = 7;
 type ServicesProps = LanguageProp;
 
 export const Services: React.FC<ServicesProps> = ({ language }) => {
+  
+  const isSmallScreen = useMediaQueryMd();
+
   const content: Record<
     string,
     {
@@ -143,8 +146,8 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
       justifyContent: "center",
       alignItems: "center",
       maxWidth: "100vw",
-      margin: `0px ${OUTTER_GUTTER}px`,
-      marginTop: "160px",
+      margin: `100px ${isSmallScreen ? OUTTER_GUTTER_MOBILE : OUTTER_GUTTER}px`,
+      // marginTop: "260px !important",
     },
     gridContainer: {
       display: "flex",
@@ -196,8 +199,6 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
     en: "SERVICES",
     pt: "SERVIÇOS",
   };
-
-  const isSmallScreen = useMediaQueryMd();
 
   return (
     <div id="services" style={styles.main}>

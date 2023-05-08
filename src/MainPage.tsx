@@ -50,8 +50,8 @@ const App: React.FC = () => {
   };
 
   // External pages
-  const [showTCPage, setShowTCPage] = React.useState<boolean>(false);
-  const [showPPPage, setShowPPPage] = React.useState<boolean>(true);
+  const [showTCPage, setShowTCPage] = React.useState<boolean>(true);
+  const [showPPPage, setShowPPPage] = React.useState<boolean>(false);
 
   const handleNavLinkClick = () => {
     showTCPage && setShowTCPage(false);

@@ -238,8 +238,8 @@ export const TitleContentComponent = ({
         md={6}
         sx={{ marginTop: index === 0 ? undefined : `${OUTTER_GUTTER}px` }}
       >
-        {content[language].map((unitContent) => {
-          return <Text>{unitContent}</Text>;
+        {content[language].map((unitContent, index) => {
+          return <Text key={index + '-text-item'}>{unitContent}</Text>;
         })}
       </Grid.Col>
     </>
@@ -266,6 +266,7 @@ const PrivacyPolicyPage: React.FC<LanguageProp> = ({ language }) => {
           title={title}
           content={content}
           index={index}
+          key={index + '-title-page-content'}
         />
       ))}
     </Grid>

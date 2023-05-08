@@ -50,13 +50,13 @@ const App: React.FC = () => {
   };
 
   // External pages
-  const [showTCPage, setShowTCPage] = React.useState<boolean>(true);
+  const [showTCPage, setShowTCPage] = React.useState<boolean>(false);
   const [showPPPage, setShowPPPage] = React.useState<boolean>(false);
 
   const handleNavLinkClick = () => {
     showTCPage && setShowTCPage(false);
     showPPPage && setShowPPPage(false);
-  }
+  };
 
   // Sleeping page
   const [isSleepingPage, setIsSleepingPage] = React.useState<boolean>(false);
@@ -114,9 +114,15 @@ const App: React.FC = () => {
         <Connect
           language={language}
           showTCPage={showTCPage}
-          handleShowTCPage={setShowTCPage}
+          handleShowTCPage={(value: boolean) => {
+            window.scrollTo(0, 0);
+            setShowTCPage(value);
+          }}
           showPPPage={showPPPage}
-          handleShowPPPage={setShowPPPage}
+          handleShowPPPage={(value: boolean) => {
+            window.scrollTo(0, 0);
+            setShowPPPage(value);
+          }}
         />
       </>
     );
@@ -134,10 +140,7 @@ const App: React.FC = () => {
       {showPPPage ? (
         <PrivacyPolicyPage language={language} />
       ) : showTCPage ? (
-        <TermsAndConditionsPage
-          language={language}
-          onClose={() => setShowTCPage(false)}
-        />
+        <TermsAndConditionsPage language={language} />
       ) : (
         <MainPages />
       )}

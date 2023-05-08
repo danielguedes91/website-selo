@@ -211,7 +211,7 @@ export const Home: React.FC<HomeProps> = ({ language }) => {
     <div style={styles.main} id="home">
       {isSmallScreen ? <MobileVersion /> : <ScreenVersion />}
       <div style={styles.logoTextContainer}>
-        <div style={{ display: "flex", alignItems: "flex-end", height: 350 }}>
+        <div style={{ display: "flex", alignItems: "flex-end", height: 350, justifyContent: 'center' }}>
           <div
             style={{
               height: isLogoShow ? "100%" : 0,

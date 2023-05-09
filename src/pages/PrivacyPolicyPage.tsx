@@ -290,7 +290,7 @@ export const TitleContentComponent = ({
       <Grid.Col
         xs={12}
         md={6}
-        sx={{ marginTop: index === 0 ? undefined : `${OUTTER_GUTTER}px` }}
+        // sx={{ marginTop: index === 0 ? undefined : `${OUTTER_GUTTER}px` }}
       >
         {content[language].map((unitContent, index) => {
           return <Text key={index + '-text-item'}>{unitContent}</Text>;

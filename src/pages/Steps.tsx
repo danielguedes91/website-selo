@@ -8,12 +8,15 @@ import { Grid } from "@mantine/core";
 import ApplicationActivation from "../assets/steps/selo-authentication-application-activation-min.png";
 import StrategyStudy from "../assets/steps/selo-etiquette-strategy-study-min.png";
 import IdentityProposal from "../assets/steps/selo-signature-identity-proposal-min.png";
-import { GRID_MAX_WIDTH } from "../features/gridUtils";
 import { ImageComponent } from "../components/ImageComponent";
+import useMediaQueryMd from "../features/useMediaQueryMd";
+import { OUTTER_GUTTER, OUTTER_GUTTER_MOBILE } from "../components/Navbar";
 
 type StepsProps = LanguageProp;
 
 export const Steps: React.FC<StepsProps> = ({ language }) => {
+  const isSmallScreen = useMediaQueryMd();
+
   const styles: Record<string, React.CSSProperties> = {
     main: {
       display: "flex",
@@ -27,13 +30,12 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
       flexDirection: "column",
       alignItems: "center",
       width: "100%",
-      maxWidth: GRID_MAX_WIDTH,
-      margin: "0px 80px",
+      margin: `0px ${isSmallScreen ? OUTTER_GUTTER_MOBILE : OUTTER_GUTTER}px`,
     },
   };
 
   const contentKeys = ["default", "auth", "etiquette", "signature"] as const;
-  type ContentKey = typeof contentKeys[number];
+  type ContentKey = (typeof contentKeys)[number];
   const [selectedContent, setSelectedContent] =
     React.useState<ContentKey>("default");
 
@@ -59,12 +61,8 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
       ),
     },
     signature: {
-      en: <>
-        DR. EMMETT BROWN, BACK TO THE FUTURE
-      </>,
-      pt: <>
-        DR. EMMETT BROWN, BACK TO THE FUTURE
-      </>
+      en: <>DR. EMMETT BROWN, BACK TO THE FUTURE</>,
+      pt: <>DR. EMMETT BROWN, BACK TO THE FUTURE</>,
     },
   };
 
@@ -144,9 +142,10 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
   return (
     <div id="steps" style={styles.main}>
       <Grid style={styles.gridContainer}>
-        <Grid.Col span={12} sx={{ display: "flex", flexDirection: "row" }}>
+        <Grid.Col span={12} sx={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
           <Grid.Col
-            span={3}
+            xs={12}
+            md={3}
             sx={{
               display: "flex",
               flexDirection: "column",
@@ -156,9 +155,11 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
             <h3 style={{ fontSize: "24px", fontWeight: "bold" }}>
               {leftTitle[language]}
             </h3>
-            <div style={{ marginBottom: BOTTOM_HEIGHT + 7 }}>
-              {content[selectedContent].text[language]}
-            </div>
+            {isSmallScreen ? null : (
+              <div style={{ marginBottom: BOTTOM_HEIGHT + 7 }}>
+                {content[selectedContent].text[language]}
+              </div>
+            )}
           </Grid.Col>
 
           {(Object.keys(content) as Array<ContentKey>).map(
@@ -167,25 +168,32 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
               // Thist guarantees that wherever the content, we'll only have 3 images
               return index <= 3 && imgSrc ? (
                 <Grid.Col
-                  span={3}
+                  xs={12}
+                  md={3}
                   sx={{
                     display: "flex",
                     flexDirection: "column",
                     padding: "12px",
                   }}
-                  key={index + '-image'}
+                  key={index + "-image"}
                 >
                   <ImageComponent
                     imgSrc={imgSrc}
                     onClickHandler={() => handleImageClick(key)}
                     handleMouseEnter={() => handleImageClick(key)}
                   />
-                  <div style={{ height: BOTTOM_HEIGHT }}>
+                  <div style={{ height: isSmallScreen ? undefined : BOTTOM_HEIGHT }}>
                     <h3>
-                      {(selectedContent === "default" ||
+                      {(isSmallScreen ||
+                        selectedContent === "default" ||
                         selectedContent === key) &&
                         title?.[language]}
                     </h3>
+                    {isSmallScreen ? (
+                      <div style={{ marginBottom: BOTTOM_HEIGHT + 7 }}>
+                        {content[selectedContent].text[language]}
+                      </div>
+                    ) : null}
                   </div>
                 </Grid.Col>
               ) : null;
@@ -211,7 +219,9 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
               fontWeight: 500,
               margin: 0,
             }}
-          >{mainContent.text[language]}</h2>
+          >
+            {mainContent.text[language]}
+          </h2>
           <h5
             style={{
               fontSize: "25px",

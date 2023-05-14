@@ -13,6 +13,8 @@ import SleepingPage from "./pages/SleepingPage";
 // Components
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
+import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
+import TermsAndConditionsPage from "./pages/TermsAndConditionsPage";
 
 export const PAPER_BG: string = "#f5f3f2";
 export const PAPER_BG_BLACK: string = "#393A3A";
@@ -35,6 +37,7 @@ const App: React.FC = () => {
 
   const handleScrollMenuFixed = () => {
     const distanceTop = document.documentElement.scrollTop;
+
     // Down scroll
     if (distanceTop > lastScrollTop.current) {
       setIsFixedMenu(false);
@@ -44,6 +47,15 @@ const App: React.FC = () => {
     }
     // Update last scroll to top
     lastScrollTop.current = distanceTop <= 0 ? 0 : distanceTop;
+  };
+
+  // External pages
+  const [showTCPage, setShowTCPage] = React.useState<boolean>(false);
+  const [showPPPage, setShowPPPage] = React.useState<boolean>(false);
+
+  const handleNavLinkClick = () => {
+    showTCPage && setShowTCPage(false);
+    showPPPage && setShowPPPage(false);
   };
 
   // Sleeping page
@@ -92,19 +104,46 @@ const App: React.FC = () => {
     },
   };
 
+  const MainPages = () => {
+    return (
+      <>
+        <Home language={language} />
+        <About language={language} />
+        <Services language={language} />
+        <Steps language={language} />
+        <Connect
+          language={language}
+          showTCPage={showTCPage}
+          handleShowTCPage={(value: boolean) => {
+            window.scrollTo(0, 0);
+            setShowTCPage(value);
+          }}
+          showPPPage={showPPPage}
+          handleShowPPPage={(value: boolean) => {
+            window.scrollTo(0, 0);
+            setShowPPPage(value);
+          }}
+        />
+      </>
+    );
+  };
+
   return (
     <div style={styles.main}>
       <Navbar
         language={language}
-        handleClick={toggleLanguage}
+        handleLanguageClick={toggleLanguage}
         show={isFixedMenu}
+        handleLinkClick={handleNavLinkClick}
       />
 
-      <Home language={language} />
-      <About language={language} />
-      <Services language={language} />
-      <Steps language={language} />
-      <Connect language={language} />
+      {showPPPage ? (
+        <PrivacyPolicyPage language={language} />
+      ) : showTCPage ? (
+        <TermsAndConditionsPage language={language} />
+      ) : (
+        <MainPages />
+      )}
 
       <Footer />
 

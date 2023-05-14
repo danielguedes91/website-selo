@@ -4,15 +4,23 @@ import React from "react";
 import { Form } from "../components/Form";
 
 import { Language, LanguageProp } from "../MainPage";
-import TermsAndConditionsPage from "./TermsAndConditionsPage";
-import PrivacyPolicyPage from "./PrivacyPolicyPage";
 import { OUTTER_GUTTER } from "../components/Navbar";
+import useMediaQueryMd from "../features/useMediaQueryMd";
 
-type ConnectProps = LanguageProp;
+interface ConnectProps extends LanguageProp {
+  showTCPage: boolean;
+  handleShowTCPage: (value: boolean) => void;
+  showPPPage: boolean;
+  handleShowPPPage: (value: boolean) => void;
+};
 
-export const Connect: React.FC<ConnectProps> = ({ language }) => {
-  const [showTCPage, setShowTCPage] = React.useState<boolean>(false);
-  const [showPPPage, setShowPPPage] = React.useState<boolean>(false);
+export const Connect: React.FC<ConnectProps> = ({ 
+  language,
+  showTCPage,
+  handleShowTCPage,
+  showPPPage,
+  handleShowPPPage,
+}) => {
 
   const content: Record<string, Record<Language, string>> = {
     textTitleForm: {
@@ -33,6 +41,8 @@ export const Connect: React.FC<ConnectProps> = ({ language }) => {
     window.alert("Form to be sent");
   };
 
+  const isSmallScreen = useMediaQueryMd();
+
   const styles: Record<string, React.CSSProperties> = {
     main: {
       display: "flex",
@@ -40,6 +50,7 @@ export const Connect: React.FC<ConnectProps> = ({ language }) => {
       width: "100%",
     },
   };
+
   return (
     <div id="connect" style={styles.main}>
       <Grid
@@ -87,24 +98,20 @@ export const Connect: React.FC<ConnectProps> = ({ language }) => {
         >
           <Anchor
             component="button"
-            onClick={() => setShowTCPage(true)}
-            sx={{ color: "#3a3a3a", fontSize: "14px" }}
+            onClick={() => handleShowTCPage(true)}
+            sx={{ color: "#3a3a3a", fontSize: isSmallScreen ? "16px" : "14px", fontWeight: isSmallScreen ? "bold" : undefined }}
           >
             {content.termsAndConditions[language]}
           </Anchor>
           <Anchor
             component="button"
-            onClick={() => setShowPPPage(true)}
-            sx={{ color: "#3a3a3a", fontSize: "14px" }}
+            onClick={() => handleShowPPPage(true)}
+            sx={{ color: "#3a3a3a", fontSize: isSmallScreen ? "16px" : "14px", fontWeight: isSmallScreen ? "bold" : undefined }}
           >
             {content.privacyPolicy[language]}
           </Anchor>
         </Grid.Col>
       </Grid>
-      {showTCPage && (
-        <TermsAndConditionsPage onClose={() => setShowTCPage(false)} />
-      )}
-      {showPPPage && <PrivacyPolicyPage onClose={() => setShowPPPage(false)} />}
     </div>
   );
 };

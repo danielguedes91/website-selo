@@ -1,32 +1,35 @@
 import React from "react";
 import { Language, LanguageProp, PAPER_BG } from "../MainPage";
 import SeloLogoGrey from "../assets/home/selo-logo-grey.svg";
-import { useMediaQuery } from "@mantine/hooks";
 
 // Hamburger menu icon
 import { ActionIcon, Drawer } from "@mantine/core";
 import { Burger } from "@mantine/core";
 
 import "../css/App.css";
+import useMediaQueryMd from "../features/useMediaQueryMd";
 
 interface NavbarProps {
-  handleClick: () => void;
+  handleLanguageClick: () => void;
   show?: boolean;
+  handleLinkClick: () => void;
 }
 
 export const SMALL_SCREEN_BREAKPOINT = 700;
 export const GRAY_COLOR: string = "#3a3a3a";
 export const OUTTER_GUTTER: number = 100;
+export const OUTTER_GUTTER_MOBILE: number = 50;
+export const NAVBAR_HEIGHT = 80;
 
 export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
   language,
   show,
-  handleClick,
+  handleLanguageClick,
+  handleLinkClick,
 }) => {
 
-  const isSmallScreen = useMediaQuery(
-    `(max-width: ${SMALL_SCREEN_BREAKPOINT}px)`
-  );
+  const isSmallScreen = useMediaQueryMd();
+
   const links: Array<{ href: string; content: Record<Language, string> }> = [
     {
       href: "#about",
@@ -49,6 +52,13 @@ export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
         pt: "Passos",
       },
     },
+    {
+      href: "#connect",
+      content: {
+        en: "Connect",
+        pt: "Conectar",
+      },
+    },
   ];
 
   const styles: Record<string, React.CSSProperties> = {
@@ -61,9 +71,9 @@ export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
       justifyContent: "space-between",
       alignItems: "center",
       backgroundColor: PAPER_BG,
-      height: "80px",
+      height: NAVBAR_HEIGHT,
       zIndex: 10,
-      padding: `0px ${OUTTER_GUTTER}px`,
+      padding: `0px ${isSmallScreen ? OUTTER_GUTTER_MOBILE : OUTTER_GUTTER}px`,
       opacity: show ? 1 : 0,
       transition: "all 300ms ease-in",
     },
@@ -100,6 +110,7 @@ export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
               className="navbar-link"
               key={`content-${language}-${index}`}
               href={item.href}
+              onClickCapture={handleLinkClick}
               style={{
                 textDecoration: "none",
                 color: isSmallScreen ? "white" : GRAY_COLOR,
@@ -115,7 +126,7 @@ export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
 
         {!isSmallScreen ? (
           <div>
-            <button onClick={handleClick} style={styles.languageButton}>
+            <button onClick={handleLanguageClick} style={styles.languageButton}>
               {language.toUpperCase()}
             </button>
           </div>

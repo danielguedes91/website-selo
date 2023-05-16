@@ -89,6 +89,12 @@ const App: React.FC = () => {
     addScrollSleepingEventListener();
   };
 
+  const handleGoToHome = () => {
+    console.log("go home");
+    setShowTCPage(false);
+    setShowPPPage(false);
+  };
+
   React.useEffect(() => {
     addScrollSleepingEventListener();
     resetIdleTimeout();
@@ -103,6 +109,7 @@ const App: React.FC = () => {
       overflow: isSleepingPage ? "hidden" : undefined,
     },
   };
+  console.log("page reloaded");
 
   const MainPages = () => {
     return (
@@ -135,6 +142,7 @@ const App: React.FC = () => {
         handleLanguageClick={toggleLanguage}
         show={isFixedMenu}
         handleLinkClick={handleNavLinkClick}
+        handleLogoClick={handleGoToHome}
       />
 
       {showPPPage ? (

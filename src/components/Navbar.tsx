@@ -13,6 +13,7 @@ interface NavbarProps {
   handleLanguageClick: () => void;
   show?: boolean;
   handleLinkClick: () => void;
+  handleLogoClick: () => void
 }
 
 export const SMALL_SCREEN_BREAKPOINT = 700;
@@ -26,8 +27,8 @@ export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
   show,
   handleLanguageClick,
   handleLinkClick,
+  handleLogoClick,
 }) => {
-
   const isSmallScreen = useMediaQueryMd();
 
   const links: Array<{ href: string; content: Record<Language, string> }> = [
@@ -111,21 +112,25 @@ export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
               key={`content-${language}-${index}`}
               href={item.href}
               onClickCapture={handleLinkClick}
-              style={{
-                textDecoration: "none",
-                color: isSmallScreen ? "white" : GRAY_COLOR,
-                fontSize: isSmallScreen ? "3rem" : "14px",
-                fontWeight: "bold",
-              }}
               onClick={() => handleMenuClick(item.href)}
+              style={{ textDecoration: "none" }}
             >
-              {item.content[language].toUpperCase()}
+              <p
+                style={{
+                  textDecoration: "none !important",
+                  color: isSmallScreen ? "white" : GRAY_COLOR,
+                  fontSize: isSmallScreen ? "3rem" : "14px",
+                  fontWeight: "bold",
+                }}
+              >
+                {item.content[language].toUpperCase()}
+              </p>
             </a>
           </div>
         ))}
 
         {!isSmallScreen ? (
-          <div>
+          <div style={{ display: "flex", alignItems: "center" }}>
             <button onClick={handleLanguageClick} style={styles.languageButton}>
               {language.toUpperCase()}
             </button>
@@ -139,7 +144,7 @@ export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
     <div style={styles.main}>
       <div style={styles.logoContainer}>
         <div>
-          <a href="#home">
+          <a href="#home" onClick={handleLogoClick}>
             <img
               src={SeloLogoGrey}
               alt="selo-logo-topbar"

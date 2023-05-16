@@ -18,7 +18,7 @@ const SERVICE_ID = "selovisualstudio_e1ci9fn";
 const TEMPLATE_ID = "selovisualstudioTemplate";
 
 async function sendEmail(message: string, name: string, email: string) {
-  console.log('oi');
+  console.log("send form");
   await emailjs
     .send(
       SERVICE_ID,
@@ -38,14 +38,7 @@ async function sendEmail(message: string, name: string, email: string) {
     });
 }
 
-interface FormProps extends LanguageProp {
-  handleSubmitFormClick: () => void;
-}
-
-export const Form: React.FC<FormProps> = ({
-  language,
-  handleSubmitFormClick,
-}) => {
+export const Form: React.FC<LanguageProp> = ({ language }) => {
   const formLabels: Record<string, Record<Language, string>> = {
     message: {
       pt: "MENSAGEM",
@@ -148,7 +141,14 @@ export const Form: React.FC<FormProps> = ({
               {...form.getInputProps("description")}
             />
           </Grid.Col>
-          <Grid.Col xs={12} md={3} style={{ padding: "0px 10px", marginTop: isSmallScreen ? '100px' : '0px' }}>
+          <Grid.Col
+            xs={12}
+            md={3}
+            style={{
+              padding: "0px 10px",
+              marginTop: isSmallScreen ? "100px" : "0px",
+            }}
+          >
             <TextInput
               label={formLabels.name[language]}
               labelProps={{
@@ -166,7 +166,14 @@ export const Form: React.FC<FormProps> = ({
               {...form.getInputProps("name")}
             />
           </Grid.Col>
-          <Grid.Col xs={12} md={3} style={{ padding: "0px 10px", marginTop: isSmallScreen ? '100px' : '0px' }}>
+          <Grid.Col
+            xs={12}
+            md={3}
+            style={{
+              padding: "0px 10px",
+              marginTop: isSmallScreen ? "100px" : "0px",
+            }}
+          >
             <TextInput
               label={formLabels.email[language]}
               labelProps={{
@@ -193,7 +200,6 @@ export const Form: React.FC<FormProps> = ({
                 type="button"
                 onClick={(e: { preventDefault: () => void }) => {
                   e.preventDefault();
-                  handleSubmitFormClick();
                   sendEmail("message", "name", "wtv");
                 }}
               >

@@ -36,11 +36,6 @@ export const Connect: React.FC<ConnectProps> = ({
     },
   };
 
-  const handleSendForm = () => {
-    // window.alert("Form to be sent");
-    console.log("Form to be sent");
-  };
-
   const isSmallScreen = useMediaQueryMd();
 
   const styles: Record<string, React.CSSProperties> = {
@@ -77,12 +72,12 @@ export const Connect: React.FC<ConnectProps> = ({
             {content.textTitleForm[language]}
           </p>
           <h3 style={{ fontWeight: "normal", fontStyle: "italic" }}>
-            <a href="mailto:hello@selovisualstudio.com">
+            <a href="mailto:hello@selovisualstudio.com" style={{ textDecoration: "none" }}>
               HELLO@SELOVISUALSTUDIO.COM
             </a>
           </h3>
         </Grid.Col>
-        <Form language={language} handleSubmitFormClick={handleSendForm} />
+        <Form language={language} />
         <Grid.Col
           span={12}
           sx={{
@@ -101,10 +96,11 @@ export const Connect: React.FC<ConnectProps> = ({
             sx={{
               color: "#3a3a3a",
               fontSize: isSmallScreen ? "16px" : "14px",
-              fontWeight: isSmallScreen ? "bold" : undefined,
+              // fontWeight: isSmallScreen ? "bold" : undefined,
+              fontWeight: "bold",
             }}
           >
-            {content.termsAndConditions[language]}
+            {content.termsAndConditions[language].toUpperCase()}
           </Anchor>
           <Anchor
             component="button"
@@ -112,10 +108,11 @@ export const Connect: React.FC<ConnectProps> = ({
             sx={{
               color: "#3a3a3a",
               fontSize: isSmallScreen ? "16px" : "14px",
-              fontWeight: isSmallScreen ? "bold" : undefined,
+              // fontWeight: isSmallScreen ? "bold" : undefined,
+              fontWeight: "bold",
             }}
           >
-            {content.privacyPolicy[language]}
+            {content.privacyPolicy[language].toUpperCase()}
           </Anchor>
         </Grid.Col>
       </Grid>

@@ -18,7 +18,8 @@ const SERVICE_ID = "selovisualstudio_e1ci9fn";
 const TEMPLATE_ID = "selovisualstudioTemplate";
 
 async function sendEmail(message: string, name: string, email: string) {
-  emailjs
+  console.log('oi');
+  await emailjs
     .send(
       SERVICE_ID,
       TEMPLATE_ID,

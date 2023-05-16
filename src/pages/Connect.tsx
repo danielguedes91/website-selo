@@ -12,16 +12,15 @@ interface ConnectProps extends LanguageProp {
   handleShowTCPage: (value: boolean) => void;
   showPPPage: boolean;
   handleShowPPPage: (value: boolean) => void;
-};
+}
 
-export const Connect: React.FC<ConnectProps> = ({ 
+export const Connect: React.FC<ConnectProps> = ({
   language,
   showTCPage,
   handleShowTCPage,
   showPPPage,
   handleShowPPPage,
 }) => {
-
   const content: Record<string, Record<Language, string>> = {
     textTitleForm: {
       en: "FILL OUT THE FORM OR EMAIL US AT",
@@ -38,7 +37,8 @@ export const Connect: React.FC<ConnectProps> = ({
   };
 
   const handleSendForm = () => {
-    window.alert("Form to be sent");
+    // window.alert("Form to be sent");
+    console.log("Form to be sent");
   };
 
   const isSmallScreen = useMediaQueryMd();
@@ -71,16 +71,15 @@ export const Connect: React.FC<ConnectProps> = ({
             marginTop: "200px",
           }}
         >
-          <Anchor
-            component="button"
-            variant="link"
+          <p
             style={{ color: "#3a3a3a", fontSize: "1.17em", fontWeight: "bold" }}
-            onClick={handleSendForm}
           >
             {content.textTitleForm[language]}
-          </Anchor>
+          </p>
           <h3 style={{ fontWeight: "normal", fontStyle: "italic" }}>
-            HELLO@SELOVISUALSTUDIO.COM
+            <a href="mailto:hello@selovisualstudio.com">
+              HELLO@SELOVISUALSTUDIO.COM
+            </a>
           </h3>
         </Grid.Col>
         <Form language={language} handleSubmitFormClick={handleSendForm} />
@@ -99,14 +98,22 @@ export const Connect: React.FC<ConnectProps> = ({
           <Anchor
             component="button"
             onClick={() => handleShowTCPage(true)}
-            sx={{ color: "#3a3a3a", fontSize: isSmallScreen ? "16px" : "14px", fontWeight: isSmallScreen ? "bold" : undefined }}
+            sx={{
+              color: "#3a3a3a",
+              fontSize: isSmallScreen ? "16px" : "14px",
+              fontWeight: isSmallScreen ? "bold" : undefined,
+            }}
           >
             {content.termsAndConditions[language]}
           </Anchor>
           <Anchor
             component="button"
             onClick={() => handleShowPPPage(true)}
-            sx={{ color: "#3a3a3a", fontSize: isSmallScreen ? "16px" : "14px", fontWeight: isSmallScreen ? "bold" : undefined }}
+            sx={{
+              color: "#3a3a3a",
+              fontSize: isSmallScreen ? "16px" : "14px",
+              fontWeight: isSmallScreen ? "bold" : undefined,
+            }}
           >
             {content.privacyPolicy[language]}
           </Anchor>

@@ -30,25 +30,6 @@ const App: React.FC = () => {
   const [language, setLanguage] = React.useState<Language>("en");
   const toggleLanguage = () => setLanguage(language === "en" ? "pt" : "en");
 
-  // Scroll menu fixed
-  const [isFixedMenu, setIsFixedMenu] = React.useState<boolean>(false);
-
-  const lastScrollTop = React.useRef<number>(0);
-
-  const handleScrollMenuFixed = () => {
-    const distanceTop = document.documentElement.scrollTop;
-
-    // Down scroll
-    if (distanceTop > lastScrollTop.current) {
-      setIsFixedMenu(false);
-      // Up scroll
-    } else if (distanceTop < lastScrollTop.current) {
-      setIsFixedMenu(true);
-    }
-    // Update last scroll to top
-    lastScrollTop.current = distanceTop <= 0 ? 0 : distanceTop;
-  };
-
   // External pages
   const [showTCPage, setShowTCPage] = React.useState<boolean>(false);
   const [showPPPage, setShowPPPage] = React.useState<boolean>(false);
@@ -62,7 +43,6 @@ const App: React.FC = () => {
   const [isSleepingPage, setIsSleepingPage] = React.useState<boolean>(false);
   let timeout: any;
   const sendIdleEvent = () => {
-    removerScrollSleepingEventListener();
     setIsSleepingPage(true);
   };
 
@@ -71,22 +51,9 @@ const App: React.FC = () => {
     timeout = setTimeout(sendIdleEvent, TIMEOUT_MS);
   };
 
-  const addScrollSleepingEventListener = () =>
-    window.addEventListener("scroll", () => {
-      handleScrollMenuFixed();
-      resetIdleTimeout();
-    });
-  const removerScrollSleepingEventListener = () =>
-    window.removeEventListener("scroll", () => {
-      handleScrollMenuFixed();
-      sendIdleEvent();
-    });
-
   const handleSleepingPageClick = () => {
     setIsSleepingPage(false);
     resetIdleTimeout();
-    removerScrollSleepingEventListener();
-    addScrollSleepingEventListener();
   };
 
   const handleGoToHome = () => {
@@ -95,9 +62,7 @@ const App: React.FC = () => {
   };
 
   React.useEffect(() => {
-    addScrollSleepingEventListener();
     resetIdleTimeout();
-    return () => removerScrollSleepingEventListener();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -108,7 +73,6 @@ const App: React.FC = () => {
       overflow: isSleepingPage ? "hidden" : undefined,
     },
   };
-  console.log("page reloaded");
 
   const MainPages = () => {
     return (
@@ -139,7 +103,7 @@ const App: React.FC = () => {
       <Navbar
         language={language}
         handleLanguageClick={toggleLanguage}
-        show={isFixedMenu}
+        // show={isFixedMenu}
         handleLinkClick={handleNavLinkClick}
         handleLogoClick={handleGoToHome}
       />

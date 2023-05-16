@@ -11,9 +11,9 @@ import useMediaQueryMd from "../features/useMediaQueryMd";
 
 interface NavbarProps {
   handleLanguageClick: () => void;
-  show?: boolean;
+  // show?: boolean;
   handleLinkClick: () => void;
-  handleLogoClick: () => void
+  handleLogoClick: () => void;
 }
 
 export const SMALL_SCREEN_BREAKPOINT = 700;
@@ -24,12 +24,47 @@ export const NAVBAR_HEIGHT = 80;
 
 export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
   language,
-  show,
+  // show: isFixedMenu,
   handleLanguageClick,
   handleLinkClick,
   handleLogoClick,
 }) => {
   const isSmallScreen = useMediaQueryMd();
+
+  // Scroll menu fixed
+  const [isFixedMenu, setIsFixedMenu] = React.useState<boolean>(false);
+  const lastScrollTop = React.useRef<number>(0);
+
+  const handleScrollMenuFixed = () => {
+    const distanceTop = document.documentElement.scrollTop;
+
+    // Down scroll
+    if (distanceTop > lastScrollTop.current) {
+      setIsFixedMenu(false);
+      // Up scroll
+    } else if (distanceTop < lastScrollTop.current) {
+      setIsFixedMenu(true);
+    }
+    // Update last scroll to top
+    lastScrollTop.current = distanceTop <= 0 ? 0 : distanceTop;
+  };
+
+  const addScrollSleepingEventListener = () =>
+    window.addEventListener("scroll", () => {
+      handleScrollMenuFixed();
+      // resetIdleTimeout();
+    });
+  const removeScrollSleepingEventListener = () =>
+    window.removeEventListener("scroll", () => {
+      handleScrollMenuFixed();
+      // sendIdleEvent();
+    });
+
+  React.useEffect(() => {
+    addScrollSleepingEventListener();
+    return () => removeScrollSleepingEventListener();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const links: Array<{ href: string; content: Record<Language, string> }> = [
     {
@@ -75,7 +110,7 @@ export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
       height: NAVBAR_HEIGHT,
       zIndex: 10,
       padding: `0px ${isSmallScreen ? OUTTER_GUTTER_MOBILE : OUTTER_GUTTER}px`,
-      opacity: show ? 1 : 0,
+      opacity: isFixedMenu ? 1 : 0,
       transition: "all 300ms ease-in",
     },
     logoContainer: {},

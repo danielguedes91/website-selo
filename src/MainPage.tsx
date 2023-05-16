@@ -90,7 +90,6 @@ const App: React.FC = () => {
   };
 
   const handleGoToHome = () => {
-    console.log("go home");
     setShowTCPage(false);
     setShowPPPage(false);
   };

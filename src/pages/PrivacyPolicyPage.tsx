@@ -284,7 +284,7 @@ export const TitleContentComponent = ({
         sx={{ marginTop: index === 0 ? undefined : `${OUTTER_GUTTER}px` }}
       >
         <Text fz="xl" fw={700}>
-          {title[language]}
+          {title[language].toUpperCase()}
         </Text>
       </Grid.Col>
       <Grid.Col

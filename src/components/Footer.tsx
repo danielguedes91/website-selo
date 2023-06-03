@@ -1,9 +1,11 @@
 import React from "react";
 import { PAPER_BG } from "../MainPage";
-import { GRAY_COLOR, OUTTER_GUTTER } from "./Navbar";
+import { GRAY_COLOR, OUTTER_GUTTER, OUTTER_GUTTER_MOBILE } from "./Navbar";
 import useMediaQueryMd from "../features/useMediaQueryMd";
 
 export const Footer: React.FC = () => {
+  const isSmallScreen = useMediaQueryMd();
+
   const styles: Record<string, React.CSSProperties> = {
     main: {
       // position: "fixed",
@@ -13,7 +15,7 @@ export const Footer: React.FC = () => {
       backgroundColor: PAPER_BG,
       height: "60px",
       marginTop: "10px",
-      padding: `0px ${OUTTER_GUTTER}px`,
+      padding: `0px ${isSmallScreen ? OUTTER_GUTTER_MOBILE : OUTTER_GUTTER}px`,
     },
     mainContainer: {
       width: "100%",
@@ -118,9 +120,9 @@ export const Footer: React.FC = () => {
           </a>
         </div>
       </div>
-      <div style={{ width: "100%", margin: "30px 0px" }}>
+      <div style={{ width: "100%", margin: "20px 0px" }}>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <div style={{ ...styles.anchorContainer, minWidth: 200 }}>
+          <div style={{ ...styles.anchorContainer, minWidth: 150 }}>
             <a
               className="footer-link"
               href="https://www.facebook.com/selovisualstudio"
@@ -131,7 +133,7 @@ export const Footer: React.FC = () => {
               FACEBOOK
             </a>
           </div>
-          <div style={{ ...styles.anchorContainer, minWidth: 200 }}>
+          <div style={{ ...styles.anchorContainer, minWidth: 150 }}>
             <a
               className="footer-link"
               href="https://vimeo.com/selovisuals"
@@ -143,8 +145,8 @@ export const Footer: React.FC = () => {
             </a>
           </div>
         </div>
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <div style={{ ...styles.anchorContainer, minWidth: 200 }}>
+        <div style={{ display: "flex", justifyContent: "space-between", marginTop: "20px" }}>
+          <div style={{ ...styles.anchorContainer, minWidth: 150 }}>
             <a
               className="footer-link"
               href="https://behance.net/selovisuals"
@@ -155,7 +157,7 @@ export const Footer: React.FC = () => {
               BEHANCE
             </a>
           </div>
-          <div style={{ ...styles.anchorContainer, minWidth: 200 }}>
+          <div style={{ ...styles.anchorContainer, minWidth: 150 }}>
             <a
               className="footer-link"
               href="https://www.instagram.com/selovisuals/"
@@ -168,7 +170,7 @@ export const Footer: React.FC = () => {
           </div>
         </div>
       </div>
-      <div>
+      <div style={{height:"90px", margin: "50px 0"}}>
         <a
           className="footer-link"
           href="https://grafemadesign.com/"
@@ -181,8 +183,6 @@ export const Footer: React.FC = () => {
       </div>
     </div>
   );
-
-  const isSmallScreen = useMediaQueryMd();
 
   return (
     <div style={styles.main}>

@@ -4,7 +4,6 @@ import { Language, LanguageProp, PAPER_BG } from "../MainPage";
 
 import { useForm } from "@mantine/form";
 import { TextInput, Button, Group, Sx, Grid, Textarea } from "@mantine/core";
-import { OUTTER_GUTTER } from "./Navbar";
 import useMediaQueryMd from "../features/useMediaQueryMd";
 
 import emailjs from "@emailjs/browser";
@@ -78,10 +77,10 @@ export const Form: React.FC<LanguageProp> = ({ language }) => {
 
   const buttonStyles: Sx = {
     transition: "all 400ms",
-    margin: `50px 0px`,
-    marginTop: isSmallScreen ? "100px" : undefined,
+    margin: `50px 0px 100px 0px`,
+    // marginTop: isSmallScreen ? OUTTER_GUTTER_MOBILE : OUTTER_GUTTER,
     fontWeight: "bold",
-    fontSize: "14px",
+    fontSize: "16px",
     fontFamily: "Aileron",
     "&:hover": {
       "& span": {
@@ -89,6 +88,8 @@ export const Form: React.FC<LanguageProp> = ({ language }) => {
       },
       boxShadow: "inset 0 0 0 40px black",
     },
+    height: "40px",
+    padding: "0px 16px"
   };
 
   return (
@@ -117,7 +118,7 @@ export const Form: React.FC<LanguageProp> = ({ language }) => {
       >
         <Grid
           sx={{
-            width: `calc(100% - ${OUTTER_GUTTER * 2}px)`,
+            width: `100%`,
             margin: 0,
             padding: 0,
           }}
@@ -129,6 +130,7 @@ export const Form: React.FC<LanguageProp> = ({ language }) => {
                 sx: {
                   fontWeight: "bold",
                   fontFamily: "Aileron",
+                  fontSize:"16px"
                 },
               }}
               sx={{
@@ -146,7 +148,7 @@ export const Form: React.FC<LanguageProp> = ({ language }) => {
             md={3}
             style={{
               padding: "0px 10px",
-              marginTop: isSmallScreen ? "100px" : "0px",
+              marginTop: isSmallScreen ? "60px" : "0px",
             }}
           >
             <TextInput
@@ -155,11 +157,13 @@ export const Form: React.FC<LanguageProp> = ({ language }) => {
                 sx: {
                   fontWeight: "bold",
                   fontFamily: "Aileron",
+                  fontSize:"16px"
                 },
               }}
               sx={{
                 "& .mantine-Input-input": {
                   width: "100%",
+                  height: "60px",
                   ...defaultSxUnstyle,
                 },
               }}
@@ -171,7 +175,7 @@ export const Form: React.FC<LanguageProp> = ({ language }) => {
             md={3}
             style={{
               padding: "0px 10px",
-              marginTop: isSmallScreen ? "100px" : "0px",
+              marginTop: isSmallScreen ? "60px" : "0px",
             }}
           >
             <TextInput
@@ -180,11 +184,13 @@ export const Form: React.FC<LanguageProp> = ({ language }) => {
                 sx: {
                   fontWeight: "bold",
                   fontFamily: "Aileron",
+                  fontSize:"16px"
                 },
               }}
               sx={{
                 "& .mantine-Input-input": {
                   width: "100%",
+                  height: "60px",
                   ...defaultSxUnstyle,
                 },
               }}

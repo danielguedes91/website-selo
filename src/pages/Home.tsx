@@ -8,7 +8,11 @@ import LandingPageImage02 from "../assets/landing/selo-landing-page-2-min.png";
 import LandingPageImage03 from "../assets/landing/selo-landing-page-3-min.png";
 import LandingPageImage04 from "../assets/landing/selo-landing-page-4-min.png";
 import LandingPageImage05 from "../assets/landing/selo-landing-page-5-min.png";
-import { GRAY_COLOR, OUTTER_GUTTER, OUTTER_GUTTER_MOBILE } from "../components/Navbar";
+import {
+  GRAY_COLOR,
+  OUTTER_GUTTER,
+  OUTTER_GUTTER_MOBILE,
+} from "../components/Navbar";
 import { Grid } from "@mantine/core";
 import useMediaQueryMd from "../features/useMediaQueryMd";
 
@@ -59,7 +63,7 @@ export const Home: React.FC<HomeProps> = ({ language }) => {
       // marginTop: isHomeReached ? -175 : 145,
       position: "sticky",
       bottom: "25vh",
-      marginTop: "100px",
+      marginTop: isSmallScreen ? undefined : "100px",
       marginBottom: "100px",
     },
   };
@@ -84,7 +88,7 @@ export const Home: React.FC<HomeProps> = ({ language }) => {
     content_02: {
       en: (
         <>
-          <span>STORIES MAKE MAGIC,</span>
+          <span>STORIES{isSmallScreen ? <br /> : ""} MAKE MAGIC,</span>
           <br />
           <span>NOT WANDS.</span>
         </>
@@ -162,23 +166,31 @@ export const Home: React.FC<HomeProps> = ({ language }) => {
 
   const MobileVersion = () => (
     <Grid
-    // gutter={10}
+      // gutter={10}
       style={{
         display: "flex",
         flexDirection: "row",
         width: "100%",
         height: "100%",
+        position: "relative",
+        top: "-9vh",
       }}
     >
       <Grid.Col
         span={12}
-        style={{ display: "flex", justifyContent: "space-between", padding: 0 }}
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          padding: 0,
+          position: "relative",
+          bottom: "-24vh",
+        }}
       >
         <img alt="" src={LandingPageImage01} style={{ width: "45%" }} />
         <img
           alt=""
           src={LandingPageImage02}
-          style={{ width: "45%", position: "relative", top: 200 }}
+          style={{ width: "45%", position: "relative", top: 125 }}
         />
       </Grid.Col>
       <Grid.Col
@@ -187,14 +199,14 @@ export const Home: React.FC<HomeProps> = ({ language }) => {
           display: "flex",
           justifyContent: "space-between",
           padding: 0,
-          marginTop: 300,
+          marginTop: 333,
         }}
       >
         <img alt="" src={LandingPageImage03} style={{ width: "45%" }} />
         <img
           alt=""
           src={LandingPageImage04}
-          style={{ width: "45%", position: "relative", top: 200 }}
+          style={{ width: "45%", position: "relative", top: 125 }}
         />
       </Grid.Col>
       <Grid.Col span={12} style={{ display: "flex", justifyContent: "center" }}>
@@ -211,7 +223,14 @@ export const Home: React.FC<HomeProps> = ({ language }) => {
     <div style={styles.main} id="home">
       {isSmallScreen ? <MobileVersion /> : <ScreenVersion />}
       <div style={styles.logoTextContainer}>
-        <div style={{ display: "flex", alignItems: "flex-end", height: 350, justifyContent: 'center' }}>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "flex-end",
+            height: isSmallScreen ? 200 : 350,
+            justifyContent: "center",
+          }}
+        >
           <div
             style={{
               height: isLogoShow ? "100%" : 0,
@@ -249,7 +268,7 @@ export const Home: React.FC<HomeProps> = ({ language }) => {
         style={{
           // marginTop: isHomeReached ? 90 : 1650,
           textAlign: "center",
-          fontSize: "64px",
+          fontSize: isSmallScreen ? "36px" : "64px",
           color: GRAY_COLOR,
           fontWeight: "bold",
         }}

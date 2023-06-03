@@ -33,7 +33,7 @@ const IMAGE_COL_SPAN: number = 7;
 type ServicesProps = LanguageProp;
 
 export const Services: React.FC<ServicesProps> = ({ language }) => {
-  
+
   const isSmallScreen = useMediaQueryMd();
 
   const content: Record<
@@ -125,7 +125,7 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
     },
 
     editorialDesign: {
-      pt: `Elaboramos designs, composições e layouts que objetivam prender os olhos(e alma) do leitor à tua publicação considerando sempre os benchmarks, estudamos o seu caso cruzando a sua visão com as referências de melhor relevância, planejamos e implementamos no seu projeto para que a sua mensagem voe(não literalmentente), e seja transmitida com clareza e propósito.`,
+      pt: `Elaboramos designs, composições e layouts que objetivam prender os olhos(e alma) do leitor à tua publicação considerando sempre os benchmarks, estudamos o seu caso cruzando a sua visão com as referências de melhor relevância, planeamos e implementamos no seu projeto para que a sua mensagem voe(não literalmente), e seja transmitida com clareza e propósito.`,
       en: `We create designs, compositions and layouts that aim to catch the eye (and soul) of the reader. Always considering the benchmarks, we study your case crossing your vision with the most relevant references, we plan and implement on your project so that your message flies (not literally), and it's delivered with clarity and purpose.`,
       img: {
         src: SeloEditorial,
@@ -146,7 +146,7 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
       justifyContent: "center",
       alignItems: "center",
       maxWidth: "100vw",
-      margin: `100px ${isSmallScreen ? OUTTER_GUTTER_MOBILE : OUTTER_GUTTER}px`,
+      margin: `${isSmallScreen ? OUTTER_GUTTER_MOBILE : OUTTER_GUTTER}px ${isSmallScreen ? OUTTER_GUTTER_MOBILE : OUTTER_GUTTER}px`,
       // marginTop: "260px !important",
     },
     gridContainer: {
@@ -209,6 +209,7 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
             display: "flex",
             width: "100%",
             justifyContent: "space-between",
+            padding: isSmallScreen ? "0" : undefined
           }}
         >
           {isSmallScreen ? (
@@ -218,7 +219,7 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
                   style={{
                     fontWeight: "bold",
                     fontSize: "24px",
-                    marginBottom: "40px",
+                    marginBottom: isSmallScreen ? "20px" : "40px",
                   }}
                 >
                   {title[language]}
@@ -259,7 +260,7 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
                 display: "flex",
                 flexDirection: "column",
                 padding: 0,
-                marginBottom: 160,
+                marginBottom: isSmallScreen ? 60 : 160,
               }}
             >
               {isSmallScreen ? (

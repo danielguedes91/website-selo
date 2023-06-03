@@ -61,8 +61,8 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
       ),
     },
     signature: {
-      en: <>DR. EMMETT BROWN, BACK TO THE FUTURE</>,
-      pt: <>DR. EMMETT BROWN, BACK TO THE FUTURE</>,
+      en: <>DR. EMMETT BROWN,{isSmallScreen ? <br /> : ""} BACK TO THE FUTURE</>,
+      pt: <>DR. EMMETT BROWN,{isSmallScreen ? <br /> : ""} BACK TO THE FUTURE</>,
     },
   };
 
@@ -142,7 +142,7 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
   return (
     <div id="steps" style={styles.main}>
       <Grid style={styles.gridContainer}>
-        <Grid.Col span={12} sx={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
+        <Grid.Col span={12} sx={{ display: "flex", flexDirection: "row", flexWrap: "wrap", padding: isSmallScreen ? "0" : undefined }}>
           <Grid.Col
             xs={12}
             md={3}
@@ -150,6 +150,7 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-between",
+              padding: isSmallScreen ? "0" : undefined
             }}
           >
             <h3 style={{ fontSize: "24px", fontWeight: "bold" }}>
@@ -165,7 +166,7 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
           {(Object.keys(content) as Array<ContentKey>).map(
             (key: ContentKey, index) => {
               const { imgSrc, title } = content[key];
-              // Thist guarantees that wherever the content, we'll only have 3 images
+              // This guarantees that wherever the content, we'll only have 3 images
               return index <= 3 && imgSrc ? (
                 <Grid.Col
                   xs={12}
@@ -173,7 +174,7 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
                   sx={{
                     display: "flex",
                     flexDirection: "column",
-                    padding: "12px",
+                    padding: isSmallScreen ? "12px 0" : "12px",
                   }}
                   key={index + "-image"}
                 >
@@ -200,10 +201,10 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
             }
           )}
         </Grid.Col>
-        <Grid.Col span={12} sx={{ marginTop: "200px" }}>
+        <Grid.Col span={12} sx={{ marginTop: isSmallScreen ? "60px" : "200px" }}>
           <h2
             style={{
-              fontSize: "55px",
+              fontSize: isSmallScreen ? "30px" :"55px",
               textAlign: "center",
               fontStyle: "italic",
               margin: 0,
@@ -213,7 +214,7 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
           </h2>
           <h2
             style={{
-              fontSize: "54px",
+              fontSize: isSmallScreen ? "29px" :"54px",
               textAlign: "center",
               fontStyle: "italic",
               fontWeight: 500,
@@ -224,7 +225,7 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
           </h2>
           <h5
             style={{
-              fontSize: "25px",
+              fontSize: isSmallScreen ? "18px" : "25px",
               textAlign: "center",
               fontStyle: "italic",
             }}

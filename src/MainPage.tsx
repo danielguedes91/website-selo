@@ -20,10 +20,14 @@ export const PAPER_BG: string = "#f5f3f2";
 export const PAPER_BG_BLACK: string = "#393A3A";
 export type Language = "en" | "pt";
 
-const TIMEOUT_MS = 60000; // 1 minute
 export interface LanguageProp {
   language: Language;
 }
+
+/** Sleeping page timeout ms */
+const TIMEOUT_MS = 60000; // 1 minute
+/** Sleeping page timeout */
+let timeout: NodeJS.Timeout;
 
 const App: React.FC = () => {
   // Language
@@ -41,7 +45,7 @@ const App: React.FC = () => {
 
   // Sleeping page
   const [isSleepingPage, setIsSleepingPage] = React.useState<boolean>(false);
-  let timeout: any;
+
   const sendIdleEvent = () => {
     setIsSleepingPage(true);
   };
@@ -99,7 +103,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div style={styles.main}>
+    <div style={styles.main} onTouchEnd={handleSleepingPageClick} onClick={handleSleepingPageClick}>
       <Navbar
         language={language}
         handleLanguageClick={toggleLanguage}

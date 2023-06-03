@@ -1,6 +1,7 @@
 import React from "react";
 import { Language, LanguageProp, PAPER_BG } from "../MainPage";
 import SeloLogoGrey from "../assets/home/selo-logo-grey.svg";
+import SeloLogoWhite from "../assets/home/selo-logo-white.svg";
 
 // Hamburger menu icon
 import { ActionIcon, Drawer } from "@mantine/core";
@@ -19,7 +20,7 @@ interface NavbarProps {
 export const SMALL_SCREEN_BREAKPOINT = 700;
 export const GRAY_COLOR: string = "#3a3a3a";
 export const OUTTER_GUTTER: number = 100;
-export const OUTTER_GUTTER_MOBILE: number = 50;
+export const OUTTER_GUTTER_MOBILE: number = 30;
 export const NAVBAR_HEIGHT = 80;
 
 export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
@@ -156,6 +157,7 @@ export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
                   color: isSmallScreen ? "white" : GRAY_COLOR,
                   fontSize: isSmallScreen ? "3rem" : "14px",
                   fontWeight: "bold",
+                  margin: isSmallScreen ? 0 : undefined,
                 }}
               >
                 {item.content[language].toUpperCase()}
@@ -208,13 +210,34 @@ export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
         <Drawer
           opened={open}
           position="top"
-          onClose={() => {}}
-          transitionTimingFunction="ease-in-out"
-          transitionDuration={600}
+          onClose={() => {
+            setOpen(false);
+          }}
+          transitionProps={{ duration: 600, timingFunction: "ease-in-out" }}
+          title={<img
+            src={SeloLogoWhite}
+            alt="selo-logo-topbar"
+            style={{ height: 60 - 24 }}
+          />}
           sx={{
             height: "100vh",
             zIndex: 99,
             "& .mantine-Paper-root": { height: "100%" },
+            "& .mantine-Drawer-header": {
+              backgroundColor: GRAY_COLOR,
+              padding: "2rem",
+              "button": {
+                height: "40px",
+                width: "40px"
+              },
+              "button *": {
+                color: "white !important",
+              },
+              "svg": {
+                height: "100%",
+                width: "100%"
+              }
+            },
           }}
         >
           <div

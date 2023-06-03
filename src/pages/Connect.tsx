@@ -4,7 +4,7 @@ import React from "react";
 import { Form } from "../components/Form";
 
 import { Language, LanguageProp } from "../MainPage";
-import { OUTTER_GUTTER } from "../components/Navbar";
+import { OUTTER_GUTTER, OUTTER_GUTTER_MOBILE } from "../components/Navbar";
 import useMediaQueryMd from "../features/useMediaQueryMd";
 
 interface ConnectProps extends LanguageProp {
@@ -54,16 +54,17 @@ export const Connect: React.FC<ConnectProps> = ({
           flexDirection: "column",
           alignItems: "center",
           width: "100%",
-          margin: 0,
+          padding: `0px ${isSmallScreen ? OUTTER_GUTTER_MOBILE : OUTTER_GUTTER}px`,
+          margin: isSmallScreen ? undefined : 0,
         }}
-      >
+        >
         <Grid.Col
           span={12}
           sx={{
-            textAlign: "center",
             lineHeight: 0.6,
             marginBottom: "40px",
-            marginTop: "200px",
+            marginTop: isSmallScreen ? "90px" : "200px",
+            width: isSmallScreen ? "100%" : undefined,
           }}
         >
           <p
@@ -77,15 +78,15 @@ export const Connect: React.FC<ConnectProps> = ({
             </a>
           </h3>
         </Grid.Col>
-        <Form language={language} />
+        {/* <Form language={language} />
         <Grid.Col
           span={12}
           sx={{
             display: "flex",
             flexDirection: "column",
             width: "100%",
-            paddingLeft: `${OUTTER_GUTTER}px`,
-            paddingRight: `${OUTTER_GUTTER}px`,
+            paddingLeft: `${ isSmallScreen ? 0 : OUTTER_GUTTER}px`,
+            paddingRight: `${ isSmallScreen ? 0 : OUTTER_GUTTER}px`,
             alignItems: "flex-start",
             marginBottom: "100px",
           }}
@@ -110,11 +111,12 @@ export const Connect: React.FC<ConnectProps> = ({
               fontSize: isSmallScreen ? "16px" : "14px",
               // fontWeight: isSmallScreen ? "bold" : undefined,
               fontWeight: "bold",
+              marginTop: isSmallScreen ? "15px" : undefined
             }}
           >
             {content.privacyPolicy[language].toUpperCase()}
           </Anchor>
-        </Grid.Col>
+        </Grid.Col> */}
       </Grid>
     </div>
   );

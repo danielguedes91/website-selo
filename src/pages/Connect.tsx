@@ -1,7 +1,5 @@
-import { Grid, Anchor } from "@mantine/core";
+import { Grid } from "@mantine/core";
 import React from "react";
-
-import { Form } from "../components/Form";
 
 import { Language, LanguageProp } from "../MainPage";
 import { OUTTER_GUTTER, OUTTER_GUTTER_MOBILE } from "../components/Navbar";

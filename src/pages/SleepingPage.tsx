@@ -4,12 +4,15 @@ import SeloLogoWhite from "../assets/home/selo-logo-white.svg";
 import { PAPER_BG_BLACK } from "../MainPage";
 import { ImageComponent } from "../components/ImageComponent";
 import { CloseButton } from "@mantine/core";
+import useMediaQueryMd from "../features/useMediaQueryMd";
 
 interface SleepingPageProps {
   handleClick: () => void;
 }
 
 const SleepingPage: React.FC<SleepingPageProps> = ({ handleClick }) => {
+  const isSmallScreen = useMediaQueryMd();
+
   return (
     <div
       id="sleeping-page"
@@ -42,6 +45,7 @@ const SleepingPage: React.FC<SleepingPageProps> = ({ handleClick }) => {
         imgSrc={SeloLogoWhite}
         onClickHandler={handleClick}
         customBg={PAPER_BG_BLACK}
+        width={isSmallScreen ? "75%" : undefined}
       />
     </div>
   );

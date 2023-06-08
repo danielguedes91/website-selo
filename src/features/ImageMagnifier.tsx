@@ -29,8 +29,8 @@ export const ImageMagnifier = ({
     <div
       style={{
         position: "relative",
+        textAlign: "center",
         height: height,
-        width: width,
       }}
     >
       <img
@@ -89,7 +89,7 @@ export const ImageMagnifier = ({
             imgHeight * zoomLevel
           }px`,
 
-          //calculete position of zoomed image.
+          //calculate position of zoomed image.
           backgroundPositionX: `${-x * zoomLevel + magnifieWidth / 2}px`,
           backgroundPositionY: `${-y * zoomLevel + magnifierHeight / 2}px`,
         }}

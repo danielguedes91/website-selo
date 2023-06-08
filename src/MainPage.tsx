@@ -103,7 +103,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div style={styles.main} onTouchEnd={handleSleepingPageClick} onClick={handleSleepingPageClick} onScroll={handleSleepingPageClick} onMouseMove={handleSleepingPageClick}>
+    <div style={styles.main} onTouchEnd={() => {if(!isSleepingPage) handleSleepingPageClick()}} onClick={() => {if(!isSleepingPage) handleSleepingPageClick()}} onScroll={() => {if(!isSleepingPage) handleSleepingPageClick()}} onMouseMove={() => {if(!isSleepingPage) handleSleepingPageClick()}}>
       <Navbar
         language={language}
         handleLanguageClick={toggleLanguage}

@@ -1,6 +1,6 @@
 import React from "react";
 import { PAPER_BG } from "../MainPage";
-import { GRAY_COLOR, OUTTER_GUTTER, OUTTER_GUTTER_MOBILE } from "./Navbar";
+import { GRAY_COLOR, OUTER_GUTTER, OUTER_GUTTER_MOBILE } from "./Navbar";
 import useMediaQueryMd from "../features/useMediaQueryMd";
 
 export const Footer: React.FC = () => {
@@ -15,7 +15,7 @@ export const Footer: React.FC = () => {
       backgroundColor: PAPER_BG,
       height: "60px",
       marginTop: "10px",
-      padding: `0px ${isSmallScreen ? OUTTER_GUTTER_MOBILE : OUTTER_GUTTER}px`,
+      padding: `0px ${isSmallScreen ? OUTER_GUTTER_MOBILE : OUTER_GUTTER}px`,
     },
     mainContainer: {
       width: "100%",

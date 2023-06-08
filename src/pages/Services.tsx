@@ -25,7 +25,7 @@ import SeloEditorialBlur from "../assets/services/selo-editorial-design-blur-min
 
 import { ImageComponent } from "../components/ImageComponent";
 import { Grid } from "@mantine/core";
-import { OUTTER_GUTTER, OUTTER_GUTTER_MOBILE } from "../components/Navbar";
+import { OUTER_GUTTER, OUTER_GUTTER_MOBILE } from "../components/Navbar";
 import useMediaQueryMd from "../features/useMediaQueryMd";
 
 const TEXT_COL_SPAN: number = 3;
@@ -94,8 +94,8 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
 
     visualProduction: {
       pt: `Captar a atenção do consumidor é um desafio que endurece todos os dias, o que leva marcas a fazer escolhas repentinas, pois muitos dos métodos atualmente utilizados são descartáveis.
-      Com as nossas produções procuramos deixar um impacto mais duradouro nas mentes e corações dos nossos clientes e telespectadores, através de filmes, documentários de longa e curta duração, minisséries, conteúdo para social mídia baseados em script, motion graphics, animação e muito mais.
-      Para além dos aspectos mais técnicos do nosso campo de atividade, acreditamos na emoção e storytelling como ferramentas proeficientes de expressão sobre a cultura e sociedade(ou quaisquer outras humanidades em conversa).`,
+      Com as nossas produções procuramos deixar um impacto mais duradouro nas mentes e corações dos nossos clientes e telespectadores, através de filmes, documentários de longa e curta duração, minisséries, conteúdo para social midia baseados em script, motion graphics, animação e muito mais.
+      Para além dos aspetos mais técnicos do nosso campo de atividade, acreditamos na emoção e storytelling como ferramentas proficientes de expressão sobre a cultura e sociedade(ou quaisquer outras humanidades em conversa).`,
       en: `Seizing consumer's attention is a challenge that grows tougher every day, which often leads brands to make immediate choices, as many of the methods currently used are disposable.
       With our productions we aim to make a long-lasting impact on the minds and hearts of our customers and audience, through film, long and short documentaries, miniseries, script-based social media content, motion graphics, animation and more.
       Beyond the more technical aspects of our field, we believe in emotion and storytelling as proficient tools of expression about culture and society(or any other humanities in conversation).`,
@@ -146,7 +146,7 @@ export const Services: React.FC<ServicesProps> = ({ language }) => {
       justifyContent: "center",
       alignItems: "center",
       maxWidth: "100vw",
-      margin: `${isSmallScreen ? OUTTER_GUTTER_MOBILE : OUTTER_GUTTER}px ${isSmallScreen ? OUTTER_GUTTER_MOBILE : OUTTER_GUTTER}px`,
+      margin: `${isSmallScreen ? OUTER_GUTTER_MOBILE : OUTER_GUTTER}px ${isSmallScreen ? OUTER_GUTTER_MOBILE : OUTER_GUTTER}px`,
       // marginTop: "260px !important",
     },
     gridContainer: {

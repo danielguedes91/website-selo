@@ -3,8 +3,8 @@ import React from "react";
 import { Language, LanguageProp } from "../MainPage";
 import {
   NAVBAR_HEIGHT,
-  OUTTER_GUTTER,
-  OUTTER_GUTTER_MOBILE,
+  OUTER_GUTTER,
+  OUTER_GUTTER_MOBILE,
 } from "../components/Navbar";
 import useMediaQueryMd from "../features/useMediaQueryMd";
 
@@ -281,7 +281,7 @@ export const TitleContentComponent = ({
       <Grid.Col
         xs={12}
         md={6}
-        sx={{ marginTop: index === 0 ? undefined : `${OUTTER_GUTTER}px` }}
+        sx={{ marginTop: index === 0 ? undefined : `${OUTER_GUTTER}px` }}
       >
         <Text fz="xl" fw={700}>
           {title[language].toUpperCase()}
@@ -290,7 +290,7 @@ export const TitleContentComponent = ({
       <Grid.Col
         xs={12}
         md={6}
-        // sx={{ marginTop: index === 0 ? undefined : `${OUTTER_GUTTER}px` }}
+        // sx={{ marginTop: index === 0 ? undefined : `${OUTER_GUTTER}px` }}
       >
         {content[language].map((unitContent, index) => {
           return <Text key={index + '-text-item'}>{unitContent}</Text>;
@@ -302,8 +302,8 @@ export const TitleContentComponent = ({
 
 export const externalPageContentStyle: (isSmallScreen: boolean) => Sx = (isSmallScreen) => {
   return {
-    padding: `${NAVBAR_HEIGHT + OUTTER_GUTTER}px ${
-      isSmallScreen ? OUTTER_GUTTER_MOBILE : OUTTER_GUTTER
+    padding: `${NAVBAR_HEIGHT + OUTER_GUTTER}px ${
+      isSmallScreen ? OUTER_GUTTER_MOBILE : OUTER_GUTTER
     }px`,
     maxWidth: "100%",
     flexWrap: "wrap",

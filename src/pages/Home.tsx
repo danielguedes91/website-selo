@@ -10,8 +10,8 @@ import LandingPageImage04 from "../assets/landing/selo-landing-page-4-min.png";
 import LandingPageImage05 from "../assets/landing/selo-landing-page-5-min.png";
 import {
   GRAY_COLOR,
-  OUTTER_GUTTER,
-  OUTTER_GUTTER_MOBILE,
+  OUTER_GUTTER,
+  OUTER_GUTTER_MOBILE,
 } from "../components/Navbar";
 import { Grid } from "@mantine/core";
 import useMediaQueryMd from "../features/useMediaQueryMd";
@@ -51,7 +51,7 @@ export const Home: React.FC<HomeProps> = ({ language }) => {
       flexDirection: "column",
       alignItems: "center",
       minHeight: "100vh",
-      margin: `0px ${isSmallScreen ? OUTTER_GUTTER_MOBILE : OUTTER_GUTTER}px`,
+      margin: `0px ${isSmallScreen ? OUTER_GUTTER_MOBILE : OUTER_GUTTER}px`,
     },
     logoTextContainer: {
       // opacity: isLogoShow ? 1 : 0,
@@ -72,7 +72,7 @@ export const Home: React.FC<HomeProps> = ({ language }) => {
     content_01: {
       en: (
         <>
-          <span>YOU DON'T ACHIEVE YOUR DREAMS</span>
+          <span>YOU DON'T ACHIEVE{isSmallScreen ? <br /> : " "}YOUR DREAMS</span>
           <br />
           <span>BY PLAYING IT SAFE</span>
         </>
@@ -88,7 +88,7 @@ export const Home: React.FC<HomeProps> = ({ language }) => {
     content_02: {
       en: (
         <>
-          <span>STORIES{isSmallScreen ? <br /> : ""} MAKE MAGIC,</span>
+          <span>STORIES{isSmallScreen ? <br /> : " "}MAKE MAGIC,</span>
           <br />
           <span>NOT WANDS.</span>
         </>
@@ -243,7 +243,7 @@ export const Home: React.FC<HomeProps> = ({ language }) => {
               right: isSmallScreen ? 0 : 4,
             }}
           >
-            <div style={{ marginBottom: 80, overflow: "visible" }}>
+            <div style={{ marginBottom: 75, overflow: "visible" }}>
               <img
                 src={SeloLogoGrey}
                 alt=""

@@ -10,7 +10,7 @@ import StrategyStudy from "../assets/steps/selo-etiquette-strategy-study-min.png
 import IdentityProposal from "../assets/steps/selo-signature-identity-proposal-min.png";
 import { ImageComponent } from "../components/ImageComponent";
 import useMediaQueryMd from "../features/useMediaQueryMd";
-import { OUTTER_GUTTER, OUTTER_GUTTER_MOBILE } from "../components/Navbar";
+import { OUTER_GUTTER, OUTER_GUTTER_MOBILE } from "../components/Navbar";
 
 type StepsProps = LanguageProp;
 
@@ -30,7 +30,7 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
       flexDirection: "column",
       alignItems: "center",
       width: "100%",
-      margin: `0px ${isSmallScreen ? OUTTER_GUTTER_MOBILE : OUTTER_GUTTER}px`,
+      margin: `0px ${isSmallScreen ? OUTER_GUTTER_MOBILE : OUTER_GUTTER}px`,
     },
   };
 
@@ -157,7 +157,7 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
               {leftTitle[language]}
             </h3>
             {isSmallScreen ? null : (
-              <div style={{ marginBottom: BOTTOM_HEIGHT + 7 }}>
+              <div style={{ marginBottom: BOTTOM_HEIGHT + 10 }}>
                 {content[selectedContent].text[language]}
               </div>
             )}
@@ -174,7 +174,7 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
                   sx={{
                     display: "flex",
                     flexDirection: "column",
-                    padding: isSmallScreen ? "12px 0" : "12px",
+                    padding: isSmallScreen ? "0" : "12px",
                   }}
                   key={index + "-image"}
                 >
@@ -191,7 +191,7 @@ export const Steps: React.FC<StepsProps> = ({ language }) => {
                         title?.[language]}
                     </h3>
                     {isSmallScreen ? (
-                      <div style={{ marginBottom: BOTTOM_HEIGHT + 7 }}>
+                      <div style={{ marginBottom: BOTTOM_HEIGHT + 10 }}>
                         {content[selectedContent].text[language]}
                       </div>
                     ) : null}

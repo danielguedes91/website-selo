@@ -19,8 +19,8 @@ interface NavbarProps {
 
 export const SMALL_SCREEN_BREAKPOINT = 700;
 export const GRAY_COLOR: string = "#3a3a3a";
-export const OUTTER_GUTTER: number = 100;
-export const OUTTER_GUTTER_MOBILE: number = 30;
+export const OUTER_GUTTER: number = 100;
+export const OUTER_GUTTER_MOBILE: number = 30;
 export const NAVBAR_HEIGHT = 80;
 
 export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
@@ -110,7 +110,7 @@ export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
       backgroundColor: PAPER_BG,
       height: NAVBAR_HEIGHT,
       zIndex: 10,
-      padding: `0px ${isSmallScreen ? OUTTER_GUTTER_MOBILE : OUTTER_GUTTER}px`,
+      padding: `0px ${isSmallScreen ? OUTER_GUTTER_MOBILE : OUTER_GUTTER}px`,
       opacity: isFixedMenu ? 1 : 0,
       transition: "all 300ms ease-in",
     },
@@ -128,9 +128,21 @@ export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
       opacity: 0.5,
       cursor: "pointer",
     },
+    languageDiv: {
+      background: "none",
+      border: "none",
+      padding: "0",
+      cursor: "pointer",
+      textDecoration: "none !important",
+      color: isSmallScreen ? "white" : GRAY_COLOR,
+      fontSize: isSmallScreen ? "3rem" : "14px",
+      fontWeight: "bold",
+      margin: isSmallScreen ? 0 : undefined,
+    },
   };
 
   const handleMenuClick = (href: string) => {
+    setIsFixedMenu(false);
     window.location.assign(href);
     setOpen(false);
   };
@@ -172,7 +184,13 @@ export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
               {language.toUpperCase()}
             </button>
           </div>
-        ) : null}
+        ) : (
+          <div className="hover-link">
+            <button onClick={handleLanguageClick} style={styles.languageDiv}>
+              {language.toUpperCase()}
+            </button>
+          </div>
+        )}
       </>
     );
   };
@@ -214,11 +232,13 @@ export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
             setOpen(false);
           }}
           transitionProps={{ duration: 600, timingFunction: "ease-in-out" }}
-          title={<img
-            src={SeloLogoWhite}
-            alt="selo-logo-topbar"
-            style={{ height: 60 - 24 }}
-          />}
+          title={
+            <img
+              src={SeloLogoWhite}
+              alt="selo-logo-topbar"
+              style={{ height: 60 - 24 }}
+            />
+          }
           sx={{
             height: "100vh",
             zIndex: 99,
@@ -226,17 +246,17 @@ export const Navbar: React.FC<NavbarProps & LanguageProp> = ({
             "& .mantine-Drawer-header": {
               backgroundColor: GRAY_COLOR,
               padding: "2rem",
-              "button": {
+              button: {
                 height: "40px",
-                width: "40px"
+                width: "40px",
               },
               "button *": {
                 color: "white !important",
               },
-              "svg": {
+              svg: {
                 height: "100%",
-                width: "100%"
-              }
+                width: "100%",
+              },
             },
           }}
         >

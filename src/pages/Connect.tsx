@@ -1,8 +1,8 @@
-import { Grid } from "@mantine/core";
+import { Button, Grid, Sx } from "@mantine/core";
 import React from "react";
 
-import { Language, LanguageProp } from "../MainPage";
-import { OUTTER_GUTTER, OUTTER_GUTTER_MOBILE } from "../components/Navbar";
+import { Language, LanguageProp, PAPER_BG } from "../MainPage";
+import { OUTER_GUTTER, OUTER_GUTTER_MOBILE } from "../components/Navbar";
 import useMediaQueryMd from "../features/useMediaQueryMd";
 
 interface ConnectProps extends LanguageProp {
@@ -21,8 +21,8 @@ export const Connect: React.FC<ConnectProps> = ({
 }) => {
   const content: Record<string, Record<Language, string>> = {
     textTitleForm: {
-      en: "FILL OUT THE FORM OR EMAIL US AT",
-      pt: "PREENCHE O FORMULÁRIO OU ENVIA-NOS UM EMAIL PARA",
+      en: "EMAIL US AT",
+      pt: "ENVIA-NOS UM EMAIL PARA",
     },
     termsAndConditions: {
       en: "Terms & Conditions",
@@ -44,6 +44,23 @@ export const Connect: React.FC<ConnectProps> = ({
     },
   };
 
+  const buttonStyles: Sx = {
+    transition: "all 400ms",
+    margin: isSmallScreen ? `0px 0px 120px 0px` : `0px 0px 220px 0px`,
+    // marginTop: isSmallScreen ? OUTER_GUTTER_MOBILE : OUTER_GUTTER,
+    fontWeight: "bold",
+    fontSize: "16px",
+    fontFamily: "Aileron",
+    "&:hover": {
+      "& span": {
+        color: PAPER_BG,
+      },
+      boxShadow: "inset 0 0 0 40px black",
+    },
+    height: "40px",
+    padding: "0px 16px",
+  };
+
   return (
     <div id="connect" style={styles.main}>
       <Grid
@@ -52,30 +69,50 @@ export const Connect: React.FC<ConnectProps> = ({
           flexDirection: "column",
           alignItems: "center",
           width: "100%",
-          padding: `0px ${isSmallScreen ? OUTTER_GUTTER_MOBILE : OUTTER_GUTTER}px`,
+          padding: `0px ${
+            isSmallScreen ? OUTER_GUTTER_MOBILE : OUTER_GUTTER
+          }px`,
           margin: isSmallScreen ? undefined : 0,
         }}
-        >
+      >
         <Grid.Col
           span={12}
           sx={{
+            padding: 0,
             lineHeight: 0.6,
-            marginBottom: "40px",
+            marginBottom: "35px",
             marginTop: isSmallScreen ? "90px" : "200px",
             width: isSmallScreen ? "100%" : undefined,
+            textAlign: "center",
           }}
         >
           <p
-            style={{ color: "#3a3a3a", fontSize: "1.17em", fontWeight: "bold" }}
+            style={{
+              color: "#3a3a3a",
+              fontSize: "1.17em",
+              fontWeight: "bold",
+            }}
           >
             {content.textTitleForm[language]}
           </p>
           <h3 style={{ fontWeight: "normal", fontStyle: "italic" }}>
-            <a href="mailto:hello@selovisualstudio.com" style={{ textDecoration: "none" }}>
+            <a className="hover-link" href="mailto:hello@selovisualstudio.com">
               HELLO@SELOVISUALSTUDIO.COM
             </a>
           </h3>
         </Grid.Col>
+        <a href="mailto:hello@selovisualstudio.com">
+          <Button
+            variant="outline"
+            color="dark"
+            radius="xl"
+            size="lg"
+            sx={buttonStyles}
+            type="button"
+          >
+            {language === "en" ? "GET IN TOUCH" : "ENTRAR EM CONTACTO"}
+          </Button>
+        </a>
         {/* <Form language={language} />
         <Grid.Col
           span={12}
@@ -83,8 +120,8 @@ export const Connect: React.FC<ConnectProps> = ({
             display: "flex",
             flexDirection: "column",
             width: "100%",
-            paddingLeft: `${ isSmallScreen ? 0 : OUTTER_GUTTER}px`,
-            paddingRight: `${ isSmallScreen ? 0 : OUTTER_GUTTER}px`,
+            paddingLeft: `${ isSmallScreen ? 0 : OUTER_GUTTER}px`,
+            paddingRight: `${ isSmallScreen ? 0 : OUTER_GUTTER}px`,
             alignItems: "flex-start",
             marginBottom: "100px",
           }}

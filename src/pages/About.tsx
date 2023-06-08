@@ -2,7 +2,7 @@ import React from "react";
 
 import { Grid } from "@mantine/core";
 
-import { OUTTER_GUTTER, OUTTER_GUTTER_MOBILE } from "../components/Navbar";
+import { OUTER_GUTTER, OUTER_GUTTER_MOBILE } from "../components/Navbar";
 import { GRID_MAX_WIDTH } from "../features/gridUtils";
 import { Language, LanguageProp } from "../MainPage";
 import useMediaQueryMd from "../features/useMediaQueryMd";
@@ -36,7 +36,7 @@ export const About: React.FC<AboutProps> = ({ language }) => {
       width: "100%",
     },
     textContainer: {
-      margin: `0px ${isSmallScreen ? OUTTER_GUTTER_MOBILE : OUTTER_GUTTER}px`,
+      margin: `0px ${isSmallScreen ? OUTER_GUTTER_MOBILE : OUTER_GUTTER}px`,
       width: "100%",
       maxWidth: GRID_MAX_WIDTH,
       marginBottom: isSmallScreen ? "60px" : undefined,

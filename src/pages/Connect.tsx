@@ -38,9 +38,7 @@ export const Connect: React.FC<ConnectProps> = ({
 
   const styles: Record<string, React.CSSProperties> = {
     main: {
-      display: "flex",
-      alignItems: "center",
-      width: "100%",
+      margin: `0px ${isSmallScreen ? OUTER_GUTTER_MOBILE : OUTER_GUTTER}px`,
     },
   };
 
@@ -68,10 +66,7 @@ export const Connect: React.FC<ConnectProps> = ({
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          width: "100%",
-          padding: `0px ${
-            isSmallScreen ? OUTER_GUTTER_MOBILE : OUTER_GUTTER
-          }px`,
+          justifyContent: "center",
           margin: isSmallScreen ? undefined : 0,
         }}
       >
@@ -82,7 +77,6 @@ export const Connect: React.FC<ConnectProps> = ({
             lineHeight: 0.6,
             marginBottom: "35px",
             marginTop: isSmallScreen ? "90px" : "200px",
-            width: isSmallScreen ? "100%" : undefined,
             textAlign: "center",
           }}
         >

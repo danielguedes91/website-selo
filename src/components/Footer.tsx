@@ -13,7 +13,7 @@ export const Footer: React.FC = () => {
       left: 0,
       right: 0,
       backgroundColor: PAPER_BG,
-      height: "60px",
+      height: isSmallScreen ? undefined : "60px",
       marginTop: "10px",
       padding: `0px ${isSmallScreen ? OUTER_GUTTER_MOBILE : OUTER_GUTTER}px`,
     },
